@@ -12,6 +12,8 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 import { Facebook, Instagram, Linkedin, Moon, Sun, Twitter } from "lucide-react"
+import LogoBlack from '/Logo-Black.png';
+import LogoWhite from '/Logo-White.png';
 
 interface FooterProps {
   isDarkMode: boolean;
@@ -25,7 +27,7 @@ const Footer: React.FC<FooterProps> = ({ isDarkMode, toggleDarkMode }) => {
 
   const handleLogoClick = () => {
     navigate('/');
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    window.scrollTo(0, 0);
   };
 
   const handleSubscribe = async (e: React.FormEvent) => {
@@ -33,9 +35,7 @@ const Footer: React.FC<FooterProps> = ({ isDarkMode, toggleDarkMode }) => {
     if (!email) return;
 
     setIsSubscribing(true);
-    // Here you would typically make an API call to your newsletter service
     try {
-      // Simulating API call
       await new Promise(resolve => setTimeout(resolve, 1000));
       alert("Thanks for subscribing! We'll be in touch soon.");
       setEmail("");
@@ -84,10 +84,14 @@ const Footer: React.FC<FooterProps> = ({ isDarkMode, toggleDarkMode }) => {
           <div className="relative md:col-span-3">
             <button 
               onClick={handleLogoClick}
-              className="mb-1 text-3xl font-bold tracking-tight cursor-pointer hover:text-primary transition-colors"
+              className="mb-4 cursor-pointer hover:opacity-80 transition-opacity"
               aria-label="Go to homepage"
             >
-              Perssonify
+              <img
+                src={isDarkMode ? LogoWhite : LogoBlack}
+                alt="Perssonify Logo"
+                className="h-8 w-auto object-contain"
+              />
             </button>
             <p className="mb-3 text-xs text-muted-foreground">Empowering businesses with growth and strategic solutions worldwide.</p>
             <p className="mb-6 text-sm text-muted-foreground">
