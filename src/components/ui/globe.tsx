@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useCallback, useEffect, useRef } from "react";
@@ -113,7 +114,6 @@ function RingMesh({
 
       meshRef.current.scale.set(currentRadius, currentRadius, 1);
       
-      // Fix: Properly type cast the material to access opacity property
       const material = meshRef.current.material as THREE.MeshBasicMaterial;
       material.opacity = 1 - currentRadius / maxRadius;
     }
@@ -121,7 +121,7 @@ function RingMesh({
 
   return (
     <mesh ref={meshRef} position={position} rotation={[Math.PI / 2, 0, 0]}>
-      <ringGeometry args={[0, 1, 32]} />
+      <ringGeometry args={[0.01, maxRadius, 32]} />
       <meshBasicMaterial color={color} transparent opacity={1} side={THREE.DoubleSide} />
     </mesh>
   );
