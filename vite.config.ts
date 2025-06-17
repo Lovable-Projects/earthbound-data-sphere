@@ -1,3 +1,4 @@
+
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
@@ -25,9 +26,19 @@ export default defineConfig(({ mode }) => ({
     outDir: 'dist',
     assetsDir: 'assets',
     rollupOptions: {
+      external: mode === 'development' ? [] : [],
       output: {
-        manualChunks: undefined,
+        manualChunks: {
+          'spline': ['@splinetool/react-spline', '@splinetool/runtime']
+        },
       },
     },
+    // Add optimization for Spline dependencies
+    commonjsOptions: {
+      include: [/node_modules/],
+    },
+  },
+  optimizeDeps: {
+    include: ['@splinetool/react-spline', '@splinetool/runtime'],
   },
 }));
