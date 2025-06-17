@@ -1,4 +1,5 @@
 
+
 "use client";
 
 import { useCallback, useEffect, useRef } from "react";
@@ -115,13 +116,13 @@ function RingMesh({
       meshRef.current.scale.set(currentRadius, currentRadius, 1);
       
       const material = meshRef.current.material as THREE.MeshBasicMaterial;
-      material.opacity = 1 - currentRadius / maxRadius;
+      material.opacity = Math.max(0, 1 - currentRadius / maxRadius);
     }
   });
 
   return (
     <mesh ref={meshRef} position={position} rotation={[Math.PI / 2, 0, 0]}>
-      <ringGeometry args={[0.01, maxRadius, 32]} />
+      <ringGeometry args={[0.01, 1, 32]} />
       <meshBasicMaterial color={color} transparent opacity={1} side={THREE.DoubleSide} />
     </mesh>
   );
@@ -242,3 +243,4 @@ export function Globe({ className, config = {} }: GlobeProps) {
     </div>
   );
 }
+
