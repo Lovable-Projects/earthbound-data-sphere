@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Clock, ArrowRight, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -21,13 +22,11 @@ const Contact: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the form data to your backend
     console.log('Form submitted:', formData);
     toast({
       title: "Message sent successfully!",
       description: "We'll get back to you within 24 hours.",
     });
-    // Reset form
     setFormData({
       name: '',
       email: '',
@@ -66,7 +65,7 @@ const Contact: React.FC = () => {
   ];
 
   return (
-    <div className="bg-background">
+    <div className="bg-background min-h-screen">
       {/* Hero Section */}
       <section className="relative pt-24 bg-gradient-to-br from-primary/5 via-background to-accent/5">
         <div className="container mx-auto px-4">
@@ -169,6 +168,7 @@ const Contact: React.FC = () => {
                         placeholder="Describe your current challenges and what you're looking to achieve..."
                         rows={4}
                         required
+                        className="resize-none"
                       />
                     </div>
 
