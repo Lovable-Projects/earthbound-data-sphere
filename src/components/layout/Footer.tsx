@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
 import { Switch } from "@/components/ui/switch"
@@ -21,6 +21,12 @@ interface FooterProps {
 const Footer: React.FC<FooterProps> = ({ isDarkMode, toggleDarkMode }) => {
   const [email, setEmail] = React.useState("");
   const [isSubscribing, setIsSubscribing] = React.useState(false);
+  const navigate = useNavigate();
+
+  const handleLogoClick = () => {
+    navigate('/');
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  };
 
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -74,9 +80,15 @@ const Footer: React.FC<FooterProps> = ({ isDarkMode, toggleDarkMode }) => {
     <footer className="relative border-t bg-background text-foreground transition-colors duration-300">
       <div className="container mx-auto px-4 py-12 md:px-6 lg:px-8">
         <div className="grid gap-12 md:grid-cols-12">
-          {/* Newsletter Section */}
+          {/* Newsletter Section with Clickable Logo */}
           <div className="relative md:col-span-3">
-            <h2 className="mb-1 text-3xl font-bold tracking-tight">Perssonify</h2>
+            <button 
+              onClick={handleLogoClick}
+              className="mb-1 text-3xl font-bold tracking-tight cursor-pointer hover:text-primary transition-colors"
+              aria-label="Go to homepage"
+            >
+              Perssonify
+            </button>
             <p className="mb-3 text-xs text-muted-foreground">Empowering businesses with growth and strategic solutions worldwide.</p>
             <p className="mb-6 text-sm text-muted-foreground">
               Join our newsletter for the latest updates and exclusive offers.
@@ -230,4 +242,4 @@ const Footer: React.FC<FooterProps> = ({ isDarkMode, toggleDarkMode }) => {
   );
 };
 
-export default Footer; 
+export default Footer;

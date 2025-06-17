@@ -1,5 +1,6 @@
+
 import React, { useState, useRef, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, Sun, Moon, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
@@ -16,6 +17,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const location = useLocation();
+  const navigate = useNavigate();
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const navigation = [
@@ -50,6 +52,11 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
 
   const isActive = (path: string) => location.pathname === path || location.pathname.startsWith(path + '/');
 
+  const handleLogoClick = () => {
+    navigate('/');
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  };
+
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -74,15 +81,19 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
     >
       <div className="container mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2 pl-1 sm:pl-4">
+          {/* Logo - Made clickable */}
+          <button 
+            onClick={handleLogoClick}
+            className="flex items-center space-x-2 pl-1 sm:pl-4 cursor-pointer"
+            aria-label="Go to homepage"
+          >
             <motion.img
               whileHover={{ scale: 1.05 }}
               src={isDarkMode ? LogoWhite : LogoBlack}
               alt="Perssonify Logo"
               className="h-6 w-auto sm:h-7 object-contain transition-all duration-300"
             />
-          </Link>
+          </button>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-6 lg:space-x-8" ref={dropdownRef}>
@@ -280,4 +291,4 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
   );
 };
 
-export default Header; 
+export default Header;
