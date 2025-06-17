@@ -107,24 +107,23 @@ function RingMesh({
 
   useFrame(() => {
     if (meshRef.current) {
-      const elapsed = Date.now() - startTimeRef.current;
-      const t = (elapsed * propagationSpeed) % (maxRadius * repeats * 1000);
-      const currentRadius = Math.max(0.01, (t / 1000 / repeats) % maxRadius);
+      const elapsed = (Date.now() - startTimeRef.current) * 0.001; // Convert to seconds
+      const progress = (elapsed * propagationSpeed) % 1;
+      const currentRadius = progress * maxRadius;
 
-      // Ensure we have valid scale values
-      const scale = Math.max(0.01, currentRadius);
-      meshRef.current.scale.set(scale, scale, 1);
+      // Simple scale animation
+      meshRef.current.scale.setScalar(currentRadius);
       
+      // Fade out as it expands
       const material = meshRef.current.material as THREE.MeshBasicMaterial;
-      const opacity = Math.max(0, Math.min(1, 1 - currentRadius / maxRadius));
-      material.opacity = opacity;
+      material.opacity = 1 - progress;
     }
   });
 
   return (
     <mesh ref={meshRef} position={position} rotation={[Math.PI / 2, 0, 0]}>
-      <ringGeometry args={[0.01, 0.5, 16, 1]} />
-      <meshBasicMaterial color={color} transparent={true} opacity={1} side={THREE.DoubleSide} />
+      <ringGeometry args={[0.1, 0.2, 8]} />
+      <meshBasicMaterial color={color} transparent opacity={1} />
     </mesh>
   );
 }
@@ -187,8 +186,8 @@ export function Globe({ className, config = {} }: GlobeProps) {
   const sampleRings: Ring[] = [
     {
       position: [0, 0, 0],
-      maxRadius: 0.3,
-      propagationSpeed: RING_PROPAGATION_SPEED,
+      maxRadius: 3,
+      propagationSpeed: 0.5,
       repeats: 3,
       color: "#ffffff",
     },
