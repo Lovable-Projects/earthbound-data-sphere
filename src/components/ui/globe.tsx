@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useCallback, useEffect, useRef } from "react";
@@ -113,7 +112,10 @@ function RingMesh({
       const currentRadius = (t / repeats) % maxRadius;
 
       meshRef.current.scale.set(currentRadius, currentRadius, 1);
-      meshRef.current.material.opacity = 1 - currentRadius / maxRadius;
+      
+      // Fix: Properly type cast the material to access opacity property
+      const material = meshRef.current.material as THREE.MeshBasicMaterial;
+      material.opacity = 1 - currentRadius / maxRadius;
     }
   });
 
