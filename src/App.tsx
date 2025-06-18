@@ -11,6 +11,8 @@ import StrategicSolutions from "./pages/StrategicSolutions";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Blog from "./pages/Blog";
+import CoreGrowthSolutions from "./pages/CoreGrowthSolutions";
+import SpecializedGrowthSolutions from "./pages/SpecializedGrowthSolutions";
 import ScrollToTop from "./components/ScrollToTop";
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
@@ -31,6 +33,8 @@ const App = () => (
               <Route path="contact" element={<Contact />} />
               <Route path="growth-solutions" element={<GrowthSolutions />} />
               <Route path="strategic-solutions" element={<StrategicSolutions />} />
+              <Route path="core-growth-solutions" element={<CoreGrowthSolutions />} />
+              <Route path="specialized-growth-solutions" element={<SpecializedGrowthSolutions />} />
               <Route path="about" element={<About />} />
               <Route path="blog" element={<Blog />} />
               <Route path="blog/:id" element={<Blog />} />
