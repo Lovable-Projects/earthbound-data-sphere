@@ -116,6 +116,93 @@ const blogPosts: BlogPost[] = [
       <p>Remote teams can be incredibly productive and innovative when managed effectively. The key is to embrace the unique advantages of remote work while addressing its challenges through thoughtful processes and technology.</p>
     `,
     tags: ['Remote Work', 'Team Management', 'Productivity', 'Leadership']
+  },
+  {
+    id: '4',
+    title: 'The Rise of E-commerce: Trends Shaping Online Shopping',
+    date: 'November 28, 2024',
+    author: 'Alex Thompson',
+    category: 'E-commerce',
+    excerpt: 'Explore the latest trends in e-commerce and how they are reshaping the online shopping experience.',
+    image: '/images/blog/ecommerce-trends.jpg',
+    readTime: '8 min read',
+    content: `
+      <h2>E-commerce Evolution</h2>
+      <p>The e-commerce landscape continues to evolve at breakneck speed, driven by changing consumer behaviors, technological advances, and global events that have reshaped how we shop.</p>
+      
+      <h2>Key Trends in 2024</h2>
+      
+      <h3>1. Social Commerce</h3>
+      <p>Shopping directly through social media platforms is becoming mainstream. Instagram Shopping, TikTok Shop, and Facebook Marketplace are transforming social media into powerful sales channels.</p>
+      
+      <h3>2. Sustainable Shopping</h3>
+      <p>Consumers are increasingly conscious about sustainability. Brands that emphasize eco-friendly practices and transparent supply chains are gaining competitive advantages.</p>
+      
+      <h3>3. Augmented Reality Shopping</h3>
+      <p>AR technology allows customers to virtually try products before purchasing, reducing return rates and improving customer satisfaction.</p>
+      
+      <h2>Future Outlook</h2>
+      <p>The future of e-commerce will be characterized by personalization, sustainability, and seamless integration across all customer touchpoints.</p>
+    `,
+    tags: ['E-commerce', 'Shopping', 'Technology', 'Trends']
+  },
+  {
+    id: '5',
+    title: 'Cybersecurity Best Practices for Small Businesses',
+    date: 'November 20, 2024',
+    author: 'David Wilson',
+    category: 'Security',
+    excerpt: 'Essential cybersecurity measures every small business should implement to protect their data and operations.',
+    image: '/images/blog/cybersecurity.jpg',
+    readTime: '9 min read',
+    content: `
+      <h2>The Cybersecurity Landscape</h2>
+      <p>Small businesses are increasingly becoming targets for cybercriminals. Unlike large corporations, many small businesses lack dedicated IT security teams, making them vulnerable to attacks.</p>
+      
+      <h2>Essential Security Measures</h2>
+      
+      <h3>1. Strong Password Policies</h3>
+      <p>Implement multi-factor authentication and require strong, unique passwords for all business accounts. Consider using password managers to help employees maintain secure credentials.</p>
+      
+      <h3>2. Regular Software Updates</h3>
+      <p>Keep all software, including operating systems and applications, up to date with the latest security patches.</p>
+      
+      <h3>3. Employee Training</h3>
+      <p>Regular cybersecurity training helps employees recognize and avoid common threats like phishing emails and social engineering attacks.</p>
+      
+      <h2>Building a Security Culture</h2>
+      <p>Cybersecurity should be everyone's responsibility, not just the IT department. Create a culture where security awareness is part of daily operations.</p>
+    `,
+    tags: ['Cybersecurity', 'Small Business', 'Data Protection', 'Security']
+  },
+  {
+    id: '6',
+    title: 'The Power of Data Analytics in Modern Business',
+    date: 'November 15, 2024',
+    author: 'Lisa Chang',
+    category: 'Analytics',
+    excerpt: 'How businesses are leveraging data analytics to make informed decisions and drive growth.',
+    image: '/images/blog/data-analytics.jpg',
+    readTime: '7 min read',
+    content: `
+      <h2>Data-Driven Decision Making</h2>
+      <p>In today's competitive business environment, companies that effectively leverage data analytics have a significant advantage over those that rely on intuition alone.</p>
+      
+      <h2>Key Benefits of Data Analytics</h2>
+      
+      <h3>1. Customer Insights</h3>
+      <p>Analytics helps businesses understand customer behavior, preferences, and trends, enabling more targeted marketing and product development.</p>
+      
+      <h3>2. Operational Efficiency</h3>
+      <p>Data analysis can identify bottlenecks in operations and suggest improvements that reduce costs and increase productivity.</p>
+      
+      <h3>3. Predictive Analytics</h3>
+      <p>Advanced analytics can help predict future trends, allowing businesses to proactively adjust their strategies.</p>
+      
+      <h2>Getting Started with Analytics</h2>
+      <p>Start with clear objectives and gradually build your analytics capabilities. Focus on metrics that directly impact your business goals.</p>
+    `,
+    tags: ['Data Analytics', 'Business Intelligence', 'Decision Making', 'Strategy']
   }
 ];
 
@@ -137,7 +224,7 @@ const Blog: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-16">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 pt-8 pb-16">
       <div className="container mx-auto px-4">
         {id && currentPost ? (
           // Blog Post Detail View
@@ -220,45 +307,45 @@ const Blog: React.FC = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
-                  <Card className="h-full hover:shadow-xl transition-shadow duration-300 group">
-                    <div className="aspect-video overflow-hidden rounded-t-lg">
-                      <img
-                        src={post.image}
-                        alt={post.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                    </div>
-                    <CardHeader>
-                      <div className="flex items-center justify-between mb-2">
-                        <Badge variant="secondary">{post.category}</Badge>
-                        <span className="text-sm text-gray-500 dark:text-gray-400">{post.readTime}</span>
+                  <Link to={`/blog/${post.id}`}>
+                    <Card className="h-full hover:shadow-xl transition-shadow duration-300 group cursor-pointer">
+                      <div className="aspect-video overflow-hidden rounded-t-lg">
+                        <img
+                          src={post.image}
+                          alt={post.title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
                       </div>
-                      <CardTitle className="line-clamp-2 group-hover:text-primary transition-colors">
-                        {post.title}
-                      </CardTitle>
-                      <CardDescription className="line-clamp-3">
-                        {post.excerpt}
-                      </CardDescription>
-                    </CardHeader>
-                    <CardContent className="pt-0">
-                      <div className="flex items-center justify-between mb-4 text-sm text-gray-500 dark:text-gray-400">
-                        <div className="flex items-center gap-1">
-                          <User className="w-3 h-3" />
-                          <span>{post.author}</span>
+                      <CardHeader>
+                        <div className="flex items-center justify-between mb-2">
+                          <Badge variant="secondary">{post.category}</Badge>
+                          <span className="text-sm text-gray-500 dark:text-gray-400">{post.readTime}</span>
                         </div>
-                        <div className="flex items-center gap-1">
-                          <Calendar className="w-3 h-3" />
-                          <span>{post.date}</span>
+                        <CardTitle className="line-clamp-2 group-hover:text-primary transition-colors">
+                          {post.title}
+                        </CardTitle>
+                        <CardDescription className="line-clamp-3">
+                          {post.excerpt}
+                        </CardDescription>
+                      </CardHeader>
+                      <CardContent className="pt-0">
+                        <div className="flex items-center justify-between mb-4 text-sm text-gray-500 dark:text-gray-400">
+                          <div className="flex items-center gap-1">
+                            <User className="w-3 h-3" />
+                            <span>{post.author}</span>
+                          </div>
+                          <div className="flex items-center gap-1">
+                            <Calendar className="w-3 h-3" />
+                            <span>{post.date}</span>
+                          </div>
                         </div>
-                      </div>
-                      <Link to={`/blog/${post.id}`}>
                         <Button className="w-full group-hover:bg-primary/90 transition-colors">
                           Read More
                           <ArrowRight className="w-4 h-4 ml-2" />
                         </Button>
-                      </Link>
-                    </CardContent>
-                  </Card>
+                      </CardContent>
+                    </Card>
+                  </Link>
                 </motion.div>
               ))}
             </div>
