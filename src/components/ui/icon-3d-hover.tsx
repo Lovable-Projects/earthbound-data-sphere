@@ -26,7 +26,7 @@ const transition1 = {
 const transition2 = {
   delay: 0,
   duration: 0.4,
-  ease: [0.44, 0, 0.56, 1] as [number, number, number, number],
+  ease: "easeInOut" as const,
   type: "tween" as const
 };
 
@@ -83,7 +83,7 @@ export const IconHover3D: React.FC<Props> = ({
 
   const titleTransition = {
     duration: 0.3,
-    ease: [0.25, 0.46, 0.45, 0.94],
+    ease: "easeInOut" as const,
     type: "tween" as const
   };
 
