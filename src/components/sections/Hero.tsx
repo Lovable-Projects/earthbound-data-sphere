@@ -64,7 +64,9 @@ const Hero: React.FC = () => {
               transition={{ duration: 0.8, delay: 0.5 }}
               className="text-sm sm:text-lg md:text-xl lg:text-2xl text-foreground/90 dark:text-foreground/80 mb-4 sm:mb-12 leading-relaxed max-w-2xl text-center lg:text-left"
             >
-              We help businesses grow faster, scale with confidence, and solve what holds progress back where it matters most.
+              We help businesses grow fast and scale smart.
+The right solution. The right time. Delivered.
+
             </motion.p>
 
             {/* CTA Buttons */}
