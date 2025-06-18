@@ -1,6 +1,31 @@
 "use client"
 import { useEffect, useState } from "react"
 import { cn } from "@/lib/utils"
+import {
+  Target,
+  Users,
+  Mail,
+  Palette,
+  TrendingUp,
+  Search,
+  Globe,
+  BarChart3,
+  Settings,
+  FilterIcon as Funnel,
+  Building,
+  FileText,
+  Zap,
+  Linkedin,
+  Cog,
+  Database,
+  Wrench,
+  Briefcase,
+  DollarSign,
+  UserCheck,
+  Activity,
+  Shield,
+  Network,
+} from "lucide-react"
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("")
@@ -76,7 +101,7 @@ export default function Home() {
           {/* Main Content */}
           <main className="flex-1">
             {/* Growth Solutions Section */}
-            <section id="growth-solutions" className="py-24 mb-16">
+            <section id="growth-solutions" className="py-8 mb-16">
               <h2 className="text-2xl font-bold mb-4">Growth Solutions</h2>
 
               <h3 className="text-xl font-semibold mb-4">High-Performance Marketing</h3>
@@ -89,65 +114,107 @@ export default function Home() {
 
               <h4 className="text-lg font-semibold mb-4">Core Growth Solutions</h4>
               <div className="grid md:grid-cols-2 gap-4 mb-6">
-                <div>
-                  <h5 className="font-semibold">Performance Marketing & Paid Media</h5>
-                  <p className="text-sm text-gray-600">High-ROI ads that convert.</p>
+                <div className="flex items-start gap-3">
+                  <Target className="w-5 h-5 mt-1 text-accent flex-shrink-0" />
+                  <div>
+                    <h5 className="font-semibold">Performance Marketing & Paid Media</h5>
+                    <p className="text-sm text-gray-600">High-ROI ads that convert.</p>
+                  </div>
                 </div>
-                <div>
-                  <h5 className="font-semibold">Social Media Marketing & Brand Engagement</h5>
-                  <p className="text-sm text-gray-600">Build audience, spark action.</p>
+                <div className="flex items-start gap-3">
+                  <Users className="w-5 h-5 mt-1 text-accent flex-shrink-0" />
+                  <div>
+                    <h5 className="font-semibold">Social Media Marketing & Brand Engagement</h5>
+                    <p className="text-sm text-gray-600">Build audience, spark action.</p>
+                  </div>
                 </div>
-                <div>
-                  <h5 className="font-semibold">Email Marketing & Marketing Automation</h5>
-                  <p className="text-sm text-gray-600">Automate nurture, drive loyalty.</p>
+                <div className="flex items-start gap-3">
+                  <Mail className="w-5 h-5 mt-1 text-accent flex-shrink-0" />
+                  <div>
+                    <h5 className="font-semibold">Email Marketing & Marketing Automation</h5>
+                    <p className="text-sm text-gray-600">Automate nurture, drive loyalty.</p>
+                  </div>
                 </div>
-                <div>
-                  <h5 className="font-semibold">Creative Solutions</h5>
-                  <p className="text-sm text-gray-600">Visuals that get results.</p>
+                <div className="flex items-start gap-3">
+                  <Palette className="w-5 h-5 mt-1 text-accent flex-shrink-0" />
+                  <div>
+                    <h5 className="font-semibold">Creative Solutions</h5>
+                    <p className="text-sm text-gray-600">Visuals that get results.</p>
+                  </div>
                 </div>
-                <div>
-                  <h5 className="font-semibold">Conversion Rate Optimization (CRO)</h5>
-                  <p className="text-sm text-gray-600">Test. Refine. Convert more.</p>
+                <div className="flex items-start gap-3">
+                  <TrendingUp className="w-5 h-5 mt-1 text-accent flex-shrink-0" />
+                  <div>
+                    <h5 className="font-semibold">Conversion Rate Optimization (CRO)</h5>
+                    <p className="text-sm text-gray-600">Test. Refine. Convert more.</p>
+                  </div>
                 </div>
-                <div>
-                  <h5 className="font-semibold">Search Engine Optimization (SEO) & Website Growth</h5>
-                  <p className="text-sm text-gray-600">Rank higher. Grow faster.</p>
+                <div className="flex items-start gap-3">
+                  <Search className="w-5 h-5 mt-1 text-accent flex-shrink-0" />
+                  <div>
+                    <h5 className="font-semibold">Search Engine Optimization (SEO) & Website Growth</h5>
+                    <p className="text-sm text-gray-600">Rank higher. Grow faster.</p>
+                  </div>
                 </div>
-                <div>
-                  <h5 className="font-semibold">Website Solutions</h5>
-                  <p className="text-sm text-gray-600">Seamless, scalable, conversion-ready.</p>
+                <div className="flex items-start gap-3">
+                  <Globe className="w-5 h-5 mt-1 text-accent flex-shrink-0" />
+                  <div>
+                    <h5 className="font-semibold">Website Solutions</h5>
+                    <p className="text-sm text-gray-600">Seamless, scalable, conversion-ready.</p>
+                  </div>
                 </div>
               </div>
 
               <h4 className="text-lg font-semibold mb-4">Specialized Growth Solutions</h4>
               <div className="grid md:grid-cols-2 gap-4 mb-6">
-                <div>
-                  <h5 className="font-semibold">Deep Dive Audit & Strategic Insights</h5>
-                  <p className="text-sm text-gray-600">Clarity through expert analysis.</p>
+                <div className="flex items-start gap-3">
+                  <BarChart3 className="w-5 h-5 mt-1 text-accent flex-shrink-0" />
+                  <div>
+                    <h5 className="font-semibold">Deep Dive Audit & Strategic Insights</h5>
+                    <p className="text-sm text-gray-600">Clarity through expert analysis.</p>
+                  </div>
                 </div>
-                <div>
-                  <h5 className="font-semibold">Analytics and Event Tracking Setup</h5>
-                  <p className="text-sm text-gray-600">Track what matters, measure what works.</p>
+                <div className="flex items-start gap-3">
+                  <Settings className="w-5 h-5 mt-1 text-accent flex-shrink-0" />
+                  <div>
+                    <h5 className="font-semibold">Analytics and Event Tracking Setup</h5>
+                    <p className="text-sm text-gray-600">Track what matters, measure what works.</p>
+                  </div>
                 </div>
-                <div>
-                  <h5 className="font-semibold">Lead Generation & Funnel Strategy</h5>
-                  <p className="text-sm text-gray-600">Build funnels that convert.</p>
+                <div className="flex items-start gap-3">
+                  <Funnel className="w-5 h-5 mt-1 text-accent flex-shrink-0" />
+                  <div>
+                    <h5 className="font-semibold">Lead Generation & Funnel Strategy</h5>
+                    <p className="text-sm text-gray-600">Build funnels that convert.</p>
+                  </div>
                 </div>
-                <div>
-                  <h5 className="font-semibold">Brand Architecture & Strategy</h5>
-                  <p className="text-sm text-gray-600">Define, differentiate, scale.</p>
+                <div className="flex items-start gap-3">
+                  <Building className="w-5 h-5 mt-1 text-accent flex-shrink-0" />
+                  <div>
+                    <h5 className="font-semibold">Brand Architecture & Strategy</h5>
+                    <p className="text-sm text-gray-600">Define, differentiate, scale.</p>
+                  </div>
                 </div>
-                <div>
-                  <h5 className="font-semibold">Content Strategy & Planning</h5>
-                  <p className="text-sm text-gray-600">Structure content to drive growth.</p>
+                <div className="flex items-start gap-3">
+                  <FileText className="w-5 h-5 mt-1 text-accent flex-shrink-0" />
+                  <div>
+                    <h5 className="font-semibold">Content Strategy & Planning</h5>
+                    <p className="text-sm text-gray-600">Structure content to drive growth.</p>
+                  </div>
                 </div>
-                <div>
-                  <h5 className="font-semibold">AI-Accelerated Content Production Pipelines</h5>
-                  <p className="text-sm text-gray-600">Create more, faster, with precision.</p>
+                <div className="flex items-start gap-3">
+                  <Zap className="w-5 h-5 mt-1 text-accent flex-shrink-0" />
+                  <div>
+                    <h5 className="font-semibold">AI-Accelerated Content Production Pipelines</h5>
+                    <p className="text-sm text-gray-600">Create more, faster, with precision.</p>
+                  </div>
                 </div>
-                <div>
-                  <h5 className="font-semibold">Executive Personal Branding & LinkedIn Marketing</h5>
-                  <p className="text-sm text-gray-600">Elevate presence, grow influence.</p>
+                <div className="flex items-start gap-3">
+                  <Linkedin className="w-5 h-5 mt-1 text-accent flex-shrink-0" />
+                  <div>
+                    <h5 className="font-semibold">Executive Personal Branding & LinkedIn Marketing</h5>
+                    <p className="text-sm text-gray-600">Elevate presence, grow influence.</p>
+                  </div>
                 </div>
               </div>
 
@@ -155,7 +222,7 @@ export default function Home() {
             </section>
 
             {/* Strategic Solutions Section */}
-            <section id="strategic-solutions" className="py-24 mb-16">
+            <section id="strategic-solutions" className="py-8 mb-16">
               <h2 className="text-2xl font-bold mb-4">Strategic Solutions</h2>
 
               <p className="mb-6">
@@ -168,45 +235,72 @@ export default function Home() {
 
               <h4 className="text-lg font-semibold mb-4">Core Strategic Solutions</h4>
               <div className="grid md:grid-cols-2 gap-4 mb-6">
-                <div>
-                  <h5 className="font-semibold">Process & Workflow Automation</h5>
-                  <p className="text-sm text-gray-600">Automate execution. Eliminate friction.</p>
+                <div className="flex items-start gap-3">
+                  <Cog className="w-5 h-5 mt-1 text-accent flex-shrink-0" />
+                  <div>
+                    <h5 className="font-semibold">Process & Workflow Automation</h5>
+                    <p className="text-sm text-gray-600">Automate execution. Eliminate friction.</p>
+                  </div>
                 </div>
-                <div>
-                  <h5 className="font-semibold">Digital Systems Enablement</h5>
-                  <p className="text-sm text-gray-600">Optimize platforms. Empower teams.</p>
+                <div className="flex items-start gap-3">
+                  <Database className="w-5 h-5 mt-1 text-accent flex-shrink-0" />
+                  <div>
+                    <h5 className="font-semibold">Digital Systems Enablement</h5>
+                    <p className="text-sm text-gray-600">Optimize platforms. Empower teams.</p>
+                  </div>
                 </div>
-                <div>
-                  <h5 className="font-semibold">Custom Solution Engineering</h5>
-                  <p className="text-sm text-gray-600">Solve complex. Deliver fast.</p>
+                <div className="flex items-start gap-3">
+                  <Wrench className="w-5 h-5 mt-1 text-accent flex-shrink-0" />
+                  <div>
+                    <h5 className="font-semibold">Custom Solution Engineering</h5>
+                    <p className="text-sm text-gray-600">Solve complex. Deliver fast.</p>
+                  </div>
                 </div>
-                <div>
-                  <h5 className="font-semibold">Enterprise Evolution & Strategic Transformation</h5>
-                  <p className="text-sm text-gray-600">Reshape. Scale. Future-proof.</p>
+                <div className="flex items-start gap-3">
+                  <Briefcase className="w-5 h-5 mt-1 text-accent flex-shrink-0" />
+                  <div>
+                    <h5 className="font-semibold">Enterprise Evolution & Strategic Transformation</h5>
+                    <p className="text-sm text-gray-600">Reshape. Scale. Future-proof.</p>
+                  </div>
                 </div>
               </div>
 
               <h4 className="text-lg font-semibold mb-4">Solutions By Function</h4>
               <div className="grid md:grid-cols-2 gap-4 mb-6">
-                <div>
-                  <h5 className="font-semibold">Finance</h5>
-                  <p className="text-sm text-gray-600">Automate reporting. Accelerate reconciliation.</p>
+                <div className="flex items-start gap-3">
+                  <DollarSign className="w-5 h-5 mt-1 text-accent flex-shrink-0" />
+                  <div>
+                    <h5 className="font-semibold">Finance</h5>
+                    <p className="text-sm text-gray-600">Automate reporting. Accelerate reconciliation.</p>
+                  </div>
                 </div>
-                <div>
-                  <h5 className="font-semibold">Human Resources</h5>
-                  <p className="text-sm text-gray-600">Streamline onboarding. Simplify compliance workflows.</p>
+                <div className="flex items-start gap-3">
+                  <UserCheck className="w-5 h-5 mt-1 text-accent flex-shrink-0" />
+                  <div>
+                    <h5 className="font-semibold">Human Resources</h5>
+                    <p className="text-sm text-gray-600">Streamline onboarding. Simplify compliance workflows.</p>
+                  </div>
                 </div>
-                <div>
-                  <h5 className="font-semibold">Operations</h5>
-                  <p className="text-sm text-gray-600">Unblock execution. Speed up critical workflows.</p>
+                <div className="flex items-start gap-3">
+                  <Activity className="w-5 h-5 mt-1 text-accent flex-shrink-0" />
+                  <div>
+                    <h5 className="font-semibold">Operations</h5>
+                    <p className="text-sm text-gray-600">Unblock execution. Speed up critical workflows.</p>
+                  </div>
                 </div>
-                <div>
-                  <h5 className="font-semibold">Compliance & Governance</h5>
-                  <p className="text-sm text-gray-600">Reduce risk. Ensure audit-ready control.</p>
+                <div className="flex items-start gap-3">
+                  <Shield className="w-5 h-5 mt-1 text-accent flex-shrink-0" />
+                  <div>
+                    <h5 className="font-semibold">Compliance & Governance</h5>
+                    <p className="text-sm text-gray-600">Reduce risk. Ensure audit-ready control.</p>
+                  </div>
                 </div>
-                <div>
-                  <h5 className="font-semibold">Cross-Functional Leadership</h5>
-                  <p className="text-sm text-gray-600">Align departments. Orchestrate complex delivery.</p>
+                <div className="flex items-start gap-3">
+                  <Network className="w-5 h-5 mt-1 text-accent flex-shrink-0" />
+                  <div>
+                    <h5 className="font-semibold">Cross-Functional Leadership</h5>
+                    <p className="text-sm text-gray-600">Align departments. Orchestrate complex delivery.</p>
+                  </div>
                 </div>
               </div>
 
