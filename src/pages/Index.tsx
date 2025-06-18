@@ -1,16 +1,18 @@
 
 import React from 'react';
 import Hero from '@/components/sections/Hero';
-import TimelineSection from '@/components/sections/TimelineSection';
+import StickySolutionsSection from '@/components/sections/StickySolutionsSection';
 import ProcessSection from '@/components/sections/ProcessSection';
 import { Process } from '@/components/sections/ResultsSection';
 import CTASection from '@/components/sections/CTASection';
 
 const Index: React.FC = () => {
   return (
-    <div>
+    <div className="w-full">
       <Hero />
-      <TimelineSection />
+      <div id="growth-solutions">
+        <StickySolutionsSection />
+      </div>
       <ProcessSection />
       <Process />
       <CTASection />
