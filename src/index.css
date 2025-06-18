@@ -95,6 +95,7 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    padding-top: 64px; /* Add padding for fixed header */
   }
 
   main {
@@ -109,6 +110,12 @@
   img, picture, video, canvas, svg {
     display: block;
     max-width: 100%;
+  }
+
+  /* Fix for pages that need to start from top */
+  .page-content {
+    padding-top: 0;
+    margin-top: 0;
   }
 }
 

@@ -212,7 +212,7 @@ const Blog: React.FC = () => {
 
   if (id && !currentPost) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center pt-20">
         <div className="text-center">
           <h1 className="text-2xl font-bold mb-4">Blog post not found</h1>
           <Link to="/blog">
@@ -224,8 +224,8 @@ const Blog: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 pt-8 pb-16">
-      <div className="container mx-auto px-4">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 pt-20 pb-16">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {id && currentPost ? (
           // Blog Post Detail View
           <div className="max-w-4xl mx-auto">
@@ -248,7 +248,7 @@ const Blog: React.FC = () => {
                 />
               </div>
               
-              <div className="p-8">
+              <div className="p-6 sm:p-8">
                 <div className="flex flex-wrap items-center gap-4 mb-6 text-sm text-gray-500 dark:text-gray-400">
                   <div className="flex items-center gap-1">
                     <Calendar className="w-4 h-4" />
@@ -265,7 +265,7 @@ const Blog: React.FC = () => {
                   <Badge variant="secondary">{currentPost.category}</Badge>
                 </div>
                 
-                <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
                   {currentPost.title}
                 </h1>
                 
@@ -276,7 +276,7 @@ const Blog: React.FC = () => {
                 </div>
                 
                 <div 
-                  className="prose prose-lg max-w-none dark:prose-invert prose-headings:text-gray-900 dark:prose-headings:text-white prose-p:text-gray-700 dark:prose-p:text-gray-300"
+                  className="prose prose-sm sm:prose prose-lg max-w-none dark:prose-invert prose-headings:text-gray-900 dark:prose-headings:text-white prose-p:text-gray-700 dark:prose-p:text-gray-300"
                   dangerouslySetInnerHTML={{ __html: currentPost.content }}
                 />
               </div>
@@ -289,17 +289,17 @@ const Blog: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-center mb-12"
+              className="text-center mb-8 sm:mb-12"
             >
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
                 Our Blog
               </h1>
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+              <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto px-4">
                 Stay updated with our latest insights, trends, and expert advice on business growth, technology, and digital transformation.
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               {blogPosts.map((post, index) => (
                 <motion.div
                   key={post.id}
@@ -316,20 +316,20 @@ const Blog: React.FC = () => {
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                         />
                       </div>
-                      <CardHeader>
+                      <CardHeader className="p-4 sm:p-6">
                         <div className="flex items-center justify-between mb-2">
-                          <Badge variant="secondary">{post.category}</Badge>
-                          <span className="text-sm text-gray-500 dark:text-gray-400">{post.readTime}</span>
+                          <Badge variant="secondary" className="text-xs">{post.category}</Badge>
+                          <span className="text-xs text-gray-500 dark:text-gray-400">{post.readTime}</span>
                         </div>
-                        <CardTitle className="line-clamp-2 group-hover:text-primary transition-colors">
+                        <CardTitle className="text-base sm:text-lg line-clamp-2 group-hover:text-primary transition-colors">
                           {post.title}
                         </CardTitle>
-                        <CardDescription className="line-clamp-3">
+                        <CardDescription className="text-sm line-clamp-3">
                           {post.excerpt}
                         </CardDescription>
                       </CardHeader>
-                      <CardContent className="pt-0">
-                        <div className="flex items-center justify-between mb-4 text-sm text-gray-500 dark:text-gray-400">
+                      <CardContent className="pt-0 p-4 sm:p-6">
+                        <div className="flex items-center justify-between mb-4 text-xs text-gray-500 dark:text-gray-400">
                           <div className="flex items-center gap-1">
                             <User className="w-3 h-3" />
                             <span>{post.author}</span>
@@ -339,7 +339,7 @@ const Blog: React.FC = () => {
                             <span>{post.date}</span>
                           </div>
                         </div>
-                        <Button className="w-full group-hover:bg-primary/90 transition-colors">
+                        <Button className="w-full group-hover:bg-primary/90 transition-colors text-sm">
                           Read More
                           <ArrowRight className="w-4 h-4 ml-2" />
                         </Button>

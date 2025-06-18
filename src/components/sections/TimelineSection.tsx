@@ -1,6 +1,8 @@
 "use client"
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
 import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
 import {
   Target,
   Users,
@@ -27,7 +29,7 @@ import {
   Network,
 } from "lucide-react"
 
-export default function Home() {
+export default function TimelineSection() {
   const [activeSection, setActiveSection] = useState("")
 
   useEffect(() => {
@@ -64,10 +66,10 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section at the top */}
-      <div className="bg-primary text-primary-foreground py-16">
-        <div className="container mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-center">Our Solutions</h1>
-          <p className="text-xl md:text-2xl text-center max-w-4xl mx-auto leading-relaxed">
+      <div className="bg-primary text-primary-foreground py-12 sm:py-16">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-center">Our Solutions</h1>
+          <p className="text-lg sm:text-xl md:text-2xl text-center max-w-4xl mx-auto leading-relaxed">
             Whether you're launching something new or optimizing what's already working, we deliver what your business
             needs to grow, adapt, and move faster.
           </p>
@@ -75,20 +77,20 @@ export default function Home() {
       </div>
 
       {/* Main Content Section */}
-      <div className="bg-primary text-primary-foreground flex-grow">
-        <div className="container mx-auto px-4 py-8 flex gap-8">
-          {/* Table of Contents */}
-          <nav className="sticky top-4 self-start p-4">
+      <div className="bg-background text-foreground flex-grow">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col lg:flex-row gap-8">
+          {/* Table of Contents - Hidden on mobile, sticky on desktop */}
+          <nav className="hidden lg:block lg:sticky lg:top-24 lg:self-start p-4 lg:w-64">
             <ul className="space-y-2">
               {sections.map((section) => (
                 <li key={section.id}>
                   <button
                     onClick={() => scrollToSection(section.id)}
                     className={cn(
-                      "text-sm transition-colors pl-2 border-l-2",
+                      "text-sm transition-colors pl-2 border-l-2 w-full text-left",
                       activeSection === section.id
-                        ? "text-[#022029] border-[#022029]"
-                        : "text-[#02202999] hover:text-[#022029cc] border-transparent",
+                        ? "text-primary border-primary dark:text-primary dark:border-primary"
+                        : "text-muted-foreground hover:text-foreground border-transparent",
                     )}
                   >
                     {section.title}
@@ -99,133 +101,138 @@ export default function Home() {
           </nav>
 
           {/* Main Content */}
-          <main className="flex-1">
+          <main className="flex-1 max-w-none">
             {/* Growth Solutions Section */}
-            <section id="growth-solutions" className="py-8 mb-16">
-              <h2 className="text-2xl font-bold mb-4">Growth Solutions</h2>
+            <section id="growth-solutions" className="py-8 mb-12 sm:mb-16">
+              <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-foreground">Growth Solutions</h2>
 
-              <h3 className="text-xl font-semibold mb-4">High-Performance Marketing</h3>
-              <p className="mb-6">
+              <h3 className="text-xl sm:text-2xl font-semibold mb-4 text-foreground">High-Performance Marketing</h3>
+              <p className="mb-6 text-muted-foreground leading-relaxed">
                 You need more customers, more engagement, and more momentum. If your priority is to attract the right
                 audience, convert consistently, and expand your market reach, our Growth Solutions are built for you. We
                 deliver high-performance marketing strategy and execution that engineers demand, amplifies brand value,
                 and accelerates customer acquisition.
               </p>
 
-              <h4 className="text-lg font-semibold mb-4">Core Growth Solutions</h4>
-              <div className="grid md:grid-cols-2 gap-4 mb-6">
-                <div className="flex items-start gap-3">
-                  <Target className="w-5 h-5 mt-1 text-accent flex-shrink-0" />
+              <h4 className="text-lg sm:text-xl font-semibold mb-4 text-foreground">Core Growth Solutions</h4>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-6">
+                <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
+                  <Target className="w-5 h-5 mt-1 text-primary flex-shrink-0" />
                   <div>
-                    <h5 className="font-semibold">Performance Marketing & Paid Media</h5>
-                    <p className="text-sm text-gray-600">High-ROI ads that convert.</p>
+                    <h5 className="font-semibold text-foreground">Performance Marketing & Paid Media</h5>
+                    <p className="text-sm text-muted-foreground">High-ROI ads that convert.</p>
                   </div>
                 </div>
-                <div className="flex items-start gap-3">
-                  <Users className="w-5 h-5 mt-1 text-accent flex-shrink-0" />
+                <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
+                  <Users className="w-5 h-5 mt-1 text-primary flex-shrink-0" />
                   <div>
-                    <h5 className="font-semibold">Social Media Marketing & Brand Engagement</h5>
-                    <p className="text-sm text-gray-600">Build audience, spark action.</p>
+                    <h5 className="font-semibold text-foreground">Social Media Marketing & Brand Engagement</h5>
+                    <p className="text-sm text-muted-foreground">Build audience, spark action.</p>
                   </div>
                 </div>
-                <div className="flex items-start gap-3">
-                  <Mail className="w-5 h-5 mt-1 text-accent flex-shrink-0" />
+                <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
+                  <Mail className="w-5 h-5 mt-1 text-primary flex-shrink-0" />
                   <div>
-                    <h5 className="font-semibold">Email Marketing & Marketing Automation</h5>
-                    <p className="text-sm text-gray-600">Automate nurture, drive loyalty.</p>
+                    <h5 className="font-semibold text-foreground">Email Marketing & Marketing Automation</h5>
+                    <p className="text-sm text-muted-foreground">Automate nurture, drive loyalty.</p>
                   </div>
                 </div>
-                <div className="flex items-start gap-3">
-                  <Palette className="w-5 h-5 mt-1 text-accent flex-shrink-0" />
+                <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
+                  <Palette className="w-5 h-5 mt-1 text-primary flex-shrink-0" />
                   <div>
-                    <h5 className="font-semibold">Creative Solutions</h5>
-                    <p className="text-sm text-gray-600">Visuals that get results.</p>
+                    <h5 className="font-semibold text-foreground">Creative Solutions</h5>
+                    <p className="text-sm text-muted-foreground">Visuals that get results.</p>
                   </div>
                 </div>
-                <div className="flex items-start gap-3">
-                  <TrendingUp className="w-5 h-5 mt-1 text-accent flex-shrink-0" />
+                <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
+                  <TrendingUp className="w-5 h-5 mt-1 text-primary flex-shrink-0" />
                   <div>
-                    <h5 className="font-semibold">Conversion Rate Optimization (CRO)</h5>
-                    <p className="text-sm text-gray-600">Test. Refine. Convert more.</p>
+                    <h5 className="font-semibold text-foreground">Conversion Rate Optimization (CRO)</h5>
+                    <p className="text-sm text-muted-foreground">Test. Refine. Convert more.</p>
                   </div>
                 </div>
-                <div className="flex items-start gap-3">
-                  <Search className="w-5 h-5 mt-1 text-accent flex-shrink-0" />
+                <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
+                  <Search className="w-5 h-5 mt-1 text-primary flex-shrink-0" />
                   <div>
-                    <h5 className="font-semibold">Search Engine Optimization (SEO) & Website Growth</h5>
-                    <p className="text-sm text-gray-600">Rank higher. Grow faster.</p>
+                    <h5 className="font-semibold text-foreground">Search Engine Optimization (SEO) & Website Growth</h5>
+                    <p className="text-sm text-muted-foreground">Rank higher. Grow faster.</p>
                   </div>
                 </div>
-                <div className="flex items-start gap-3">
-                  <Globe className="w-5 h-5 mt-1 text-accent flex-shrink-0" />
+                <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
+                  <Globe className="w-5 h-5 mt-1 text-primary flex-shrink-0" />
                   <div>
-                    <h5 className="font-semibold">Website Solutions</h5>
-                    <p className="text-sm text-gray-600">Seamless, scalable, conversion-ready.</p>
-                  </div>
-                </div>
-              </div>
-
-              <h4 className="text-lg font-semibold mb-4">Specialized Growth Solutions</h4>
-              <div className="grid md:grid-cols-2 gap-4 mb-6">
-                <div className="flex items-start gap-3">
-                  <BarChart3 className="w-5 h-5 mt-1 text-accent flex-shrink-0" />
-                  <div>
-                    <h5 className="font-semibold">Deep Dive Audit & Strategic Insights</h5>
-                    <p className="text-sm text-gray-600">Clarity through expert analysis.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Settings className="w-5 h-5 mt-1 text-accent flex-shrink-0" />
-                  <div>
-                    <h5 className="font-semibold">Analytics and Event Tracking Setup</h5>
-                    <p className="text-sm text-gray-600">Track what matters, measure what works.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Funnel className="w-5 h-5 mt-1 text-accent flex-shrink-0" />
-                  <div>
-                    <h5 className="font-semibold">Lead Generation & Funnel Strategy</h5>
-                    <p className="text-sm text-gray-600">Build funnels that convert.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Building className="w-5 h-5 mt-1 text-accent flex-shrink-0" />
-                  <div>
-                    <h5 className="font-semibold">Brand Architecture & Strategy</h5>
-                    <p className="text-sm text-gray-600">Define, differentiate, scale.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <FileText className="w-5 h-5 mt-1 text-accent flex-shrink-0" />
-                  <div>
-                    <h5 className="font-semibold">Content Strategy & Planning</h5>
-                    <p className="text-sm text-gray-600">Structure content to drive growth.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Zap className="w-5 h-5 mt-1 text-accent flex-shrink-0" />
-                  <div>
-                    <h5 className="font-semibold">AI-Accelerated Content Production Pipelines</h5>
-                    <p className="text-sm text-gray-600">Create more, faster, with precision.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Linkedin className="w-5 h-5 mt-1 text-accent flex-shrink-0" />
-                  <div>
-                    <h5 className="font-semibold">Executive Personal Branding & LinkedIn Marketing</h5>
-                    <p className="text-sm text-gray-600">Elevate presence, grow influence.</p>
+                    <h5 className="font-semibold text-foreground">Website Solutions</h5>
+                    <p className="text-sm text-muted-foreground">Seamless, scalable, conversion-ready.</p>
                   </div>
                 </div>
               </div>
 
-              <p className="text-center font-semibold text-lg mb-8">Ready to grow faster? Let's talk.</p>
+              <h4 className="text-lg sm:text-xl font-semibold mb-4 text-foreground">Specialized Growth Solutions</h4>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-8">
+                <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
+                  <BarChart3 className="w-5 h-5 mt-1 text-primary flex-shrink-0" />
+                  <div>
+                    <h5 className="font-semibold text-foreground">Deep Dive Audit & Strategic Insights</h5>
+                    <p className="text-sm text-muted-foreground">Clarity through expert analysis.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
+                  <Settings className="w-5 h-5 mt-1 text-primary flex-shrink-0" />
+                  <div>
+                    <h5 className="font-semibold text-foreground">Analytics and Event Tracking Setup</h5>
+                    <p className="text-sm text-muted-foreground">Track what matters, measure what works.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
+                  <Funnel className="w-5 h-5 mt-1 text-primary flex-shrink-0" />
+                  <div>
+                    <h5 className="font-semibold text-foreground">Lead Generation & Funnel Strategy</h5>
+                    <p className="text-sm text-muted-foreground">Build funnels that convert.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
+                  <Building className="w-5 h-5 mt-1 text-primary flex-shrink-0" />
+                  <div>
+                    <h5 className="font-semibold text-foreground">Brand Architecture & Strategy</h5>
+                    <p className="text-sm text-muted-foreground">Define, differentiate, scale.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
+                  <FileText className="w-5 h-5 mt-1 text-primary flex-shrink-0" />
+                  <div>
+                    <h5 className="font-semibold text-foreground">Content Strategy & Planning</h5>
+                    <p className="text-sm text-muted-foreground">Structure content to drive growth.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
+                  <Zap className="w-5 h-5 mt-1 text-primary flex-shrink-0" />
+                  <div>
+                    <h5 className="font-semibold text-foreground">AI-Accelerated Content Production Pipelines</h5>
+                    <p className="text-sm text-muted-foreground">Create more, faster, with precision.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
+                  <Linkedin className="w-5 h-5 mt-1 text-primary flex-shrink-0" />
+                  <div>
+                    <h5 className="font-semibold text-foreground">Executive Personal Branding & LinkedIn Marketing</h5>
+                    <p className="text-sm text-muted-foreground">Elevate presence, grow influence.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="text-center">
+                <p className="font-semibold text-lg mb-4 text-foreground">Ready to grow faster? Let's talk.</p>
+                <Button asChild size="lg">
+                  <Link to="/contact">Get Started</Link>
+                </Button>
+              </div>
             </section>
 
             {/* Strategic Solutions Section */}
-            <section id="strategic-solutions" className="py-8 mb-16">
-              <h2 className="text-2xl font-bold mb-4">Strategic Solutions</h2>
+            <section id="strategic-solutions" className="py-8 mb-12 sm:mb-16">
+              <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-foreground">Strategic Solutions</h2>
 
-              <p className="mb-6">
+              <p className="mb-6 text-muted-foreground leading-relaxed">
                 You need to improve efficiency, automate intelligently, and ensure operations scale without chaos. If
                 you're navigating operational bottlenecks, automation gaps, or complex scaling challenges, our Strategic
                 Solutions offer high-ROI tailored strategy and implementations that are built for precision,
@@ -233,78 +240,83 @@ export default function Home() {
                 at the next level with minimal disruption.
               </p>
 
-              <h4 className="text-lg font-semibold mb-4">Core Strategic Solutions</h4>
-              <div className="grid md:grid-cols-2 gap-4 mb-6">
-                <div className="flex items-start gap-3">
-                  <Cog className="w-5 h-5 mt-1 text-accent flex-shrink-0" />
+              <h4 className="text-lg sm:text-xl font-semibold mb-4 text-foreground">Core Strategic Solutions</h4>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-6">
+                <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
+                  <Cog className="w-5 h-5 mt-1 text-primary flex-shrink-0" />
                   <div>
-                    <h5 className="font-semibold">Process & Workflow Automation</h5>
-                    <p className="text-sm text-gray-600">Automate execution. Eliminate friction.</p>
+                    <h5 className="font-semibold text-foreground">Process & Workflow Automation</h5>
+                    <p className="text-sm text-muted-foreground">Automate execution. Eliminate friction.</p>
                   </div>
                 </div>
-                <div className="flex items-start gap-3">
-                  <Database className="w-5 h-5 mt-1 text-accent flex-shrink-0" />
+                <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
+                  <Database className="w-5 h-5 mt-1 text-primary flex-shrink-0" />
                   <div>
-                    <h5 className="font-semibold">Digital Systems Enablement</h5>
-                    <p className="text-sm text-gray-600">Optimize platforms. Empower teams.</p>
+                    <h5 className="font-semibold text-foreground">Digital Systems Enablement</h5>
+                    <p className="text-sm text-muted-foreground">Optimize platforms. Empower teams.</p>
                   </div>
                 </div>
-                <div className="flex items-start gap-3">
-                  <Wrench className="w-5 h-5 mt-1 text-accent flex-shrink-0" />
+                <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
+                  <Wrench className="w-5 h-5 mt-1 text-primary flex-shrink-0" />
                   <div>
-                    <h5 className="font-semibold">Custom Solution Engineering</h5>
-                    <p className="text-sm text-gray-600">Solve complex. Deliver fast.</p>
+                    <h5 className="font-semibold text-foreground">Custom Solution Engineering</h5>
+                    <p className="text-sm text-muted-foreground">Solve complex. Deliver fast.</p>
                   </div>
                 </div>
-                <div className="flex items-start gap-3">
-                  <Briefcase className="w-5 h-5 mt-1 text-accent flex-shrink-0" />
+                <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
+                  <Briefcase className="w-5 h-5 mt-1 text-primary flex-shrink-0" />
                   <div>
-                    <h5 className="font-semibold">Enterprise Evolution & Strategic Transformation</h5>
-                    <p className="text-sm text-gray-600">Reshape. Scale. Future-proof.</p>
-                  </div>
-                </div>
-              </div>
-
-              <h4 className="text-lg font-semibold mb-4">Solutions By Function</h4>
-              <div className="grid md:grid-cols-2 gap-4 mb-6">
-                <div className="flex items-start gap-3">
-                  <DollarSign className="w-5 h-5 mt-1 text-accent flex-shrink-0" />
-                  <div>
-                    <h5 className="font-semibold">Finance</h5>
-                    <p className="text-sm text-gray-600">Automate reporting. Accelerate reconciliation.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <UserCheck className="w-5 h-5 mt-1 text-accent flex-shrink-0" />
-                  <div>
-                    <h5 className="font-semibold">Human Resources</h5>
-                    <p className="text-sm text-gray-600">Streamline onboarding. Simplify compliance workflows.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Activity className="w-5 h-5 mt-1 text-accent flex-shrink-0" />
-                  <div>
-                    <h5 className="font-semibold">Operations</h5>
-                    <p className="text-sm text-gray-600">Unblock execution. Speed up critical workflows.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Shield className="w-5 h-5 mt-1 text-accent flex-shrink-0" />
-                  <div>
-                    <h5 className="font-semibold">Compliance & Governance</h5>
-                    <p className="text-sm text-gray-600">Reduce risk. Ensure audit-ready control.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Network className="w-5 h-5 mt-1 text-accent flex-shrink-0" />
-                  <div>
-                    <h5 className="font-semibold">Cross-Functional Leadership</h5>
-                    <p className="text-sm text-gray-600">Align departments. Orchestrate complex delivery.</p>
+                    <h5 className="font-semibold text-foreground">Enterprise Evolution & Strategic Transformation</h5>
+                    <p className="text-sm text-muted-foreground">Reshape. Scale. Future-proof.</p>
                   </div>
                 </div>
               </div>
 
-              <p className="text-center font-semibold text-lg">Ready to move faster? Let's talk.</p>
+              <h4 className="text-lg sm:text-xl font-semibold mb-4 text-foreground">Solutions By Function</h4>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-8">
+                <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
+                  <DollarSign className="w-5 h-5 mt-1 text-primary flex-shrink-0" />
+                  <div>
+                    <h5 className="font-semibold text-foreground">Finance</h5>
+                    <p className="text-sm text-muted-foreground">Automate reporting. Accelerate reconciliation.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
+                  <UserCheck className="w-5 h-5 mt-1 text-primary flex-shrink-0" />
+                  <div>
+                    <h5 className="font-semibold text-foreground">Human Resources</h5>
+                    <p className="text-sm text-muted-foreground">Streamline onboarding. Simplify compliance workflows.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
+                  <Activity className="w-5 h-5 mt-1 text-primary flex-shrink-0" />
+                  <div>
+                    <h5 className="font-semibold text-foreground">Operations</h5>
+                    <p className="text-sm text-muted-foreground">Unblock execution. Speed up critical workflows.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
+                  <Shield className="w-5 h-5 mt-1 text-primary flex-shrink-0" />
+                  <div>
+                    <h5 className="font-semibold text-foreground">Compliance & Governance</h5>
+                    <p className="text-sm text-muted-foreground">Reduce risk. Ensure audit-ready control.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
+                  <Network className="w-5 h-5 mt-1 text-primary flex-shrink-0" />
+                  <div>
+                    <h5 className="font-semibold text-foreground">Cross-Functional Leadership</h5>
+                    <p className="text-sm text-muted-foreground">Align departments. Orchestrate complex delivery.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="text-center">
+                <p className="font-semibold text-lg mb-4 text-foreground">Ready to move faster? Let's talk.</p>
+                <Button asChild size="lg">
+                  <Link to="/contact">Get Started</Link>
+                </Button>
+              </div>
             </section>
           </main>
         </div>

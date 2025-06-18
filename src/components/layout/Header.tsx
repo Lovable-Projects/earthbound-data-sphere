@@ -53,8 +53,13 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
   const isActive = (path: string) => location.pathname === path || location.pathname.startsWith(path + '/');
 
   const handleLogoClick = () => {
-    navigate('/');
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    if (location.pathname === '/') {
+      // If already on home page, scroll to top
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    } else {
+      // If on different page, navigate to home
+      navigate('/');
+    }
   };
 
   useEffect(() => {
@@ -77,7 +82,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
-      className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border"
+      className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border h-16"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
