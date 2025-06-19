@@ -49,6 +49,7 @@ const Footer: React.FC<FooterProps> = ({ isDarkMode, toggleDarkMode }) => {
   const navigation = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
+    { name: 'Blog', href: '/blog' },
     { name: 'Contact', href: '/contact' },
   ];
 

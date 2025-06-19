@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { ArrowRight, Calendar, User, Tag, ArrowLeft, Clock } from 'lucide-react';
@@ -24,11 +23,11 @@ const blogPosts: BlogPost[] = [
   {
     id: '1',
     title: 'The Future of AI in Business: Revolutionary Changes Ahead',
-    date: 'December 15, 2024',
+    date: 'December 15, 2025',
     author: 'Sarah Johnson',
     category: 'Technology',
     excerpt: 'Discover how artificial intelligence is transforming business operations and what this means for your company.',
-    image: '/images/blog/ai-business.jpg',
+    image: '/images/TheFutureofAIinBusiness.png',
     readTime: '5 min read',
     content: `
       <h2>Introduction</h2>
@@ -55,18 +54,18 @@ const blogPosts: BlogPost[] = [
   },
   {
     id: '2',
-    title: 'Digital Marketing Strategies That Actually Work in 2024',
-    date: 'December 10, 2024',
+    title: 'Digital Marketing Strategies That Actually Work in 2025',
+    date: 'December 10, 2025',
     author: 'Mike Chen',
     category: 'Marketing',
-    excerpt: 'Learn the most effective digital marketing strategies that are driving results for businesses in 2024.',
-    image: '/images/blog/digital-marketing.jpg',
+    excerpt: 'Learn the most effective digital marketing strategies that are driving results for businesses in 2025.',
+    image: '/images/DigitalMarketingStrategies.png',
     readTime: '7 min read',
     content: `
-      <h2>The Digital Marketing Landscape in 2024</h2>
+      <h2>The Digital Marketing Landscape in 2025</h2>
       <p>Digital marketing continues to evolve rapidly, with new platforms, technologies, and consumer behaviors shaping the way businesses reach their audiences. What worked five years ago may not be effective today.</p>
       
-      <h2>Top Strategies for 2024</h2>
+      <h2>Top Strategies for 2025</h2>
       
       <h3>1. Video-First Content Strategy</h3>
       <p>Video content is dominating social media platforms and search results. Short-form videos on platforms like TikTok and Instagram Reels are particularly effective for engaging younger audiences.</p>
@@ -87,12 +86,12 @@ const blogPosts: BlogPost[] = [
   },
   {
     id: '3',
-    title: 'Building a Remote Team: Best Practices for 2024',
-    date: 'December 5, 2024',
+    title: 'Building a Remote Team: Best Practices for 2025',
+    date: 'December 5, 2025',
     author: 'Emily Rodriguez',
     category: 'Business',
     excerpt: 'Essential strategies for building and managing successful remote teams in the modern workplace.',
-    image: '/images/blog/remote-team.jpg',
+    image: '/images/RemoteTeam.png',
     readTime: '6 min read',
     content: `
       <h2>The Remote Work Revolution</h2>
@@ -116,6 +115,93 @@ const blogPosts: BlogPost[] = [
       <p>Remote teams can be incredibly productive and innovative when managed effectively. The key is to embrace the unique advantages of remote work while addressing its challenges through thoughtful processes and technology.</p>
     `,
     tags: ['Remote Work', 'Team Management', 'Productivity', 'Leadership']
+  },
+  {
+    id: '4',
+    title: 'The Rise of E-commerce: Trends Shaping Online Shopping',
+    date: 'November 28, 2025',
+    author: 'Alex Thompson',
+    category: 'E-commerce',
+    excerpt: 'Explore the latest trends in e-commerce and how they are reshaping the online shopping experience.',
+    image: '/images/E-commerce.png',
+    readTime: '8 min read',
+    content: `
+      <h2>E-commerce Evolution</h2>
+      <p>The e-commerce landscape continues to evolve at breakneck speed, driven by changing consumer behaviors, technological advances, and global events that have reshaped how we shop.</p>
+      
+      <h2>Key Trends in 2025</h2>
+      
+      <h3>1. Social Commerce</h3>
+      <p>Shopping directly through social media platforms is becoming mainstream. Instagram Shopping, TikTok Shop, and Facebook Marketplace are transforming social media into powerful sales channels.</p>
+      
+      <h3>2. Sustainable Shopping</h3>
+      <p>Consumers are increasingly conscious about sustainability. Brands that emphasize eco-friendly practices and transparent supply chains are gaining competitive advantages.</p>
+      
+      <h3>3. Augmented Reality Shopping</h3>
+      <p>AR technology allows customers to virtually try products before purchasing, reducing return rates and improving customer satisfaction.</p>
+      
+      <h2>Future Outlook</h2>
+      <p>The future of e-commerce will be characterized by personalization, sustainability, and seamless integration across all customer touchpoints.</p>
+    `,
+    tags: ['E-commerce', 'Shopping', 'Technology', 'Trends']
+  },
+  {
+    id: '5',
+    title: 'Cybersecurity Best Practices for Small Businesses',
+    date: 'November 20, 2025',
+    author: 'David Wilson',
+    category: 'Security',
+    excerpt: 'Essential cybersecurity measures every small business should implement to protect their data and operations.',
+    image: '/images/Cyber.png',
+    readTime: '9 min read',
+    content: `
+      <h2>The Cybersecurity Landscape</h2>
+      <p>Small businesses are increasingly becoming targets for cybercriminals. Unlike large corporations, many small businesses lack dedicated IT security teams, making them vulnerable to attacks.</p>
+      
+      <h2>Essential Security Measures</h2>
+      
+      <h3>1. Strong Password Policies</h3>
+      <p>Implement multi-factor authentication and require strong, unique passwords for all business accounts. Consider using password managers to help employees maintain secure credentials.</p>
+      
+      <h3>2. Regular Software Updates</h3>
+      <p>Keep all software, including operating systems and applications, up to date with the latest security patches.</p>
+      
+      <h3>3. Employee Training</h3>
+      <p>Regular cybersecurity training helps employees recognize and avoid common threats like phishing emails and social engineering attacks.</p>
+      
+      <h2>Building a Security Culture</h2>
+      <p>Cybersecurity should be everyone's responsibility, not just the IT department. Create a culture where security awareness is part of daily operations.</p>
+    `,
+    tags: ['Cybersecurity', 'Small Business', 'Data Protection', 'Security']
+  },
+  {
+    id: '6',
+    title: 'The Power of Data Analytics in Modern Business',
+    date: 'November 15, 2025',
+    author: 'Lisa Chang',
+    category: 'Analytics',
+    excerpt: 'How businesses are leveraging data analytics to make informed decisions and drive growth.',
+    image: '/images/DataAnalytics.png',
+    readTime: '7 min read',
+    content: `
+      <h2>Data-Driven Decision Making</h2>
+      <p>In today's competitive business environment, companies that effectively leverage data analytics have a significant advantage over those that rely on intuition alone.</p>
+      
+      <h2>Key Benefits of Data Analytics</h2>
+      
+      <h3>1. Customer Insights</h3>
+      <p>Analytics helps businesses understand customer behavior, preferences, and trends, enabling more targeted marketing and product development.</p>
+      
+      <h3>2. Operational Efficiency</h3>
+      <p>Data analysis can identify bottlenecks in operations and suggest improvements that reduce costs and increase productivity.</p>
+      
+      <h3>3. Predictive Analytics</h3>
+      <p>Advanced analytics can help predict future trends, allowing businesses to proactively adjust their strategies.</p>
+      
+      <h2>Getting Started with Analytics</h2>
+      <p>Start with clear objectives and gradually build your analytics capabilities. Focus on metrics that directly impact your business goals.</p>
+    `,
+    tags: ['Data Analytics', 'Business Intelligence', 'Decision Making', 'Strategy']
   }
 ];
 
@@ -125,7 +211,7 @@ const Blog: React.FC = () => {
 
   if (id && !currentPost) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center pt-20">
         <div className="text-center">
           <h1 className="text-2xl font-bold mb-4">Blog post not found</h1>
           <Link to="/blog">
@@ -137,8 +223,8 @@ const Blog: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-16">
-      <div className="container mx-auto px-4">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 pt-20 pb-16">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {id && currentPost ? (
           // Blog Post Detail View
           <div className="max-w-4xl mx-auto">
@@ -161,7 +247,7 @@ const Blog: React.FC = () => {
                 />
               </div>
               
-              <div className="p-8">
+              <div className="p-6 sm:p-8">
                 <div className="flex flex-wrap items-center gap-4 mb-6 text-sm text-gray-500 dark:text-gray-400">
                   <div className="flex items-center gap-1">
                     <Calendar className="w-4 h-4" />
@@ -178,7 +264,7 @@ const Blog: React.FC = () => {
                   <Badge variant="secondary">{currentPost.category}</Badge>
                 </div>
                 
-                <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
                   {currentPost.title}
                 </h1>
                 
@@ -189,7 +275,7 @@ const Blog: React.FC = () => {
                 </div>
                 
                 <div 
-                  className="prose prose-lg max-w-none dark:prose-invert prose-headings:text-gray-900 dark:prose-headings:text-white prose-p:text-gray-700 dark:prose-p:text-gray-300"
+                  className="prose prose-sm sm:prose prose-lg max-w-none dark:prose-invert prose-headings:text-gray-900 dark:prose-headings:text-white prose-p:text-gray-700 dark:prose-p:text-gray-300"
                   dangerouslySetInnerHTML={{ __html: currentPost.content }}
                 />
               </div>
@@ -202,17 +288,17 @@ const Blog: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-center mb-12"
+              className="text-center mb-8 sm:mb-12"
             >
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
                 Our Blog
               </h1>
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+              <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto px-4">
                 Stay updated with our latest insights, trends, and expert advice on business growth, technology, and digital transformation.
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               {blogPosts.map((post, index) => (
                 <motion.div
                   key={post.id}
@@ -220,45 +306,45 @@ const Blog: React.FC = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
-                  <Card className="h-full hover:shadow-xl transition-shadow duration-300 group">
-                    <div className="aspect-video overflow-hidden rounded-t-lg">
-                      <img
-                        src={post.image}
-                        alt={post.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                    </div>
-                    <CardHeader>
-                      <div className="flex items-center justify-between mb-2">
-                        <Badge variant="secondary">{post.category}</Badge>
-                        <span className="text-sm text-gray-500 dark:text-gray-400">{post.readTime}</span>
+                  <Link to={`${post.id}`}>
+                    <Card className="h-full hover:shadow-xl transition-shadow duration-300 group cursor-pointer">
+                      <div className="aspect-video overflow-hidden rounded-t-lg">
+                        <img
+                          src={post.image}
+                          alt={post.title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
                       </div>
-                      <CardTitle className="line-clamp-2 group-hover:text-primary transition-colors">
-                        {post.title}
-                      </CardTitle>
-                      <CardDescription className="line-clamp-3">
-                        {post.excerpt}
-                      </CardDescription>
-                    </CardHeader>
-                    <CardContent className="pt-0">
-                      <div className="flex items-center justify-between mb-4 text-sm text-gray-500 dark:text-gray-400">
-                        <div className="flex items-center gap-1">
-                          <User className="w-3 h-3" />
-                          <span>{post.author}</span>
+                      <CardHeader className="p-4 sm:p-6">
+                        <div className="flex items-center justify-between mb-2">
+                          <Badge variant="secondary" className="text-xs">{post.category}</Badge>
+                          <span className="text-xs text-gray-500 dark:text-gray-400">{post.readTime}</span>
                         </div>
-                        <div className="flex items-center gap-1">
-                          <Calendar className="w-3 h-3" />
-                          <span>{post.date}</span>
+                        <CardTitle className="text-base sm:text-lg line-clamp-2 group-hover:text-primary transition-colors">
+                          {post.title}
+                        </CardTitle>
+                        <CardDescription className="text-sm line-clamp-3">
+                          {post.excerpt}
+                        </CardDescription>
+                      </CardHeader>
+                      <CardContent className="pt-0 p-4 sm:p-6">
+                        <div className="flex items-center justify-between mb-4 text-xs text-gray-500 dark:text-gray-400">
+                          <div className="flex items-center gap-1">
+                            <User className="w-3 h-3" />
+                            <span>{post.author}</span>
+                          </div>
+                          <div className="flex items-center gap-1">
+                            <Calendar className="w-3 h-3" />
+                            <span>{post.date}</span>
+                          </div>
                         </div>
-                      </div>
-                      <Link to={`/blog/${post.id}`}>
-                        <Button className="w-full group-hover:bg-primary/90 transition-colors">
+                        <Button className="w-full group-hover:bg-primary/90 transition-colors text-sm">
                           Read More
                           <ArrowRight className="w-4 h-4 ml-2" />
                         </Button>
-                      </Link>
-                    </CardContent>
-                  </Card>
+                      </CardContent>
+                    </Card>
+                  </Link>
                 </motion.div>
               ))}
             </div>

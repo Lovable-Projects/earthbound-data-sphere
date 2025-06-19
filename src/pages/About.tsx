@@ -87,11 +87,25 @@ const About: React.FC = () => {
   const people = [
     {
       id: "person-1",
-      name: "Syed Moinuddin",
-      role: "Front End Developer",
+      name: "Stefan Persson",
+      role: "Founder & CEO",
       description:
-        "Elig doloremque mollitia fugiat omnis! Porro facilis quo animi consequatur. Explicabo.",
-      avatar: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar-1.webp",
+        "Building the right solutions, at the right time, for every client.",
+      avatar: "#",
+      github: "https://github.com/stefanpersson",
+      linkedin: "https://linkedin.com/in/stefanpersson",
+      dribbble: "https://dribbble.com/stefanpersson"
+    },
+    {
+      id: "person-2",
+      name: "Stefan Persson",
+      role: "Founder & CEO",
+      description:
+        "Delivering results, at speed and scale, for every client.",
+      avatar: "#",
+      github: "https://github.com/Syed-Perssonify/Perssonify-Website",
+      linkedin: "https://linkedin.com/in/stefanpersson2",
+      dribbble: "https://dribbble.com/stefanpersson2"
     },
   ];
 
@@ -410,9 +424,9 @@ const About: React.FC = () => {
                   {person.description}
                 </p>
                 <div className="mt-auto flex gap-4">
-                  <a href="#" aria-label="Github"><Github className="size-5 text-muted-foreground hover:text-primary transition-colors" /></a>
-                  <a href="#" aria-label="Linkedin"><Linkedin className="size-5 text-muted-foreground hover:text-primary transition-colors" /></a>
-                  <a href="#" aria-label="Dribbble"><Dribbble className="size-5 text-muted-foreground hover:text-primary transition-colors" /></a>
+                  <a href={person.github} aria-label="Github" target="_blank" rel="noopener noreferrer"><Github className="size-5 text-muted-foreground hover:text-primary transition-colors" /></a>
+                  <a href={person.linkedin} aria-label="Linkedin" target="_blank" rel="noopener noreferrer"><Linkedin className="size-5 text-muted-foreground hover:text-primary transition-colors" /></a>
+                  <a href={person.dribbble} aria-label="Dribbble" target="_blank" rel="noopener noreferrer"><Dribbble className="size-5 text-muted-foreground hover:text-primary transition-colors" /></a>
                 </div>
               </div>
             ))}

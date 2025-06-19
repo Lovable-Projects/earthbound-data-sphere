@@ -6,12 +6,24 @@ const ScrollToTop = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    // Force scroll to top immediately when route changes
-    window.scrollTo(0, 0);
-    // Also try with setTimeout to ensure it works after page render
+    // Multiple attempts to ensure scroll to top works
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    
+    // Additional backup
     setTimeout(() => {
-      window.scrollTo(0, 0);
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
     }, 0);
+    
+    // Final backup
+    setTimeout(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    }, 50);
   }, [pathname]);
 
   return null;

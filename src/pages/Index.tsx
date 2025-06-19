@@ -1,17 +1,23 @@
+
 import React from 'react';
 import Hero from '@/components/sections/Hero';
+import AboutSection from '@/components/sections/AboutSection';
+import TimelineSection from '@/components/sections/TimelineSection';
 import ProcessSection from '@/components/sections/ProcessSection';
-import { Process } from '@/components/sections/ResultsSection';
 import CTASection from '@/components/sections/CTASection';
+import CookieConsent from '@/components/CookieConsent';
+import SocialMeta from '@/components/SocialMeta';
 
 const Index: React.FC = () => {
   return (
     <div>
+      <SocialMeta />
       <Hero />
+      <AboutSection />
+      <TimelineSection />
       <ProcessSection />
-      <Process />
-      {/* <TestimonialsSection /> */}
       <CTASection />
+      <CookieConsent />
     </div>
   );
 };

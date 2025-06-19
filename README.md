@@ -1,4 +1,3 @@
-
 # Perssonify - Growth & Scale Solutions
 
 ## About Perssonify
@@ -152,6 +151,30 @@ The project is configured for deployment on Vercel with:
 
 ### Get Started
 Ready to transform your business? Contact us to schedule a consultation and discover how we can help you achieve your growth objectives.
+
+## Maintenance Mode
+
+You can easily enable or disable a full-site Maintenance Mode for your website. This will hide the entire site and show a maintenance message to all visitors.
+
+### How to Enable Maintenance Mode
+1. Open `src/App.tsx` in your code editor.
+2. At the top of the file, find the following line:
+   ```js
+   const MAINTENANCE_MODE = false;
+   ```
+3. Change it to:
+   ```js
+   const MAINTENANCE_MODE = true;
+   ```
+4. Save the file. Your site will now display a maintenance message to all visitors.
+
+### How to Disable Maintenance Mode
+1. Open `src/App.tsx`.
+2. Set the toggle back to `false`:
+   ```js
+   const MAINTENANCE_MODE = false;
+   ```
+3. Save the file. Your full website will be visible again.
 
 ---
 
