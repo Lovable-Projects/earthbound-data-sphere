@@ -119,29 +119,17 @@ const blogPosts: BlogPost[] = [
   {
     id: '4',
     title: 'The Rise of E-commerce: Trends Shaping Online Shopping',
-<<<<<<< HEAD
     date: 'November 28, 2025',
     author: 'Alex Thompson',
     category: 'E-commerce',
     excerpt: 'Explore the latest trends in e-commerce and how they are reshaping the online shopping experience.',
     image: '/images/E-commerce.png',
-=======
-    date: 'November 28, 2024',
-    author: 'Alex Thompson',
-    category: 'E-commerce',
-    excerpt: 'Explore the latest trends in e-commerce and how they are reshaping the online shopping experience.',
-    image: '/images/blog/ecommerce-trends.jpg',
->>>>>>> 728e0066ded679a99f5dc7296a29165b25e98111
     readTime: '8 min read',
     content: `
       <h2>E-commerce Evolution</h2>
       <p>The e-commerce landscape continues to evolve at breakneck speed, driven by changing consumer behaviors, technological advances, and global events that have reshaped how we shop.</p>
       
-<<<<<<< HEAD
       <h2>Key Trends in 2025</h2>
-=======
-      <h2>Key Trends in 2024</h2>
->>>>>>> 728e0066ded679a99f5dc7296a29165b25e98111
       
       <h3>1. Social Commerce</h3>
       <p>Shopping directly through social media platforms is becoming mainstream. Instagram Shopping, TikTok Shop, and Facebook Marketplace are transforming social media into powerful sales channels.</p>
@@ -160,19 +148,11 @@ const blogPosts: BlogPost[] = [
   {
     id: '5',
     title: 'Cybersecurity Best Practices for Small Businesses',
-<<<<<<< HEAD
     date: 'November 20, 2025',
     author: 'David Wilson',
     category: 'Security',
     excerpt: 'Essential cybersecurity measures every small business should implement to protect their data and operations.',
     image: '/images/Cyber.png',
-=======
-    date: 'November 20, 2024',
-    author: 'David Wilson',
-    category: 'Security',
-    excerpt: 'Essential cybersecurity measures every small business should implement to protect their data and operations.',
-    image: '/images/blog/cybersecurity.jpg',
->>>>>>> 728e0066ded679a99f5dc7296a29165b25e98111
     readTime: '9 min read',
     content: `
       <h2>The Cybersecurity Landscape</h2>
@@ -197,19 +177,11 @@ const blogPosts: BlogPost[] = [
   {
     id: '6',
     title: 'The Power of Data Analytics in Modern Business',
-<<<<<<< HEAD
     date: 'November 15, 2025',
     author: 'Lisa Chang',
     category: 'Analytics',
     excerpt: 'How businesses are leveraging data analytics to make informed decisions and drive growth.',
     image: '/images/DataAnalytics.png',
-=======
-    date: 'November 15, 2024',
-    author: 'Lisa Chang',
-    category: 'Analytics',
-    excerpt: 'How businesses are leveraging data analytics to make informed decisions and drive growth.',
-    image: '/images/blog/data-analytics.jpg',
->>>>>>> 728e0066ded679a99f5dc7296a29165b25e98111
     readTime: '7 min read',
     content: `
       <h2>Data-Driven Decision Making</h2>
@@ -334,11 +306,7 @@ const Blog: React.FC = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
-<<<<<<< HEAD
                   <Link to={`${post.id}`}>
-=======
-                  <Link to={`/blog/${post.id}`}>
->>>>>>> 728e0066ded679a99f5dc7296a29165b25e98111
                     <Card className="h-full hover:shadow-xl transition-shadow duration-300 group cursor-pointer">
                       <div className="aspect-video overflow-hidden rounded-t-lg">
                         <img
