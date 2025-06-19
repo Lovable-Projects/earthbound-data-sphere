@@ -1,5 +1,5 @@
 
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import Layout from '@/components/layout/Layout';
 import Index from '@/pages/Index';
@@ -22,35 +22,45 @@ import EmailMarketing from '@/pages/growth-solutions/EmailMarketing';
 
 // Strategic Solutions Pages
 import BusinessConsulting from '@/pages/strategic-solutions/BusinessConsulting';
+import MarketResearch from '@/pages/strategic-solutions/MarketResearch';
+import BrandStrategy from '@/pages/strategic-solutions/BrandStrategy';
+import Analytics from '@/pages/strategic-solutions/Analytics';
+import ProcessOptimization from '@/pages/strategic-solutions/ProcessOptimization';
 
 function App() {
   return (
     <HelmetProvider>
-      <ScrollToTop />
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Index />} />
-          <Route path="about" element={<About />} />
-          <Route path="blog" element={<Blog />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="growth-solutions" element={<GrowthSolutions />} />
-          <Route path="strategic-solutions" element={<StrategicSolutions />} />
-          <Route path="privacy-policy" element={<PrivacyPolicy />} />
-          <Route path="terms-of-service" element={<TermsOfService />} />
-          
-          {/* Growth Solutions Sub-pages */}
-          <Route path="growth-solutions/digital-marketing" element={<DigitalMarketing />} />
-          <Route path="growth-solutions/seo" element={<SEO />} />
-          <Route path="growth-solutions/social-media" element={<SocialMedia />} />
-          <Route path="growth-solutions/content" element={<ContentMarketing />} />
-          <Route path="growth-solutions/email" element={<EmailMarketing />} />
-          
-          {/* Strategic Solutions Sub-pages */}
-          <Route path="strategic-solutions/consulting" element={<BusinessConsulting />} />
-          
-          <Route path="*" element={<NotFound />} />
-        </Route>
-      </Routes>
+      <BrowserRouter>
+        <ScrollToTop />
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Index />} />
+            <Route path="about" element={<About />} />
+            <Route path="blog" element={<Blog />} />
+            <Route path="contact" element={<Contact />} />
+            <Route path="growth-solutions" element={<GrowthSolutions />} />
+            <Route path="strategic-solutions" element={<StrategicSolutions />} />
+            <Route path="privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="terms-of-service" element={<TermsOfService />} />
+            
+            {/* Growth Solutions Sub-pages */}
+            <Route path="growth-solutions/digital-marketing" element={<DigitalMarketing />} />
+            <Route path="growth-solutions/seo" element={<SEO />} />
+            <Route path="growth-solutions/social-media" element={<SocialMedia />} />
+            <Route path="growth-solutions/content" element={<ContentMarketing />} />
+            <Route path="growth-solutions/email" element={<EmailMarketing />} />
+            
+            {/* Strategic Solutions Sub-pages */}
+            <Route path="strategic-solutions/consulting" element={<BusinessConsulting />} />
+            <Route path="strategic-solutions/market-research" element={<MarketResearch />} />
+            <Route path="strategic-solutions/brand-strategy" element={<BrandStrategy />} />
+            <Route path="strategic-solutions/analytics" element={<Analytics />} />
+            <Route path="strategic-solutions/process-optimization" element={<ProcessOptimization />} />
+            
+            <Route path="*" element={<NotFound />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </HelmetProvider>
   );
 }
