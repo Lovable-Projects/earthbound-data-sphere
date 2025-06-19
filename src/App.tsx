@@ -22,7 +22,7 @@ import TermsOfService from './pages/TermsOfService';
 const queryClient = new QueryClient();
 
 // Toggle this to true to enable maintenance mode
-const MAINTENANCE_MODE = true;
+const MAINTENANCE_MODE = false;
 
 const Maintenance = () => (
   <div className="min-h-screen flex flex-col items-center justify-center bg-background text-foreground">
@@ -33,39 +33,31 @@ const Maintenance = () => (
 );
 
 const App = () => (
-  MAINTENANCE_MODE ? <Maintenance /> : (
-    <HelmetProvider>
-      <QueryClientProvider client={queryClient}>
-        <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter basename="/">
-            <div className="min-h-screen bg-background text-foreground flex flex-col">
-              <ScrollToTop />
-              <Routes>
-                <Route path="/" element={<Layout />}>
-                  <Route index element={<Index />} />
-                  <Route path="contact" element={<Contact />} />
-                  <Route path="growth-solutions" element={<GrowthSolutions />} />
-                  <Route path="strategic-solutions" element={<StrategicSolutions />} />
-                  <Route path="core-growth-solutions" element={<CoreGrowthSolutions />} />
-                  <Route path="specialized-growth-solutions" element={<SpecializedGrowthSolutions />} />
-                  <Route path="about" element={<About />} />
-                  <Route path="blog" element={<Blog />} />
-                  <Route path="blog/:id" element={<Blog />} />
-                  <Route path="solvepath-framework" element={<SolvePathFramework />} />
-                  <Route path="execution-model" element={<ExecutionModel />} />
-                  <Route path="privacy" element={<PrivacyPolicy />} />
-                  <Route path="terms" element={<TermsOfService />} />
-                  <Route path="*" element={<Navigate to="/" replace />} />
-                </Route>
-              </Routes>
-            </div>
-          </BrowserRouter>
-        </TooltipProvider>
-      </QueryClientProvider>
-    </HelmetProvider>
-  )
+  <QueryClientProvider client={queryClient}>
+    <TooltipProvider>
+      <Toaster />
+      <Sonner />
+      <BrowserRouter basename="/">
+        <div className="min-h-screen bg-background text-foreground flex flex-col overflow-hidden">
+          <ScrollToTop />
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<Index />} />
+              <Route path="contact" element={<Contact />} />
+              <Route path="growth-solutions" element={<GrowthSolutions />} />
+              <Route path="strategic-solutions" element={<StrategicSolutions />} />
+              <Route path="about" element={<About />} />
+              <Route path="blog" element={<Blog />} />
+              <Route path="blog/:id" element={<Blog />} />
+              <Route path="privacy" element={<PrivacyPolicy />} />
+              <Route path="terms" element={<TermsOfService />} />
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Route>
+          </Routes>
+        </div>
+      </BrowserRouter>
+    </TooltipProvider>
+  </QueryClientProvider>
 );
 
 export default App;

@@ -66,9 +66,15 @@ export default function TimelineSection() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section at the top */}
+<<<<<<< HEAD
       <div className="bg-background py-12 sm:py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-center text-primary">Our Solutions</h1>
+=======
+      <div className="bg-primary text-primary-foreground py-12 sm:py-16">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-center">Our Solutions</h1>
+>>>>>>> 728e0066ded679a99f5dc7296a29165b25e98111
           <p className="text-lg sm:text-xl md:text-2xl text-center max-w-4xl mx-auto leading-relaxed">
             Whether you're launching something new or optimizing what's already working, we deliver what your business
             needs to grow, adapt, and move faster.
@@ -104,9 +110,15 @@ export default function TimelineSection() {
           <main className="flex-1 max-w-none">
             {/* Growth Solutions Section */}
             <section id="growth-solutions" className="py-8 mb-12 sm:mb-16">
+<<<<<<< HEAD
               <h2 className="text-2xl sm:text-3xl font-bold mb-4">Growth Solutions</h2>
 
               <h3 className="text-xl sm:text-2xl font-semibold mb-4">High-Performance Marketing</h3>
+=======
+              <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-foreground">Growth Solutions</h2>
+
+              <h3 className="text-xl sm:text-2xl font-semibold mb-4 text-foreground">High-Performance Marketing</h3>
+>>>>>>> 728e0066ded679a99f5dc7296a29165b25e98111
               <p className="mb-6 text-muted-foreground leading-relaxed">
                 You need more customers, more engagement, and more momentum. If your priority is to attract the right
                 audience, convert consistently, and expand your market reach, our Growth Solutions are built for you. We
@@ -114,7 +126,11 @@ export default function TimelineSection() {
                 and accelerates customer acquisition.
               </p>
 
+<<<<<<< HEAD
               <h4 className="text-lg sm:text-xl font-semibold mb-4">Core Growth Solutions</h4>
+=======
+              <h4 className="text-lg sm:text-xl font-semibold mb-4 text-foreground">Core Growth Solutions</h4>
+>>>>>>> 728e0066ded679a99f5dc7296a29165b25e98111
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-6">
                 <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
                   <Target className="w-5 h-5 mt-1 text-primary flex-shrink-0" />
@@ -167,7 +183,11 @@ export default function TimelineSection() {
                 </div>
               </div>
 
+<<<<<<< HEAD
               <h4 className="text-lg sm:text-xl font-semibold mb-4">Specialized Growth Solutions</h4>
+=======
+              <h4 className="text-lg sm:text-xl font-semibold mb-4 text-foreground">Specialized Growth Solutions</h4>
+>>>>>>> 728e0066ded679a99f5dc7296a29165b25e98111
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-8">
                 <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
                   <BarChart3 className="w-5 h-5 mt-1 text-primary flex-shrink-0" />
@@ -221,15 +241,25 @@ export default function TimelineSection() {
               </div>
 
               <div className="text-center">
+<<<<<<< HEAD
               <Button className="font-semibold text-lg mb-4" size="lg" asChild>
                   <a href="/contact">Ready to move faster? Let's talk.</a>
+=======
+                <p className="font-semibold text-lg mb-4 text-foreground">Ready to grow faster? Let's talk.</p>
+                <Button asChild size="lg">
+                  <Link to="/contact">Get Started</Link>
+>>>>>>> 728e0066ded679a99f5dc7296a29165b25e98111
                 </Button>
               </div>
             </section>
 
             {/* Strategic Solutions Section */}
             <section id="strategic-solutions" className="py-8 mb-12 sm:mb-16">
+<<<<<<< HEAD
               <h2 className="text-2xl sm:text-3xl font-bold mb-4">Strategic Solutions</h2>
+=======
+              <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-foreground">Strategic Solutions</h2>
+>>>>>>> 728e0066ded679a99f5dc7296a29165b25e98111
 
               <p className="mb-6 text-muted-foreground leading-relaxed">
                 You need to improve efficiency, automate intelligently, and ensure operations scale without chaos. If
@@ -239,7 +269,11 @@ export default function TimelineSection() {
                 at the next level with minimal disruption.
               </p>
 
+<<<<<<< HEAD
               <h4 className="text-lg sm:text-xl font-semibold mb-4">Core Strategic Solutions</h4>
+=======
+              <h4 className="text-lg sm:text-xl font-semibold mb-4 text-foreground">Core Strategic Solutions</h4>
+>>>>>>> 728e0066ded679a99f5dc7296a29165b25e98111
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-6">
                 <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
                   <Cog className="w-5 h-5 mt-1 text-primary flex-shrink-0" />
@@ -271,7 +305,11 @@ export default function TimelineSection() {
                 </div>
               </div>
 
+<<<<<<< HEAD
               <h4 className="text-lg sm:text-xl font-semibold mb-4">Solutions By Function</h4>
+=======
+              <h4 className="text-lg sm:text-xl font-semibold mb-4 text-foreground">Solutions By Function</h4>
+>>>>>>> 728e0066ded679a99f5dc7296a29165b25e98111
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-8">
                 <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
                   <DollarSign className="w-5 h-5 mt-1 text-primary flex-shrink-0" />
@@ -311,8 +349,14 @@ export default function TimelineSection() {
               </div>
 
               <div className="text-center">
+<<<<<<< HEAD
                 <Button className="font-semibold text-lg mb-4" size="lg" asChild>
                   <a href="/contact">Ready to move faster? Let's talk.</a>
+=======
+                <p className="font-semibold text-lg mb-4 text-foreground">Ready to move faster? Let's talk.</p>
+                <Button asChild size="lg">
+                  <Link to="/contact">Get Started</Link>
+>>>>>>> 728e0066ded679a99f5dc7296a29165b25e98111
                 </Button>
               </div>
             </section>

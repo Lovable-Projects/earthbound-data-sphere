@@ -1,8 +1,13 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
+<<<<<<< HEAD
 import { IconHover3D } from '../ui/icon-3d-hover';
+=======
+import { IconHover3D } from '@/components/ui/icon-3d-hover';
+>>>>>>> 728e0066ded679a99f5dc7296a29165b25e98111
 
 const Hero: React.FC = () => {
   return (

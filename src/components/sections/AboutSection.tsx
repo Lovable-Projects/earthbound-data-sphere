@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 728e0066ded679a99f5dc7296a29165b25e98111
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Users, Target, Zap } from 'lucide-react';
@@ -34,7 +38,10 @@ const AboutSection: React.FC = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
+<<<<<<< HEAD
             className="lg:ml-20"
+=======
+>>>>>>> 728e0066ded679a99f5dc7296a29165b25e98111
           >
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
               About <span className="text-primary">Perssonify</span>
@@ -63,7 +70,11 @@ const AboutSection: React.FC = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
+<<<<<<< HEAD
             className="grid grid-cols-1 gap-6 lg:ml-20"
+=======
+            className="grid grid-cols-1 gap-6"
+>>>>>>> 728e0066ded679a99f5dc7296a29165b25e98111
           >
             {features.map((feature, index) => (
               <motion.div
