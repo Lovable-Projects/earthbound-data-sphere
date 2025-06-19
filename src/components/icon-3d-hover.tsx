@@ -25,7 +25,7 @@ const transition1 = {
 const transition2 = {
   delay: 0,
   duration: 0.4,
-  ease: "easeInOut" as const,
+  ease: [0.44, 0, 0.56, 1] as [number, number, number, number],
   type: "tween" as const
 };
 
@@ -44,6 +44,7 @@ const Transition: React.FC<{ value: any; children: React.ReactNode }> = ({ value
   );
 };
 
+
 const Variants = motion.create(React.Fragment);
 
 export const IconHover3D: React.FC<Props> = ({
@@ -52,11 +53,10 @@ export const IconHover3D: React.FC<Props> = ({
   variant = 'Default',
   className = "",
   style = {},
-  width = 600,
-  height = 150,
+  width = 600, // Increased from 369
+  height = 150, // Increased from 71
   ...restProps
-}) => {
-  const [currentVariant, setCurrentVariant] = useState<'Default' | 'Hover'>(variant);
+}) => {  const [currentVariant, setCurrentVariant] = useState<'Default' | 'Hover'>(variant);
   const [gestureState, setGestureState] = useState({ isHovered: false });
   const refBinding = useRef<HTMLDivElement>(null);
   const defaultLayoutId = React.useId();
@@ -79,12 +79,22 @@ export const IconHover3D: React.FC<Props> = ({
       "--border-color": "rgb(139, 47, 250)"
     }
   };
+  const titleVariants = {
+    default: {
+      "--fill-width": "0%"
+    },
+    hovered: {
+      "--fill-width": "100%"
+    }
+  };
 
+  // Add this new transition for the title
   const titleTransition = {
     duration: 0.3,
-    ease: "easeInOut" as const,
+    ease: [0.25, 0.46, 0.45, 0.94], // Smoother easing curve
     type: "tween" as const
   };
+
 
   const sliceCubeVariants = {
     zEwHlJ7zp: {
@@ -100,6 +110,14 @@ export const IconHover3D: React.FC<Props> = ({
     }
   };
 
+  const bgFillVariants = {
+    zEwHlJ7zp: {
+      opacity: 1
+    }
+  };
+
+
+
   return (
     <div style={{ width, height }}>
       <LayoutGroup id={defaultLayoutId}>
@@ -112,22 +130,21 @@ export const IconHover3D: React.FC<Props> = ({
               data-highlight={true}
               ref={refBinding}
               onMouseEnter={handleMouseEnter}
-              onMouseLeave={currentVariant === 'Hover' ? handleMouseLeave : undefined}
-              style={{
+              onMouseLeave={currentVariant === 'Hover' ? handleMouseLeave : undefined}              style={{
                 backgroundColor: "var(--background)",
                 alignContent: "center",
                 alignItems: "center",
                 display: "flex",
                 flexDirection: "row",
                 flexWrap: "nowrap",
-                gap: "40px",
+                gap: "40px", // Increased gap
                 height: "min-content",
                 justifyContent: "center",
                 overflow: "visible",
-                padding: "20px",
+                padding: "20px", // Added padding
                 position: "relative",
                 width: "min-content",
-                borderRadius: "12px",
+                borderRadius: "12px", // Added border radius
                 border: "1px solid color-mix(in srgb, var(--foreground) 10%, transparent)",
                 ...style
               }}
@@ -144,13 +161,12 @@ export const IconHover3D: React.FC<Props> = ({
                   flexDirection: "row",
                   flexWrap: "nowrap",
                   gap: "10px",
-                  height: "100px",
+                  height: "100px", // Increased from 64px
                   justifyContent: "center",
                   overflow: "visible",
                   padding: "0px",
                   position: "relative",
-                  width: "100px",
-                  zIndex: 1,
+                  width: "100px", // Increased from 64px                  zIndex: 1,
                   border: "1px solid color-mix(in srgb, var(--foreground) 20%, transparent)"
                 }}
               >
@@ -165,7 +181,7 @@ export const IconHover3D: React.FC<Props> = ({
                     position: "relative",
                     width: "348px",
                     zIndex: 2,
-                    scale: 0.3
+                    scale: 0.3 // Increased from 0.2
                   }}
                 >
                   {/* Slice Cube */}
@@ -239,8 +255,7 @@ export const IconHover3D: React.FC<Props> = ({
                             overflow: "hidden",
                             padding: "0px",
                             position: "relative",
-                            width: "240px",
-                            border: "4px solid var(--foreground)",
+                            width: "240px", border: "4px solid var(--foreground)",
                             backgroundColor: "var(--background)",
                             zIndex: 120
                           }}
@@ -408,8 +423,7 @@ export const IconHover3D: React.FC<Props> = ({
                             overflow: "hidden",
                             padding: "0px",
                             position: "relative",
-                            width: "240px",
-                            border: "4px solid var(--foreground)",
+                            width: "240px", border: "4px solid var(--foreground)",
                             backgroundColor: "var(--background)",
                             zIndex: 120
                           }}
@@ -577,8 +591,7 @@ export const IconHover3D: React.FC<Props> = ({
                             overflow: "hidden",
                             padding: "0px",
                             position: "relative",
-                            width: "240px",
-                            border: "4px solid var(--foreground)",
+                            width: "240px", border: "4px solid var(--foreground)",
                             backgroundColor: "var(--background)",
                             zIndex: 120
                           }}
@@ -790,10 +803,10 @@ export const IconHover3D: React.FC<Props> = ({
                   flex: "none",
                   flexDirection: "column",
                   flexWrap: "nowrap",
-                  gap: "12px",
+                  gap: "12px", // Increased gap
                   height: "min-content",
                   justifyContent: "center",
-                  maxWidth: "400px",
+                  maxWidth: "400px", // Increased max width
                   overflow: "hidden",
                   padding: "0px",
                   position: "relative",
@@ -812,24 +825,40 @@ export const IconHover3D: React.FC<Props> = ({
                     flexDirection: "row",
                     flexWrap: "nowrap",
                     gap: "10px",
-                    height: "32px",
+                    height: "32px", // Increased height
                     justifyContent: "center",
                     overflow: "visible",
                     padding: "0px",
                     position: "relative",
                   }}
                 >
-                  {/* Heading Text with hover effect */}
+                  {/* BG Fill - Hidden for clean black/white effect */}
+                  <motion.div
+                    className="bg-fill"
+                    data-framer-name="BG Fill"
+                    style={{
+                      flex: "none",
+                      height: "32px", // Increased height
+                      left: "0px",
+                      overflow: "hidden",
+                      position: "absolute",
+                      top: "calc(50% - 16px)", // Adjusted for new height
+                      width: "1px", // Keep minimal
+                      zIndex: 0,
+                      backgroundColor: "transparent", // Made transparent
+                      opacity: 0 // Always hidden
+                    }}
+                  />                  {/* Heading Text with hover effect */}
                   <motion.div
                     style={{
                       flex: "none",
-                      height: "32px",
+                      height: "32px", // Increased height
                       position: "relative",
                       whiteSpace: "pre",
                       width: "auto",
                       fontFamily: '"Inter", "Inter Placeholder", sans-serif',
                       fontWeight: "600",
-                      fontSize: "18px",
+                      fontSize: "18px", // Increased font size
                       color: "var(--foreground)",
                       userSelect: "none",
                       cursor: "pointer",
@@ -838,12 +867,10 @@ export const IconHover3D: React.FC<Props> = ({
                       overflow: "hidden"
                     }}
                   >
-                    {/* Background text */}
+                    {/* Background text (white) */}
                     <span className='mx-1 text-center' style={{ position: "relative", zIndex: 1 }}>
                       {heading}
-                    </span>
-
-                    {/* Animated overlay text */}
+                    </span>                    {/* Animated overlay text (black) */}
                     <motion.span
                     className='mx-1 mt-0.5 text-center'
                       style={{
@@ -862,7 +889,7 @@ export const IconHover3D: React.FC<Props> = ({
                       {heading}
                     </motion.span>
 
-                    {/* Background fill */}
+                    {/* White background fill that moves from left to right */}
                     <motion.div
                       style={{
                         position: "absolute",
@@ -890,13 +917,13 @@ export const IconHover3D: React.FC<Props> = ({
                     height: "auto",
                     position: "relative",
                     whiteSpace: "pre-wrap",
-                    width: "400px",
+                    width: "400px", // Increased width
                     wordBreak: "break-word",
                     wordWrap: "break-word",
                     fontFamily: '"Inter", "Inter Placeholder", sans-serif',
-                    fontWeight: "400",
-                    fontSize: "16px",
-                    lineHeight: "1.5em",
+                    fontWeight: "400", // Reduced weight for better readability
+                    fontSize: "16px", // Increased font size
+                    lineHeight: "1.5em", // Improved line height
                     color: "color-mix(in srgb, var(--foreground) 70%, transparent)",
                     userSelect: "none"
                   }}
