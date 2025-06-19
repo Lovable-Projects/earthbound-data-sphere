@@ -1,93 +1,103 @@
+
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowRight, Users, Target, Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
+import { Target, Zap, Users } from 'lucide-react';
 
 const AboutSection: React.FC = () => {
-  const features = [
-    {
-      icon: Target,
-      title: 'Strategic Focus',
-      description: 'We align every action with your business goals for maximum impact.'
-    },
-    {
-      icon: Zap,
-      title: 'Rapid Execution',
-      description: 'Fast implementation without compromising on quality or results.'
-    },
-    {
-      icon: Users,
-      title: 'Expert Team',
-      description: 'Dedicated professionals with proven track records in growth.'
-    }
-  ];
-
   return (
-    <section className="py-24 bg-background">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Content */}
+    <section className="py-24 bg-muted/30">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+          {/* About Us Section */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="lg:ml-20"
+            className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-              About <span className="text-primary">Perssonify</span>
-            </h2>
-            <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              We are a growth-focused agency that helps businesses scale fast and smart. 
-              Our team combines strategic thinking with rapid execution to deliver 
-              measurable results that drive sustainable growth.
-            </p>
-            <p className="text-muted-foreground mb-8">
-              From performance marketing to strategic consulting, we provide the right 
-              solutions at the right time. Our data-driven approach ensures every 
-              decision is backed by insights and every action moves you closer to your goals.
-            </p>
-            <Link to="/about">
-              <Button size="lg" className="group">
-                Learn More About Us
-                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </Link>
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-8">About Us</h2>
+            <div className="max-w-4xl mx-auto space-y-6 text-lg text-foreground/80 leading-relaxed">
+              <p>
+                The right solution at the right time can change everything. We make the right solutions happen right now.
+              </p>
+              <p>
+                We solve what's really holding you back—whether it's growth, operations or both. Born from performance marketing where speed and ROI are non-negotiable, we apply the same relentless focus to optimize entire businesses.
+              </p>
+              <p>
+                <strong>Our approach:</strong> Identify the real problem. Design solutions that fit your reality. Execute with urgency.
+              </p>
+              <p>
+                World-class outcomes don't require world-size teams. We're lean, expert-driven, and built for speed without compromise.
+              </p>
+              <p className="text-primary font-semibold">
+                Ready to scale with confidence? Let's talk.
+              </p>
+            </div>
           </motion.div>
 
-          {/* Features Grid */}
+          {/* Our Journey Section */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            className="grid grid-cols-1 gap-6 lg:ml-20"
+            className="mb-16"
           >
-            {features.map((feature, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <Card className="hover:shadow-lg transition-all duration-300 custom-shadow">
-                  <CardContent className="p-6">
-                    <div className="flex items-start space-x-4">
-                      <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                        <feature.icon className="w-6 h-6 text-primary" />
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-foreground mb-2">{feature.title}</h3>
-                        <p className="text-muted-foreground text-sm">{feature.description}</p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
+            <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-8 text-center">Our Journey So Far</h3>
+            <div className="max-w-4xl mx-auto space-y-6 text-lg text-foreground/80 leading-relaxed">
+              <p>
+                It started with a simple observation: the best campaigns weren't just creative—they were surgical.
+              </p>
+              <p>
+                We began in performance marketing, obsessing over every conversion and ROI point. But as we drove growth for ambitious businesses, we kept hitting the same wall—great campaigns throttled by slow processes and operational bottlenecks.
+              </p>
+              <p>
+                <strong>The breakthrough:</strong> the same precision that optimized ad spend could optimize entire operations.
+              </p>
+              <p>
+                We didn't abandon our marketing DNA, we expanded it. The urgency, data-driven decisions and relentless focus on results stayed. Now we solve the problems that were limiting success in the first place.
+              </p>
+              <p>
+                Today, we're the partner businesses call when speed matters, stakes are high, and "good enough" isn't enough.
+              </p>
+              <p className="text-primary font-semibold">
+                <strong>The lesson:</strong> breakthrough results don't come from doing more—they come from solving what's really in the way.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Value Props Grid */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          >
+            <div className="text-center p-6 rounded-lg bg-background border">
+              <Target className="w-12 h-12 text-primary mx-auto mb-4" />
+              <h4 className="text-xl font-semibold mb-3">Precision Focus</h4>
+              <p className="text-foreground/70">
+                We identify the real problems holding you back and design surgical solutions that fit your reality.
+              </p>
+            </div>
+
+            <div className="text-center p-6 rounded-lg bg-background border">
+              <Zap className="w-12 h-12 text-primary mx-auto mb-4" />
+              <h4 className="text-xl font-semibold mb-3">Speed & Urgency</h4>
+              <p className="text-foreground/70">
+                Born from performance marketing, we execute with the urgency and precision that drives real results.
+              </p>
+            </div>
+
+            <div className="text-center p-6 rounded-lg bg-background border">
+              <Users className="w-12 h-12 text-primary mx-auto mb-4" />
+              <h4 className="text-xl font-semibold mb-3">Expert-Driven</h4>
+              <p className="text-foreground/70">
+                Lean, world-class teams built for speed without compromise. Quality over quantity, always.
+              </p>
+            </div>
           </motion.div>
         </div>
       </div>
