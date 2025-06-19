@@ -4,7 +4,7 @@ import { Menu, X, Sun, Moon, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
 import { motion, AnimatePresence } from 'framer-motion';
-import LogoBlack from '/Logo-Black.png';
+import LogoTeal from '/Logo-Teal.png';
 
 interface HeaderProps {
   isDarkMode: boolean;
@@ -91,7 +91,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
           >
             <motion.img
               whileHover={{ scale: 1.05 }}
-              src={LogoBlack}
+              src={LogoTeal}
               alt="Perssonify Logo"
               className="h-6 w-auto sm:h-7 object-contain transition-all duration-300"
             />
