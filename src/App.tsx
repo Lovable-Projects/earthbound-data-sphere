@@ -37,6 +37,7 @@ function App() {
             <Route index element={<Index />} />
             <Route path="about" element={<About />} />
             <Route path="blog" element={<Blog />} />
+            <Route path="blog/:slug" element={<Blog />} />
             <Route path="contact" element={<Contact />} />
             <Route path="growth-solutions" element={<GrowthSolutions />} />
             <Route path="strategic-solutions" element={<StrategicSolutions />} />

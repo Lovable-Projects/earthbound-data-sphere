@@ -1,24 +1,28 @@
-
 import React from 'react';
 import Hero from '@/components/sections/Hero';
 import AboutSection from '@/components/sections/AboutSection';
-import TimelineSection from '@/components/sections/TimelineSection';
+import Solutions from '@/components/sections/Solutions';
 import ProcessSection from '@/components/sections/ProcessSection';
-import ContactSection from '@/components/sections/ContactSection';
+import ResultsSection from '@/components/sections/ResultsSection';
+import TimelineSection from '@/components/sections/TimelineSection';
 import CTASection from '@/components/sections/CTASection';
-import CookieConsent from '@/components/CookieConsent';
-import SocialMeta from '@/components/SocialMeta';
+import ContactSection from '@/components/sections/ContactSection';
+import UIBlocksSection from '@/components/sections/UIBlocksSection';
+import ServiceInquiryForm from '@/components/sections/ServiceInquiryForm';
 
 const Index: React.FC = () => {
   return (
-    <div>
-      <SocialMeta />
+    <div className="min-h-screen">
       <Hero />
       <AboutSection />
-      <TimelineSection />
+      <Solutions />
       <ProcessSection />
+      <ResultsSection />
+      <TimelineSection />
+      <UIBlocksSection />
+      <ServiceInquiryForm />
+      <CTASection />
       <ContactSection />
-      <CookieConsent />
     </div>
   );
 };
