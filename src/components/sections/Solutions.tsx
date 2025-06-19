@@ -54,7 +54,7 @@ const Solutions: React.FC = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold font-playfair text-foreground mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
             Two Solution Families
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
@@ -72,48 +72,48 @@ const Solutions: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.2 }}
             >
-              <Card className={`h-full hover:shadow-xl transition-all duration-300 hover:-translate-y-1 custom-shadow ${solution.color} border-0`}>
-                <CardHeader className="pb-4">
-                  <div className={`w-16 h-16 rounded-xl ${solution.color} flex items-center justify-center mb-4`}>
-                    <solution.icon className={`w-8 h-8 ${solution.iconColor}`} />
-                  </div>
-                  <CardTitle className="text-2xl font-playfair text-foreground mb-2">
-                    {solution.title}
-                  </CardTitle>
-                  <CardDescription className="text-lg font-semibold text-foreground/80">
-                    {solution.subtitle}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-6">
-                  <p className="text-muted-foreground leading-relaxed">
-                    {solution.description}
-                  </p>
-                  
-                  <div className="space-y-3">
-                    <h4 className="font-semibold text-foreground">Key Services:</h4>
-                    <ul className="space-y-2">
-                      {solution.features.slice(0, 4).map((feature, idx) => (
-                        <li key={idx} className="flex items-center text-sm text-muted-foreground">
-                          <Zap className="w-4 h-4 text-primary mr-2 flex-shrink-0" />
-                          {feature}
-                        </li>
-                      ))}
-                      {solution.features.length > 4 && (
-                        <li className="text-sm text-muted-foreground ml-6">
-                          + {solution.features.length - 4} more services
-                        </li>
-                      )}
-                    </ul>
-                  </div>
+              <Link to={solution.href} className="block group">
+                <Card className={`h-full hover:shadow-xl transition-all duration-300 hover:-translate-y-1 custom-shadow ${solution.color} border-0 cursor-pointer`}>
+                  <CardHeader className="pb-4">
+                    <div className={`w-16 h-16 rounded-xl ${solution.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                      <solution.icon className={`w-8 h-8 ${solution.iconColor}`} />
+                    </div>
+                    <CardTitle className="text-2xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
+                      {solution.title}
+                    </CardTitle>
+                    <CardDescription className="text-lg font-semibold text-foreground/80">
+                      {solution.subtitle}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-6">
+                    <p className="text-muted-foreground leading-relaxed">
+                      {solution.description}
+                    </p>
+                    
+                    <div className="space-y-3">
+                      <h4 className="font-semibold text-foreground">Key Services:</h4>
+                      <ul className="space-y-2">
+                        {solution.features.slice(0, 4).map((feature, idx) => (
+                          <li key={idx} className="flex items-center text-sm text-muted-foreground">
+                            <Zap className="w-4 h-4 text-primary mr-2 flex-shrink-0" />
+                            {feature}
+                          </li>
+                        ))}
+                        {solution.features.length > 4 && (
+                          <li className="text-sm text-muted-foreground ml-6">
+                            + {solution.features.length - 4} more services
+                          </li>
+                        )}
+                      </ul>
+                    </div>
 
-                  <Button asChild className="w-full group">
-                    <Link to={solution.href}>
+                    <div className="flex items-center text-primary font-medium group-hover:translate-x-2 transition-transform duration-300">
                       Explore {solution.title}
-                      <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                    </Link>
-                  </Button>
-                </CardContent>
-              </Card>
+                      <ArrowRight className="ml-2 w-4 h-4" />
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
             </motion.div>
           ))}
         </div>
@@ -129,7 +129,7 @@ const Solutions: React.FC = () => {
             <Target className="w-4 h-4 mr-2" />
             Ready to accelerate your business?
           </div>
-          <h3 className="text-2xl font-bold font-playfair text-foreground mb-4">
+          <h3 className="text-2xl font-bold text-foreground mb-4">
             Let's discuss your specific needs
           </h3>
           <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">

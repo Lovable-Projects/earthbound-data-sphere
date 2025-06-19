@@ -5,7 +5,6 @@ import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
 import { motion, AnimatePresence } from 'framer-motion';
 import LogoBlack from '/Logo-Black.png';
-import LogoWhite from '/Logo-White.png';
 
 interface HeaderProps {
   isDarkMode: boolean;
@@ -54,10 +53,8 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
 
   const handleLogoClick = () => {
     if (location.pathname === '/') {
-      // If already on home page, scroll to top
       window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     } else {
-      // If on different page, navigate to home
       navigate('/');
     }
   };
@@ -86,7 +83,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
     >
       <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
+          {/* Logo - Always use dark logo */}
           <button 
             onClick={handleLogoClick}
             className="flex items-center space-x-2 cursor-pointer"
@@ -94,7 +91,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
           >
             <motion.img
               whileHover={{ scale: 1.05 }}
-              src={isDarkMode ? LogoWhite : LogoBlack}
+              src={LogoBlack}
               alt="Perssonify Logo"
               className="h-6 w-auto sm:h-7 object-contain transition-all duration-300"
             />
