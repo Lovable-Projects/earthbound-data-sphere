@@ -5,6 +5,8 @@ import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
 import { motion, AnimatePresence } from 'framer-motion';
 import LogoTeal from '/Logo-Teal.png';
+import LogoWhite from '/Logo-White.png';
+import LogoBlack from '/Logo-Black.png';
 
 interface HeaderProps {
   isDarkMode: boolean;
@@ -13,6 +15,7 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const location = useLocation();
   const navigate = useNavigate();
@@ -75,27 +78,21 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
   };
 
   return (
-    <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: 'easeOut' }}
-      className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border h-16 w-full"
-    >
-      <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border transition-all duration-300">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo - Always use dark logo */}
-          <button 
-            onClick={handleLogoClick}
-            className="flex items-center space-x-2 cursor-pointer"
-            aria-label="Go to homepage"
+          {/* Logo - moved more to the right with ml-8 */}
+          <Link 
+            to="/" 
+            className="flex items-center space-x-2 ml-8"
+            onClick={() => setIsMobileMenuOpen(false)}
           >
-            <motion.img
-              whileHover={{ scale: 1.05 }}
-              src={LogoTeal}
+            <img
+              src={isDarkMode ? LogoWhite : LogoBlack}
               alt="Perssonify Logo"
-              className="h-6 w-auto sm:h-7 object-contain transition-all duration-300"
+              className="h-8 w-auto object-contain"
             />
-          </button>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-6 lg:space-x-8" ref={dropdownRef}>
@@ -289,7 +286,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
           )}
         </AnimatePresence>
       </div>
-    </motion.header>
+    </header>
   );
 };
 

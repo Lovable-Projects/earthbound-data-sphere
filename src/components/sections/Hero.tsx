@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Zap } from 'lucide-react';
@@ -67,7 +68,7 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.7 }}
             className="flex flex-col lg:flex-row gap-8 justify-center items-center w-full"
           >
-            <Link to="/core-growth-solutions" className="block">
+            <Link to="/growth-solutions" className="block">
               <IconHover3D 
                 heading="Growth Solutions"
                 text="High-performance marketing strategy and execution that amplifies brand value and accelerates customer acquisition."
@@ -76,7 +77,7 @@ const Hero: React.FC = () => {
               />
             </Link>
             
-            <Link to="/specialized-growth-solutions" className="block">
+            <Link to="/strategic-solutions" className="block">
               <IconHover3D 
                 heading="Strategic Solutions"
                 text="Tailored strategy and implementations built for precision, scalability, and operational efficiency."

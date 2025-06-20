@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { ArrowRight, Calendar, User, Tag, ArrowLeft, Clock } from 'lucide-react';
@@ -5,211 +6,75 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { useQuery } from '@tanstack/react-query';
+import { supabase } from '@/integrations/supabase/client';
 
 interface BlogPost {
   id: string;
   title: string;
-  date: string;
+  slug: string;
+  excerpt: string;
+  content: string;
+  featured_image: string;
   author: string;
   category: string;
-  excerpt: string;
-  image: string;
-  readTime: string;
-  content: string;
   tags: string[];
+  published: boolean;
+  featured: boolean;
+  read_time: number;
+  created_at: string;
+  updated_at: string;
 }
 
-const blogPosts: BlogPost[] = [
-  {
-    id: '1',
-    title: 'The Future of AI in Business: Revolutionary Changes Ahead',
-    date: 'December 15, 2025',
-    author: 'Sarah Johnson',
-    category: 'Technology',
-    excerpt: 'Discover how artificial intelligence is transforming business operations and what this means for your company.',
-    image: '/images/TheFutureofAIinBusiness.png',
-    readTime: '5 min read',
-    content: `
-      <h2>Introduction</h2>
-      <p>Artificial Intelligence is no longer a futuristic concept—it's here, and it's revolutionizing how businesses operate across every industry. From automating routine tasks to providing deep insights through data analysis, AI is becoming an indispensable tool for companies looking to stay competitive.</p>
-      
-      <h2>Key Areas of AI Impact</h2>
-      
-      <h3>1. Customer Service</h3>
-      <p>AI-powered chatbots and virtual assistants are transforming customer service by providing 24/7 support, instant responses, and personalized interactions. Companies like Amazon and Microsoft have seen significant improvements in customer satisfaction through AI implementation.</p>
-      
-      <h3>2. Data Analysis and Insights</h3>
-      <p>Machine learning algorithms can process vast amounts of data in seconds, identifying patterns and trends that would take humans weeks to discover. This capability is invaluable for making data-driven decisions.</p>
-      
-      <h3>3. Automation of Routine Tasks</h3>
-      <p>From invoice processing to inventory management, AI is automating repetitive tasks, freeing up human employees to focus on more strategic, creative work.</p>
-      
-      <h2>Getting Started with AI</h2>
-      <p>If you're considering implementing AI in your business, start small. Identify one area where AI could make an immediate impact, such as customer service or data analysis. Many AI tools are now accessible to businesses of all sizes, with user-friendly interfaces that don't require extensive technical expertise.</p>
-      
-      <h2>Conclusion</h2>
-      <p>The future of business is intertwined with AI. Companies that embrace this technology now will have a significant advantage over those that wait. The key is to start experimenting and learning how AI can specifically benefit your business model.</p>
-    `,
-    tags: ['AI', 'Business', 'Technology', 'Automation']
-  },
-  {
-    id: '2',
-    title: 'Digital Marketing Strategies That Actually Work in 2025',
-    date: 'December 10, 2025',
-    author: 'Mike Chen',
-    category: 'Marketing',
-    excerpt: 'Learn the most effective digital marketing strategies that are driving results for businesses in 2025.',
-    image: '/images/DigitalMarketingStrategies.png',
-    readTime: '7 min read',
-    content: `
-      <h2>The Digital Marketing Landscape in 2025</h2>
-      <p>Digital marketing continues to evolve rapidly, with new platforms, technologies, and consumer behaviors shaping the way businesses reach their audiences. What worked five years ago may not be effective today.</p>
-      
-      <h2>Top Strategies for 2025</h2>
-      
-      <h3>1. Video-First Content Strategy</h3>
-      <p>Video content is dominating social media platforms and search results. Short-form videos on platforms like TikTok and Instagram Reels are particularly effective for engaging younger audiences.</p>
-      
-      <h3>2. Personalization at Scale</h3>
-      <p>Consumers expect personalized experiences. Use data analytics to create targeted content and offers that speak directly to individual customer needs and preferences.</p>
-      
-      <h3>3. Voice Search Optimization</h3>
-      <p>With the rise of smart speakers and voice assistants, optimizing for voice search is becoming crucial. Focus on natural language and question-based keywords.</p>
-      
-      <h2>Measuring Success</h2>
-      <p>Track metrics that matter to your business goals. While vanity metrics like followers are nice, focus on conversion rates, customer acquisition costs, and lifetime value.</p>
-      
-      <h2>Conclusion</h2>
-      <p>Success in digital marketing requires staying current with trends while maintaining a focus on your core audience. Test new strategies, measure results, and adapt quickly to changes in the digital landscape.</p>
-    `,
-    tags: ['Digital Marketing', 'Strategy', 'Social Media', 'SEO']
-  },
-  {
-    id: '3',
-    title: 'Building a Remote Team: Best Practices for 2025',
-    date: 'December 5, 2025',
-    author: 'Emily Rodriguez',
-    category: 'Business',
-    excerpt: 'Essential strategies for building and managing successful remote teams in the modern workplace.',
-    image: '/images/RemoteTeam.png',
-    readTime: '6 min read',
-    content: `
-      <h2>The Remote Work Revolution</h2>
-      <p>Remote work has transformed from a temporary solution to a permanent fixture in the business world. Building effective remote teams requires new approaches to hiring, communication, and management.</p>
-      
-      <h2>Key Strategies for Remote Team Success</h2>
-      
-      <h3>1. Clear Communication Protocols</h3>
-      <p>Establish clear guidelines for when and how team members should communicate. Use tools like Slack for quick messages, Zoom for meetings, and project management tools for task coordination.</p>
-      
-      <h3>2. Results-Oriented Management</h3>
-      <p>Focus on outcomes rather than hours worked. Set clear expectations and deadlines, then trust your team to deliver results in their own way.</p>
-      
-      <h3>3. Virtual Team Building</h3>
-      <p>Regular virtual team building activities help maintain company culture and team cohesion. Consider virtual coffee chats, online games, or collaborative projects.</p>
-      
-      <h2>Technology Stack Essentials</h2>
-      <p>Invest in reliable technology tools that facilitate collaboration, communication, and productivity. This includes video conferencing, project management, file sharing, and time tracking tools.</p>
-      
-      <h2>Conclusion</h2>
-      <p>Remote teams can be incredibly productive and innovative when managed effectively. The key is to embrace the unique advantages of remote work while addressing its challenges through thoughtful processes and technology.</p>
-    `,
-    tags: ['Remote Work', 'Team Management', 'Productivity', 'Leadership']
-  },
-  {
-    id: '4',
-    title: 'The Rise of E-commerce: Trends Shaping Online Shopping',
-    date: 'November 28, 2025',
-    author: 'Alex Thompson',
-    category: 'E-commerce',
-    excerpt: 'Explore the latest trends in e-commerce and how they are reshaping the online shopping experience.',
-    image: '/images/E-commerce.png',
-    readTime: '8 min read',
-    content: `
-      <h2>E-commerce Evolution</h2>
-      <p>The e-commerce landscape continues to evolve at breakneck speed, driven by changing consumer behaviors, technological advances, and global events that have reshaped how we shop.</p>
-      
-      <h2>Key Trends in 2025</h2>
-      
-      <h3>1. Social Commerce</h3>
-      <p>Shopping directly through social media platforms is becoming mainstream. Instagram Shopping, TikTok Shop, and Facebook Marketplace are transforming social media into powerful sales channels.</p>
-      
-      <h3>2. Sustainable Shopping</h3>
-      <p>Consumers are increasingly conscious about sustainability. Brands that emphasize eco-friendly practices and transparent supply chains are gaining competitive advantages.</p>
-      
-      <h3>3. Augmented Reality Shopping</h3>
-      <p>AR technology allows customers to virtually try products before purchasing, reducing return rates and improving customer satisfaction.</p>
-      
-      <h2>Future Outlook</h2>
-      <p>The future of e-commerce will be characterized by personalization, sustainability, and seamless integration across all customer touchpoints.</p>
-    `,
-    tags: ['E-commerce', 'Shopping', 'Technology', 'Trends']
-  },
-  {
-    id: '5',
-    title: 'Cybersecurity Best Practices for Small Businesses',
-    date: 'November 20, 2025',
-    author: 'David Wilson',
-    category: 'Security',
-    excerpt: 'Essential cybersecurity measures every small business should implement to protect their data and operations.',
-    image: '/images/Cyber.png',
-    readTime: '9 min read',
-    content: `
-      <h2>The Cybersecurity Landscape</h2>
-      <p>Small businesses are increasingly becoming targets for cybercriminals. Unlike large corporations, many small businesses lack dedicated IT security teams, making them vulnerable to attacks.</p>
-      
-      <h2>Essential Security Measures</h2>
-      
-      <h3>1. Strong Password Policies</h3>
-      <p>Implement multi-factor authentication and require strong, unique passwords for all business accounts. Consider using password managers to help employees maintain secure credentials.</p>
-      
-      <h3>2. Regular Software Updates</h3>
-      <p>Keep all software, including operating systems and applications, up to date with the latest security patches.</p>
-      
-      <h3>3. Employee Training</h3>
-      <p>Regular cybersecurity training helps employees recognize and avoid common threats like phishing emails and social engineering attacks.</p>
-      
-      <h2>Building a Security Culture</h2>
-      <p>Cybersecurity should be everyone's responsibility, not just the IT department. Create a culture where security awareness is part of daily operations.</p>
-    `,
-    tags: ['Cybersecurity', 'Small Business', 'Data Protection', 'Security']
-  },
-  {
-    id: '6',
-    title: 'The Power of Data Analytics in Modern Business',
-    date: 'November 15, 2025',
-    author: 'Lisa Chang',
-    category: 'Analytics',
-    excerpt: 'How businesses are leveraging data analytics to make informed decisions and drive growth.',
-    image: '/images/DataAnalytics.png',
-    readTime: '7 min read',
-    content: `
-      <h2>Data-Driven Decision Making</h2>
-      <p>In today's competitive business environment, companies that effectively leverage data analytics have a significant advantage over those that rely on intuition alone.</p>
-      
-      <h2>Key Benefits of Data Analytics</h2>
-      
-      <h3>1. Customer Insights</h3>
-      <p>Analytics helps businesses understand customer behavior, preferences, and trends, enabling more targeted marketing and product development.</p>
-      
-      <h3>2. Operational Efficiency</h3>
-      <p>Data analysis can identify bottlenecks in operations and suggest improvements that reduce costs and increase productivity.</p>
-      
-      <h3>3. Predictive Analytics</h3>
-      <p>Advanced analytics can help predict future trends, allowing businesses to proactively adjust their strategies.</p>
-      
-      <h2>Getting Started with Analytics</h2>
-      <p>Start with clear objectives and gradually build your analytics capabilities. Focus on metrics that directly impact your business goals.</p>
-    `,
-    tags: ['Data Analytics', 'Business Intelligence', 'Decision Making', 'Strategy']
-  }
-];
-
 const Blog: React.FC = () => {
-  const { id } = useParams();
-  const currentPost = blogPosts.find(post => post.id === id);
+  const { slug } = useParams();
 
-  if (id && !currentPost) {
+  // Fetch all blog posts
+  const { data: blogPosts = [], isLoading: isLoadingPosts } = useQuery({
+    queryKey: ['blog-posts'],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('blog_posts')
+        .select('*')
+        .eq('published', true)
+        .order('created_at', { ascending: false });
+      
+      if (error) throw error;
+      return data as BlogPost[];
+    },
+    enabled: !slug
+  });
+
+  // Fetch specific blog post if slug is provided
+  const { data: currentPost, isLoading: isLoadingPost } = useQuery({
+    queryKey: ['blog-post', slug],
+    queryFn: async () => {
+      if (!slug) return null;
+      const { data, error } = await supabase
+        .from('blog_posts')
+        .select('*')
+        .eq('slug', slug)
+        .eq('published', true)
+        .single();
+      
+      if (error) throw error;
+      return data as BlogPost;
+    },
+    enabled: !!slug
+  });
+
+  if (slug && isLoadingPost) {
+    return (
+      <div className="min-h-screen flex items-center justify-center pt-20">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
+          <p>Loading blog post...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (slug && !currentPost) {
     return (
       <div className="min-h-screen flex items-center justify-center pt-20">
         <div className="text-center">
@@ -225,7 +90,7 @@ const Blog: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 pt-20 pb-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {id && currentPost ? (
+        {slug && currentPost ? (
           // Blog Post Detail View
           <div className="max-w-4xl mx-auto">
             <Link to="/blog" className="inline-flex items-center text-primary hover:text-primary/80 mb-8 transition-colors">
@@ -239,19 +104,21 @@ const Blog: React.FC = () => {
               transition={{ duration: 0.5 }}
               className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden"
             >
-              <div className="aspect-video w-full overflow-hidden">
-                <img
-                  src={currentPost.image}
-                  alt={currentPost.title}
-                  className="w-full h-full object-cover"
-                />
-              </div>
+              {currentPost.featured_image && (
+                <div className="aspect-video w-full overflow-hidden">
+                  <img
+                    src={currentPost.featured_image}
+                    alt={currentPost.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              )}
               
               <div className="p-6 sm:p-8">
                 <div className="flex flex-wrap items-center gap-4 mb-6 text-sm text-gray-500 dark:text-gray-400">
                   <div className="flex items-center gap-1">
                     <Calendar className="w-4 h-4" />
-                    <span>{currentPost.date}</span>
+                    <span>{new Date(currentPost.created_at).toLocaleDateString()}</span>
                   </div>
                   <div className="flex items-center gap-1">
                     <User className="w-4 h-4" />
@@ -259,7 +126,7 @@ const Blog: React.FC = () => {
                   </div>
                   <div className="flex items-center gap-1">
                     <Clock className="w-4 h-4" />
-                    <span>{currentPost.readTime}</span>
+                    <span>{currentPost.read_time} min read</span>
                   </div>
                   <Badge variant="secondary">{currentPost.category}</Badge>
                 </div>
@@ -269,7 +136,7 @@ const Blog: React.FC = () => {
                 </h1>
                 
                 <div className="flex flex-wrap gap-2 mb-8">
-                  {currentPost.tags.map((tag) => (
+                  {currentPost.tags?.map((tag) => (
                     <Badge key={tag} variant="outline">{tag}</Badge>
                   ))}
                 </div>
@@ -298,56 +165,65 @@ const Blog: React.FC = () => {
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-              {blogPosts.map((post, index) => (
-                <motion.div
-                  key={post.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                >
-                  <Link to={`${post.id}`}>
-                    <Card className="h-full hover:shadow-xl transition-shadow duration-300 group cursor-pointer">
-                      <div className="aspect-video overflow-hidden rounded-t-lg">
-                        <img
-                          src={post.image}
-                          alt={post.title}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                      <CardHeader className="p-4 sm:p-6">
-                        <div className="flex items-center justify-between mb-2">
-                          <Badge variant="secondary" className="text-xs">{post.category}</Badge>
-                          <span className="text-xs text-gray-500 dark:text-gray-400">{post.readTime}</span>
-                        </div>
-                        <CardTitle className="text-base sm:text-lg line-clamp-2 group-hover:text-primary transition-colors">
-                          {post.title}
-                        </CardTitle>
-                        <CardDescription className="text-sm line-clamp-3">
-                          {post.excerpt}
-                        </CardDescription>
-                      </CardHeader>
-                      <CardContent className="pt-0 p-4 sm:p-6">
-                        <div className="flex items-center justify-between mb-4 text-xs text-gray-500 dark:text-gray-400">
-                          <div className="flex items-center gap-1">
-                            <User className="w-3 h-3" />
-                            <span>{post.author}</span>
+            {isLoadingPosts ? (
+              <div className="text-center">
+                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
+                <p>Loading blog posts...</p>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                {blogPosts.map((post, index) => (
+                  <motion.div
+                    key={post.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                  >
+                    <Link to={`/blog/${post.slug}`}>
+                      <Card className="h-full hover:shadow-xl transition-shadow duration-300 group cursor-pointer">
+                        {post.featured_image && (
+                          <div className="aspect-video overflow-hidden rounded-t-lg">
+                            <img
+                              src={post.featured_image}
+                              alt={post.title}
+                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            />
                           </div>
-                          <div className="flex items-center gap-1">
-                            <Calendar className="w-3 h-3" />
-                            <span>{post.date}</span>
+                        )}
+                        <CardHeader className="p-4 sm:p-6">
+                          <div className="flex items-center justify-between mb-2">
+                            <Badge variant="secondary" className="text-xs">{post.category}</Badge>
+                            <span className="text-xs text-gray-500 dark:text-gray-400">{post.read_time} min read</span>
                           </div>
-                        </div>
-                        <Button className="w-full group-hover:bg-primary/90 transition-colors text-sm">
-                          Read More
-                          <ArrowRight className="w-4 h-4 ml-2" />
-                        </Button>
-                      </CardContent>
-                    </Card>
-                  </Link>
-                </motion.div>
-              ))}
-            </div>
+                          <CardTitle className="text-base sm:text-lg line-clamp-2 group-hover:text-primary transition-colors">
+                            {post.title}
+                          </CardTitle>
+                          <CardDescription className="text-sm line-clamp-3">
+                            {post.excerpt}
+                          </CardDescription>
+                        </CardHeader>
+                        <CardContent className="pt-0 p-4 sm:p-6">
+                          <div className="flex items-center justify-between mb-4 text-xs text-gray-500 dark:text-gray-400">
+                            <div className="flex items-center gap-1">
+                              <User className="w-3 h-3" />
+                              <span>{post.author}</span>
+                            </div>
+                            <div className="flex items-center gap-1">
+                              <Calendar className="w-3 h-3" />
+                              <span>{new Date(post.created_at).toLocaleDateString()}</span>
+                            </div>
+                          </div>
+                          <Button className="w-full group-hover:bg-primary/90 transition-colors text-sm">
+                            Read More
+                            <ArrowRight className="w-4 h-4 ml-2" />
+                          </Button>
+                        </CardContent>
+                      </Card>
+                    </Link>
+                  </motion.div>
+                ))}
+              </div>
+            )}
           </>
         )}
       </div>
