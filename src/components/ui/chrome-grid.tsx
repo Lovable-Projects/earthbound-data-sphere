@@ -200,14 +200,51 @@ function GridOfBoxes() {
   );
 }
 
+// Fallback component when WebGL is not available
+const ChromeGridFallback = () => {
+  return (
+    <div className="h-full w-full bg-gradient-to-br from-primary/20 via-background to-primary/10 relative z-0 flex items-center justify-center">
+      <div className="grid grid-cols-8 gap-2 opacity-20">
+        {Array.from({ length: 64 }).map((_, i) => (
+          <div
+            key={i}
+            className="w-8 h-8 bg-primary/30 rounded-sm animate-pulse"
+            style={{
+              animationDelay: `${(i % 8) * 0.1}s`
+            }}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
 export function ChromeGrid() {
+  const [webglError, setWebglError] = useState(false);
+
+  const handleWebGLError = () => {
+    console.warn('WebGL context creation failed, falling back to CSS animation');
+    setWebglError(true);
+  };
+
+  if (webglError) {
+    return <ChromeGridFallback />;
+  }
+
   return (
     <div className="h-full w-full bg-gradient-to-br from-primary/20 via-background to-primary/10 relative z-0">
-      <Canvas camera={{ 
-        position: [-9.31, 12, 24.72], 
-        rotation: [-0.65, -0.2, -0.13],
-        fov: 35 
-      }}>
+      <Canvas 
+        camera={{ 
+          position: [-9.31, 12, 24.72], 
+          rotation: [-0.65, -0.2, -0.13],
+          fov: 35 
+        }}
+        onCreated={(state) => {
+          // WebGL context created successfully
+          console.log('WebGL context created successfully');
+        }}
+        onError={handleWebGLError}
+      >
         <ambientLight intensity={1} />
         
         <directionalLight 

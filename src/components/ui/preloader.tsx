@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { ChromeGrid } from './chrome-grid';
+import { ErrorBoundary } from './ErrorBoundary';
 import { motion } from 'framer-motion';
 
 interface PreloaderProps {
@@ -27,7 +28,9 @@ export const Preloader: React.FC<PreloaderProps> = ({ onLoadingComplete }) => {
 
   return (
     <div className="fixed inset-0 z-[9999] flex items-center justify-center">
-      <ChromeGrid />
+      <ErrorBoundary>
+        <ChromeGrid />
+      </ErrorBoundary>
       <div className="absolute z-10 left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 pointer-events-none flex flex-col justify-center items-center">
         <motion.h1 
           initial={{ opacity: 0, y: 20 }}
