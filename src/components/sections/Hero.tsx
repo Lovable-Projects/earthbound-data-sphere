@@ -1,8 +1,8 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Zap, ArrowRight } from 'lucide-react';
+import { Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { IconHover3D } from '../ui/icon-3d-hover';
 
 const Hero: React.FC = () => {
   return (
@@ -20,7 +20,7 @@ const Hero: React.FC = () => {
             Growth & Strategic Solutions
           </motion.div>
 
-          {/* Main Headline */}
+          {/* Main Headline - Single line */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -60,27 +60,29 @@ const Hero: React.FC = () => {
             We help businesses grow fast and scale smart. The right solution. The right time. Delivered.
           </motion.p>
 
-          {/* CTA Buttons */}
+          {/* 3D Icon Cards */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.7 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full"
+            className="flex flex-col lg:flex-row gap-8 justify-center items-center w-full"
           >
-            <Link 
-              to="/growth-solutions" 
-              className="inline-flex items-center px-8 py-4 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-colors group"
-            >
-              Growth Solutions
-              <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+            <Link to="/core-growth-solutions" className="block">
+              <IconHover3D 
+                heading="Growth Solutions"
+                text="High-performance marketing strategy and execution that amplifies brand value and accelerates customer acquisition."
+                width={600}
+                height={150}
+              />
             </Link>
             
-            <Link 
-              to="/strategic-solutions" 
-              className="inline-flex items-center px-8 py-4 border-2 border-primary text-primary rounded-lg font-semibold hover:bg-primary hover:text-primary-foreground transition-colors group"
-            >
-              Strategic Solutions
-              <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+            <Link to="/specialized-growth-solutions" className="block">
+              <IconHover3D 
+                heading="Strategic Solutions"
+                text="Tailored strategy and implementations built for precision, scalability, and operational efficiency."
+                width={600}
+                height={150}
+              />
             </Link>
           </motion.div>
         </div>
