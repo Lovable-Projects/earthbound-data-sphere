@@ -21,12 +21,12 @@ const Hero: React.FC = () => {
             Growth & Strategic Solutions
           </motion.div>
 
-          {/* Main Headline - Single line */}
+          {/* Main Headline - Adjusted for single line */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground mb-6 leading-tight"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground mb-6 leading-tight whitespace-nowrap"
           >
             We bring{' '}
             <span className="text-primary relative inline-block">

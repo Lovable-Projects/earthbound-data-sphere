@@ -1,11 +1,19 @@
 
 import React, { useState, useEffect } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
+import Testimonials from '../sections/Testimonials';
 
 const Layout: React.FC = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const location = useLocation();
+
+  // Pages where we don't want to show testimonials
+  const excludeTestimonialsPages = ['/contact', '/blog', '/privacy-policy', '/terms-of-service'];
+  const shouldShowTestimonials = !excludeTestimonialsPages.some(path => 
+    location.pathname === path || location.pathname.startsWith('/blog/')
+  );
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
@@ -33,6 +41,7 @@ const Layout: React.FC = () => {
       <Header isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
       <main className="page-content">
         <Outlet />
+        {shouldShowTestimonials && <Testimonials />}
       </main>
       <Footer isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
     </div>

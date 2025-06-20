@@ -3,7 +3,7 @@ import { TrendingUp, Target, Users, Zap, ArrowRight, CheckCircle, Lightbulb, Sea
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import Spline from '@splinetool/react-spline';
+import { WavyBackground } from '@/components/ui/wavy-background';
 
 const About: React.FC = () => {
   const values = [
@@ -111,45 +111,38 @@ const About: React.FC = () => {
 
   return (
     <div className="bg-background text-foreground">
-      {/* Hero Section */}
-      <section className="py-8 md:py-16 mt-8 md:mt-16 bg-background">
-        <div className="container mx-auto px-4 max-w-6xl">
-          <div className="flex flex-col lg:flex-row items-center gap-6 lg:gap-12">
-            {/* Left: Text Content */}
-            <div className="w-full lg:w-1/2 text-center lg:text-left">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-playfair text-foreground mb-4 lg:mb-6">
-                We bring{' '}
-                <span className="text-primary">growth</span>{' '}
-                and{' '}
-                <span className="text-primary">scale</span>{' '}
-                to life
-              </h1>
-              <p className="text-lg md:text-xl text-muted-foreground mb-6 lg:mb-8 leading-relaxed">
-                Perssonify was built around one simple idea: the right solution at the right time can change everything. We make the right solutions happen right now.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Button size="lg" asChild>
-                  <a href="/contact">Start Your Journey<ArrowRight className="ml-2 w-4 h-4" /></a>
-                </Button>
-                <Button variant="outline" size="lg" asChild>
-                  <a href="/growth-solutions">Explore Solutions</a>
-                </Button>
-                <Button variant="outline" size="lg" asChild>
-                  <a href="/blog">Read Our Blog</a>
-                </Button>
-              </div>
-            </div>
-            {/* Right: Spline Scene */}
-            <div className="w-full lg:w-1/2 h-[250px] md:h-[300px] lg:h-[500px] mt-6 lg:mt-0">
-              <Spline scene="https://prod.spline.design/ZzqJhoN-u-SVRju1/scene.splinecode" />
+      {/* Hero Section with Wavy Background */}
+      <WavyBackground className="py-8 md:py-16 mt-8 md:mt-16 bg-background">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+          <div className="text-center">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-playfair text-foreground mb-4 lg:mb-6">
+              We bring{' '}
+              <span className="text-primary">growth</span>{' '}
+              and{' '}
+              <span className="text-primary">scale</span>{' '}
+              to life
+            </h1>
+            <p className="text-lg md:text-xl text-muted-foreground mb-6 lg:mb-8 leading-relaxed max-w-3xl mx-auto">
+              Perssonify was built around one simple idea: the right solution at the right time can change everything. We make the right solutions happen right now.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button size="lg" asChild>
+                <a href="/contact">Start Your Journey<ArrowRight className="ml-2 w-4 h-4" /></a>
+              </Button>
+              <Button variant="outline" size="lg" asChild>
+                <a href="/growth-solutions">Explore Solutions</a>
+              </Button>
+              <Button variant="outline" size="lg" asChild>
+                <a href="/blog">Read Our Blog</a>
+              </Button>
             </div>
           </div>
         </div>
-      </section>
+      </WavyBackground>
 
       {/* Our Story */}
       <section className="py-24 bg-muted/30">
-        <div className="container mx-auto px-4 max-w-6xl">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-8 text-center">
               Our Story
@@ -177,7 +170,7 @@ const About: React.FC = () => {
 
       {/* SolvePath Framework */}
       <section className="py-24 bg-background">
-        <div className="container mx-auto px-4 max-w-6xl">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
               How We Solve
@@ -213,7 +206,7 @@ const About: React.FC = () => {
 
       {/* Execution Model */}
       <section className="py-24 bg-muted/30">
-        <div className="container mx-auto px-4 max-w-6xl">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
               Perssonify Execution Model
@@ -276,7 +269,7 @@ const About: React.FC = () => {
 
       {/* Two Solution Families */}
       <section className="py-24 bg-background">
-        <div className="container mx-auto px-4 max-w-6xl">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
               Two Solution Families Under One Roof
@@ -335,7 +328,7 @@ const About: React.FC = () => {
 
       {/* What We Deliver */}
       <section className="py-24 bg-muted/30">
-        <div className="container mx-auto px-4 max-w-6xl">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
               What We Deliver
@@ -365,7 +358,7 @@ const About: React.FC = () => {
 
       {/* Our Values */}
       <section className="py-24 bg-background">
-        <div className="container mx-auto px-4 max-w-6xl">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
               How We Work
@@ -395,7 +388,7 @@ const About: React.FC = () => {
 
       {/* Meet the Team Section */}
       <section className="py-24 bg-background">
-        <div className="container mx-auto px-4 max-w-6xl">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
               Meet the Team
@@ -436,7 +429,7 @@ const About: React.FC = () => {
 
       {/* CTA Section - clean, centered, no colored box */}
       <section className="pt-24 pb-8 bg-background">
-        <div className="container mx-auto px-4 max-w-6xl">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
           <div className="text-center">
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
               Ready to Transform Your Business?
