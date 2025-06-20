@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { TrendingUp, Target, Users, Zap, ArrowRight, CheckCircle, Lightbulb, Search, Layers, Flag, Wrench, Cog, BarChart3, Eye, Repeat, Sparkles, Dribbble, Github, Linkedin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -112,17 +113,17 @@ const About: React.FC = () => {
   return (
     <div className="bg-background text-foreground">
       {/* Hero Section with Wavy Background */}
-      <WavyBackground className="py-8 md:py-16 mt-8 md:mt-16 bg-background">
+      <WavyBackground className="py-8 md:py-16 mt-8 md:mt-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
           <div className="text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-playfair text-foreground mb-4 lg:mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-playfair text-white mb-4 lg:mb-6">
               We bring{' '}
               <span className="text-primary">growth</span>{' '}
               and{' '}
               <span className="text-primary">scale</span>{' '}
               to life
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground mb-6 lg:mb-8 leading-relaxed max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl text-white/80 mb-6 lg:mb-8 leading-relaxed max-w-3xl mx-auto">
               Perssonify was built around one simple idea: the right solution at the right time can change everything. We make the right solutions happen right now.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

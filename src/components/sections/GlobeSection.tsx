@@ -1,7 +1,6 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Globe } from '../ui/globe';
 import { Button } from '../ui/button';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
@@ -54,7 +53,13 @@ const GlobeSection: React.FC = () => {
             viewport={{ once: true }}
             className="flex justify-center"
           >
-            <Globe />
+            <div className="w-full max-w-[500px] h-[500px] rounded-full bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/20 flex items-center justify-center relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-transparent animate-pulse"></div>
+              <div className="relative z-10 text-center">
+                <h3 className="text-2xl font-bold text-foreground mb-4">Worldwide Reach</h3>
+                <p className="text-muted-foreground">Connecting businesses across continents</p>
+              </div>
+            </div>
           </motion.div>
         </div>
       </div>
