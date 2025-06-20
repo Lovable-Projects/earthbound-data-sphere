@@ -3,7 +3,7 @@
 
 import createGlobe, { COBEOptions } from "cobe";
 import { useMotionValue, useSpring } from "motion/react";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -37,6 +37,25 @@ const GLOBE_CONFIG: COBEOptions = {
   ],
 };
 
+// Fallback component when WebGL is not available
+const GlobeFallback = () => {
+  return (
+    <div className="absolute inset-0 mx-auto aspect-[1/1] w-full max-w-[600px] flex items-center justify-center">
+      <div className="relative w-full h-full rounded-full bg-gradient-to-br from-primary/20 to-primary/10 border border-primary/20 flex items-center justify-center">
+        <div className="w-4/5 h-4/5 rounded-full border border-primary/30 animate-pulse">
+          <div className="w-full h-full rounded-full bg-gradient-to-br from-primary/10 to-transparent relative overflow-hidden">
+            <div className="absolute inset-0 bg-primary/5 animate-spin" style={{ animationDuration: '20s' }}></div>
+            {/* Marker dots */}
+            <div className="absolute top-1/4 left-1/3 w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+            <div className="absolute top-1/2 right-1/4 w-2 h-2 bg-primary rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+            <div className="absolute bottom-1/3 left-1/2 w-2 h-2 bg-primary rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export function Globe({
   className,
   config = GLOBE_CONFIG,
@@ -49,6 +68,7 @@ export function Globe({
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const pointerInteracting = useRef<number | null>(null);
   const pointerInteractionMovement = useRef(0);
+  const [hasError, setHasError] = useState(false);
 
   const r = useMotionValue(0);
   const rs = useSpring(r, {
@@ -73,6 +93,28 @@ export function Globe({
   };
 
   useEffect(() => {
+    // Check if canvas is available and WebGL is supported
+    if (!canvasRef.current) {
+      console.warn('Canvas ref is null, using fallback globe');
+      setHasError(true);
+      return;
+    }
+
+    // Check WebGL support
+    try {
+      const canvas = document.createElement('canvas');
+      const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+      if (!gl) {
+        console.warn('WebGL not supported, using fallback globe');
+        setHasError(true);
+        return;
+      }
+    } catch (e) {
+      console.warn('WebGL check failed, using fallback globe');
+      setHasError(true);
+      return;
+    }
+
     const onResize = () => {
       if (canvasRef.current) {
         width = canvasRef.current.offsetWidth;
@@ -82,24 +124,43 @@ export function Globe({
     window.addEventListener("resize", onResize);
     onResize();
 
-    const globe = createGlobe(canvasRef.current!, {
-      ...config,
-      width: width * 2,
-      height: width * 2,
-      onRender: (state) => {
-        if (!pointerInteracting.current) phi += 0.005;
-        state.phi = phi + rs.get();
-        state.width = width * 2;
-        state.height = width * 2;
-      },
-    });
+    let globe: any;
+    
+    try {
+      globe = createGlobe(canvasRef.current, {
+        ...config,
+        width: width * 2,
+        height: width * 2,
+        onRender: (state) => {
+          if (!pointerInteracting.current) phi += 0.005;
+          state.phi = phi + rs.get();
+          state.width = width * 2;
+          state.height = width * 2;
+        },
+      });
 
-    setTimeout(() => (canvasRef.current!.style.opacity = "1"), 0);
+      setTimeout(() => {
+        if (canvasRef.current) {
+          canvasRef.current.style.opacity = "1";
+        }
+      }, 0);
+    } catch (error) {
+      console.error('Failed to create globe:', error);
+      setHasError(true);
+      return;
+    }
+
     return () => {
-      globe.destroy();
+      if (globe) {
+        globe.destroy();
+      }
       window.removeEventListener("resize", onResize);
     };
   }, [rs, config]);
+
+  if (hasError) {
+    return <GlobeFallback />;
+  }
 
   return (
     <div
