@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, Sun, Moon, ChevronDown } from 'lucide-react';
@@ -5,8 +6,6 @@ import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
 import { motion, AnimatePresence } from 'framer-motion';
 import LogoTeal from '/Logo-Teal.png';
-import LogoWhite from '/Logo-White.png';
-import LogoBlack from '/Logo-Black.png';
 
 interface HeaderProps {
   isDarkMode: boolean;
@@ -81,21 +80,21 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border transition-all duration-300">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo - moved more to the right with ml-8 */}
+          {/* Logo - centered on mobile, left on desktop */}
           <Link 
             to="/" 
-            className="flex items-center space-x-2 ml-8"
+            className="flex items-center space-x-2 md:ml-0"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             <img
-              src={isDarkMode ? LogoWhite : LogoBlack}
+              src={LogoTeal}
               alt="Perssonify Logo"
               className="h-8 w-auto object-contain"
             />
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-6 lg:space-x-8" ref={dropdownRef}>
+          <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8" ref={dropdownRef}>
             {navigation.map((item) => (
               <div key={item.name} className="relative">
                 {item.hasDropdown ? (
@@ -103,7 +102,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
                     <button
                       onClick={() => handleDropdownToggle(item.name)}
                       onMouseEnter={() => setActiveDropdown(item.name)}
-                      className={`flex items-center space-x-1 text-sm font-medium transition-colors hover:text-primary ${
+                      className={`flex items-center space-x-1 text-sm font-medium transition-colors hover:text-primary whitespace-nowrap ${
                         isActive(item.href) ? 'text-primary' : 'text-foreground/80'
                       }`}
                     >
@@ -123,7 +122,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
                           animate={{ opacity: 1, y: 0, scale: 1 }}
                           exit={{ opacity: 0, y: -10, scale: 0.95 }}
                           transition={{ duration: 0.15, ease: 'easeOut' }}
-                          className="absolute top-full left-0 mt-2 w-56 bg-background/95 backdrop-blur-sm border border-border rounded-lg shadow-lg overflow-hidden"
+                          className="absolute top-full left-0 mt-2 w-56 bg-background/95 backdrop-blur-sm border border-border rounded-lg shadow-lg overflow-hidden z-50"
                           onMouseLeave={() => setActiveDropdown(null)}
                         >
                           <div className="py-2">
@@ -151,7 +150,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
                 ) : (
                   <Link
                     to={item.href}
-                    className={`text-sm font-medium transition-colors hover:text-primary ${
+                    className={`text-sm font-medium transition-colors hover:text-primary whitespace-nowrap ${
                       isActive(item.href) ? 'text-primary' : 'text-foreground/80'
                     }`}
                   >
@@ -163,7 +162,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
           </nav>
 
           {/* Right side buttons */}
-          <div className="hidden md:flex items-center space-x-3 lg:space-x-4">
+          <div className="flex items-center space-x-2 sm:space-x-3">
             <div className="flex items-center space-x-2">
               <Sun className="w-4 h-4 text-muted-foreground" />
               <Switch
@@ -174,28 +173,16 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
               />
               <Moon className="w-4 h-4 text-muted-foreground" />
             </div>
-            <Button asChild size="sm" className="h-8">
+            <Button asChild size="sm" className="h-8 hidden sm:inline-flex">
               <Link to="/contact">Get Started</Link>
             </Button>
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="md:hidden flex items-center space-x-1">
-            <div className="flex items-center space-x-2">
-              <Sun className="w-4 h-4 text-muted-foreground" />
-              <Switch
-                id="mobile-dark-mode"
-                checked={isDarkMode}
-                onCheckedChange={toggleDarkMode}
-                aria-label="Toggle dark mode"
-              />
-              <Moon className="w-4 h-4 text-muted-foreground" />
-            </div>
+            
+            {/* Mobile menu button */}
             <Button
               variant="ghost"
               size="sm"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="w-8 h-8 p-0"
+              className="w-8 h-8 p-0 lg:hidden"
             >
               {isMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
             </Button>
@@ -210,7 +197,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.2 }}
-              className="md:hidden border-t border-border bg-background"
+              className="lg:hidden border-t border-border bg-background"
             >
               <div className="py-2 space-y-1">
                 {navigation.map((item) => (

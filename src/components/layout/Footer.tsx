@@ -12,8 +12,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 import { Facebook, Instagram, Linkedin, Moon, Sun, Twitter } from "lucide-react"
-import LogoBlack from '/Logo-Black.png';
-import LogoWhite from '/Logo-White.png';
+import LogoTeal from '/Logo-Teal.png';
 
 interface FooterProps {
   isDarkMode: boolean;
@@ -89,7 +88,7 @@ const Footer: React.FC<FooterProps> = ({ isDarkMode, toggleDarkMode }) => {
               aria-label="Go to homepage"
             >
               <img
-                src={isDarkMode ? LogoWhite : LogoBlack}
+                src={LogoTeal}
                 alt="Perssonify Logo"
                 className="h-8 w-auto object-contain"
               />

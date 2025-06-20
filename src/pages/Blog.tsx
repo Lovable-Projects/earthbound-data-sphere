@@ -1,233 +1,347 @@
 
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { ArrowRight, Calendar, User, Tag, ArrowLeft, Clock } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
+import { ArrowLeft, Calendar, Clock, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { useQuery } from '@tanstack/react-query';
-import { supabase } from '@/integrations/supabase/client';
+import { Badge } from '@/components/ui/badge';
+import { motion } from 'framer-motion';
 
-interface BlogPost {
-  id: string;
-  title: string;
-  slug: string;
-  excerpt: string;
-  content: string;
-  featured_image: string;
-  author: string;
-  category: string;
-  tags: string[];
-  published: boolean;
-  featured: boolean;
-  read_time: number;
-  created_at: string;
-  updated_at: string;
-}
+const blogPosts = [
+  {
+    id: 1,
+    title: 'The Future of AI in Business: Trends and Predictions for 2024',
+    slug: 'future-ai-business-2024',
+    excerpt: 'Explore how artificial intelligence is reshaping business operations and what to expect in the coming year.',
+    content: `
+      <p>Artificial Intelligence continues to revolutionize how businesses operate, from customer service automation to predictive analytics. In 2024, we're seeing unprecedented adoption rates across industries.</p>
+      
+      <h2>Key AI Trends to Watch</h2>
+      <p>The integration of AI into everyday business processes is no longer a luxury—it's becoming a necessity for competitive advantage.</p>
+      
+      <h3>1. Generative AI in Content Creation</h3>
+      <p>Businesses are leveraging generative AI for content marketing, product descriptions, and customer communications.</p>
+      
+      <h3>2. Predictive Analytics for Decision Making</h3>
+      <p>AI-powered analytics are helping businesses make data-driven decisions faster than ever before.</p>
+      
+      <h3>3. Automated Customer Service</h3>
+      <p>Chatbots and virtual assistants are becoming more sophisticated, providing better customer experiences.</p>
+      
+      <h2>Implementation Strategies</h2>
+      <p>Success with AI requires a strategic approach, proper training, and gradual implementation.</p>
+    `,
+    author: 'Sarah Johnson',
+    date: '2024-01-15',
+    readTime: '8 min read',
+    image: '/images/TheFutureofAIinBusiness.png',
+    category: 'Technology'
+  },
+  {
+    id: 2,
+    title: 'Digital Marketing Strategies That Actually Work in 2024',
+    slug: 'digital-marketing-strategies-2024',
+    excerpt: 'Discover proven digital marketing tactics that are driving real results for businesses today.',
+    content: `
+      <p>Digital marketing has evolved significantly, and what worked yesterday might not work today. Here's what's actually driving results in 2024.</p>
+      
+      <h2>The New Digital Marketing Landscape</h2>
+      <p>Consumer behavior has shifted, and successful businesses are adapting their strategies accordingly.</p>
+      
+      <h3>1. Personalization at Scale</h3>
+      <p>Using data to create personalized experiences for thousands of customers simultaneously.</p>
+      
+      <h3>2. Video-First Content Strategy</h3>
+      <p>Short-form video content is dominating social media and driving engagement.</p>
+      
+      <h3>3. Community Building</h3>
+      <p>Creating genuine communities around your brand leads to higher customer lifetime value.</p>
+      
+      <h2>Measuring Success</h2>
+      <p>Focus on metrics that matter: customer acquisition cost, lifetime value, and retention rates.</p>
+    `,
+    author: 'Michael Chen',
+    date: '2024-01-10',
+    readTime: '6 min read',
+    image: '/images/DigitalMarketingStrategies.png',
+    category: 'Marketing'
+  },
+  {
+    id: 3,
+    title: 'Building Remote Teams That Actually Perform',
+    slug: 'building-remote-teams-performance',
+    excerpt: 'Learn the secrets to creating high-performing remote teams that deliver exceptional results.',
+    content: `
+      <p>Remote work is here to stay, but building truly effective remote teams requires intentional strategies and tools.</p>
+      
+      <h2>The Remote Work Revolution</h2>
+      <p>Companies that master remote team management gain access to global talent and increased productivity.</p>
+      
+      <h3>1. Clear Communication Protocols</h3>
+      <p>Establishing clear communication channels and expectations is crucial for remote team success.</p>
+      
+      <h3>2. Trust-Based Management</h3>
+      <p>Moving from time-based to results-based performance evaluation.</p>
+      
+      <h3>3. Virtual Team Building</h3>
+      <p>Creating meaningful connections between team members who may never meet in person.</p>
+      
+      <h2>Tools and Technologies</h2>
+      <p>The right tools can make or break remote team productivity and collaboration.</p>
+    `,
+    author: 'Emily Rodriguez',
+    date: '2024-01-05',
+    readTime: '7 min read',
+    image: '/images/RemoteTeam.png',
+    category: 'Management'
+  },
+  {
+    id: 4,
+    title: 'Data Analytics: Turning Numbers into Actionable Insights',
+    slug: 'data-analytics-actionable-insights',
+    excerpt: 'Transform your business data into strategic advantages with proven analytics methodologies.',
+    content: `
+      <p>Data is everywhere, but turning that data into actionable insights that drive business growth requires the right approach and tools.</p>
+      
+      <h2>The Data-Driven Business</h2>
+      <p>Companies that effectively use data analytics see 5-6% higher productivity and profitability.</p>
+      
+      <h3>1. Data Collection Strategy</h3>
+      <p>Identifying which data points actually matter for your business objectives.</p>
+      
+      <h3>2. Visualization and Reporting</h3>
+      <p>Creating dashboards that tell a story and drive action.</p>
+      
+      <h3>3. Predictive Modeling</h3>
+      <p>Using historical data to predict future trends and behaviors.</p>
+      
+      <h2>Implementation Best Practices</h2>
+      <p>Start small, focus on specific use cases, and gradually expand your analytics capabilities.</p>
+    `,
+    author: 'David Wilson',
+    date: '2023-12-28',
+    readTime: '9 min read',
+    image: '/images/DataAnalytics.png',
+    category: 'Analytics'
+  },
+  {
+    id: 5,
+    title: 'E-commerce Growth Hacks for Modern Businesses',
+    slug: 'ecommerce-growth-hacks',
+    excerpt: 'Proven strategies to accelerate your e-commerce growth and increase online revenue.',
+    content: `
+      <p>E-commerce continues to grow, but competition is fierce. These growth hacks can give you the edge you need.</p>
+      
+      <h2>The E-commerce Opportunity</h2>
+      <p>Online retail sales are projected to reach $8 trillion by 2026, creating massive opportunities.</p>
+      
+      <h3>1. Conversion Rate Optimization</h3>
+      <p>Small improvements in conversion rates can lead to significant revenue increases.</p>
+      
+      <h3>2. Customer Journey Mapping</h3>
+      <p>Understanding every touchpoint in your customer's journey to purchase.</p>
+      
+      <h3>3. Retention Marketing</h3>
+      <p>It's 5x cheaper to retain customers than acquire new ones.</p>
+      
+      <h2>Technology Stack</h2>
+      <p>Choosing the right tools and platforms can automate growth and improve efficiency.</p>
+    `,
+    author: 'Lisa Thompson',
+    date: '2023-12-20',
+    readTime: '5 min read',
+    image: '/images/E-commerce.png',
+    category: 'E-commerce'
+  },
+  {
+    id: 6,
+    title: 'Cybersecurity Essentials for Growing Businesses',
+    slug: 'cybersecurity-essentials-growing-businesses',
+    excerpt: 'Protect your business from cyber threats with these essential security measures and best practices.',
+    content: `
+      <p>As businesses grow and digitize, cybersecurity becomes increasingly critical. Here's how to protect your business.</p>
+      
+      <h2>The Cybersecurity Landscape</h2>
+      <p>Cyber attacks on small and medium businesses have increased by 300% in the past year.</p>
+      
+      <h3>1. Multi-Factor Authentication</h3>
+      <p>Adding extra layers of security to prevent unauthorized access.</p>
+      
+      <h3>2. Employee Training</h3>
+      <p>Your employees are your first line of defense against cyber threats.</p>
+      
+      <h3>3. Regular Security Audits</h3>
+      <p>Identifying vulnerabilities before attackers do.</p>
+      
+      <h2>Incident Response Planning</h2>
+      <p>Having a plan for when things go wrong can minimize damage and recovery time.</p>
+    `,
+    author: 'Robert Martinez',
+    date: '2023-12-15',
+    readTime: '6 min read',
+    image: '/images/Cyber.png',
+    category: 'Security'
+  }
+];
 
 const Blog: React.FC = () => {
   const { slug } = useParams();
-
-  // Fetch all blog posts
-  const { data: blogPosts = [], isLoading: isLoadingPosts } = useQuery({
-    queryKey: ['blog-posts'],
-    queryFn: async () => {
-      const { data, error } = await supabase
-        .from('blog_posts')
-        .select('*')
-        .eq('published', true)
-        .order('created_at', { ascending: false });
-      
-      if (error) throw error;
-      return data as BlogPost[];
-    },
-    enabled: !slug
-  });
-
-  // Fetch specific blog post if slug is provided
-  const { data: currentPost, isLoading: isLoadingPost } = useQuery({
-    queryKey: ['blog-post', slug],
-    queryFn: async () => {
-      if (!slug) return null;
-      const { data, error } = await supabase
-        .from('blog_posts')
-        .select('*')
-        .eq('slug', slug)
-        .eq('published', true)
-        .single();
-      
-      if (error) throw error;
-      return data as BlogPost;
-    },
-    enabled: !!slug
-  });
-
-  if (slug && isLoadingPost) {
-    return (
-      <div className="min-h-screen flex items-center justify-center pt-20">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
-          <p>Loading blog post...</p>
+  
+  // If slug is provided, show individual blog post
+  if (slug) {
+    const post = blogPosts.find(p => p.slug === slug);
+    
+    if (!post) {
+      return (
+        <div className="container mx-auto px-4 py-24">
+          <div className="text-center">
+            <h1 className="text-2xl font-bold mb-4">Blog post not found</h1>
+            <Link to="/blog">
+              <Button>Back to Blog</Button>
+            </Link>
+          </div>
         </div>
-      </div>
-    );
-  }
+      );
+    }
 
-  if (slug && !currentPost) {
     return (
-      <div className="min-h-screen flex items-center justify-center pt-20">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold mb-4">Blog post not found</h1>
-          <Link to="/blog">
-            <Button>Back to Blog</Button>
-          </Link>
-        </div>
-      </div>
-    );
-  }
-
-  return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 pt-20 pb-16">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {slug && currentPost ? (
-          // Blog Post Detail View
+      <>
+        <Helmet>
+          <title>{post.title} | Perssonify Blog</title>
+          <meta name="description" content={post.excerpt} />
+        </Helmet>
+        
+        <article className="container mx-auto px-4 py-24">
           <div className="max-w-4xl mx-auto">
-            <Link to="/blog" className="inline-flex items-center text-primary hover:text-primary/80 mb-8 transition-colors">
+            <Link to="/blog" className="inline-flex items-center text-primary hover:underline mb-8">
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back to Blog
             </Link>
             
-            <motion.article
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden"
-            >
-              {currentPost.featured_image && (
-                <div className="aspect-video w-full overflow-hidden">
-                  <img
-                    src={currentPost.featured_image}
-                    alt={currentPost.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              )}
+            <div className="mb-8">
+              <Badge className="mb-4">{post.category}</Badge>
+              <h1 className="text-4xl md:text-5xl font-bold mb-4">{post.title}</h1>
               
-              <div className="p-6 sm:p-8">
-                <div className="flex flex-wrap items-center gap-4 mb-6 text-sm text-gray-500 dark:text-gray-400">
-                  <div className="flex items-center gap-1">
-                    <Calendar className="w-4 h-4" />
-                    <span>{new Date(currentPost.created_at).toLocaleDateString()}</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <User className="w-4 h-4" />
-                    <span>{currentPost.author}</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <Clock className="w-4 h-4" />
-                    <span>{currentPost.read_time} min read</span>
-                  </div>
-                  <Badge variant="secondary">{currentPost.category}</Badge>
+              <div className="flex items-center space-x-6 text-muted-foreground mb-8">
+                <div className="flex items-center space-x-2">
+                  <User className="w-4 h-4" />
+                  <span>{post.author}</span>
                 </div>
-                
-                <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
-                  {currentPost.title}
-                </h1>
-                
-                <div className="flex flex-wrap gap-2 mb-8">
-                  {currentPost.tags?.map((tag) => (
-                    <Badge key={tag} variant="outline">{tag}</Badge>
-                  ))}
+                <div className="flex items-center space-x-2">
+                  <Calendar className="w-4 h-4" />
+                  <span>{new Date(post.date).toLocaleDateString()}</span>
                 </div>
-                
-                <div 
-                  className="prose prose-sm sm:prose prose-lg max-w-none dark:prose-invert prose-headings:text-gray-900 dark:prose-headings:text-white prose-p:text-gray-700 dark:prose-p:text-gray-300"
-                  dangerouslySetInnerHTML={{ __html: currentPost.content }}
-                />
+                <div className="flex items-center space-x-2">
+                  <Clock className="w-4 h-4" />
+                  <span>{post.readTime}</span>
+                </div>
               </div>
-            </motion.article>
+            </div>
+            
+            <img 
+              src={post.image} 
+              alt={post.title}
+              className="w-full h-64 md:h-96 object-cover rounded-lg mb-8"
+            />
+            
+            <div 
+              className="prose prose-lg max-w-none"
+              dangerouslySetInnerHTML={{ __html: post.content }}
+            />
           </div>
-        ) : (
-          // Blog List View
-          <>
+        </article>
+      </>
+    );
+  }
+
+  // Show blog listing
+  return (
+    <>
+      <Helmet>
+        <title>Blog | Perssonify - Growth & Strategic Solutions</title>
+        <meta name="description" content="Stay updated with the latest insights on business growth, digital marketing, and strategic solutions from Perssonify." />
+      </Helmet>
+      
+      <div className="bg-background">
+        {/* Hero Section */}
+        <section className="py-24 bg-gradient-to-br from-primary/10 to-background">
+          <div className="container mx-auto px-4">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="text-center mb-8 sm:mb-12"
+              transition={{ duration: 0.8 }}
+              className="text-center max-w-3xl mx-auto"
             >
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-                Our Blog
+              <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+                Latest Insights & <span className="text-primary">Strategies</span>
               </h1>
-              <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto px-4">
-                Stay updated with our latest insights, trends, and expert advice on business growth, technology, and digital transformation.
+              <p className="text-xl text-muted-foreground">
+                Stay ahead with expert insights on business growth, digital marketing, and strategic solutions.
               </p>
             </motion.div>
+          </div>
+        </section>
 
-            {isLoadingPosts ? (
-              <div className="text-center">
-                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
-                <p>Loading blog posts...</p>
-              </div>
-            ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-                {blogPosts.map((post, index) => (
-                  <motion.div
-                    key={post.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                  >
-                    <Link to={`/blog/${post.slug}`}>
-                      <Card className="h-full hover:shadow-xl transition-shadow duration-300 group cursor-pointer">
-                        {post.featured_image && (
-                          <div className="aspect-video overflow-hidden rounded-t-lg">
-                            <img
-                              src={post.featured_image}
-                              alt={post.title}
-                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                            />
-                          </div>
-                        )}
-                        <CardHeader className="p-4 sm:p-6">
-                          <div className="flex items-center justify-between mb-2">
-                            <Badge variant="secondary" className="text-xs">{post.category}</Badge>
-                            <span className="text-xs text-gray-500 dark:text-gray-400">{post.read_time} min read</span>
-                          </div>
-                          <CardTitle className="text-base sm:text-lg line-clamp-2 group-hover:text-primary transition-colors">
-                            {post.title}
-                          </CardTitle>
-                          <CardDescription className="text-sm line-clamp-3">
-                            {post.excerpt}
-                          </CardDescription>
-                        </CardHeader>
-                        <CardContent className="pt-0 p-4 sm:p-6">
-                          <div className="flex items-center justify-between mb-4 text-xs text-gray-500 dark:text-gray-400">
-                            <div className="flex items-center gap-1">
-                              <User className="w-3 h-3" />
-                              <span>{post.author}</span>
-                            </div>
-                            <div className="flex items-center gap-1">
-                              <Calendar className="w-3 h-3" />
-                              <span>{new Date(post.created_at).toLocaleDateString()}</span>
-                            </div>
-                          </div>
-                          <Button className="w-full group-hover:bg-primary/90 transition-colors text-sm">
-                            Read More
-                            <ArrowRight className="w-4 h-4 ml-2" />
-                          </Button>
-                        </CardContent>
-                      </Card>
-                    </Link>
-                  </motion.div>
-                ))}
-              </div>
-            )}
-          </>
-        )}
+        {/* Blog Posts Grid */}
+        <section className="py-24">
+          <div className="container mx-auto px-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {blogPosts.map((post, index) => (
+                <motion.div
+                  key={post.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <Card className="h-full hover:shadow-lg transition-shadow duration-300">
+                    <div className="aspect-video overflow-hidden rounded-t-lg">
+                      <img 
+                        src={post.image} 
+                        alt={post.title}
+                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                    <CardHeader>
+                      <div className="flex items-center justify-between mb-2">
+                        <Badge variant="secondary">{post.category}</Badge>
+                        <span className="text-sm text-muted-foreground">{post.readTime}</span>
+                      </div>
+                      <CardTitle className="text-xl hover:text-primary transition-colors">
+                        <Link to={`/blog/${post.slug}`}>
+                          {post.title}
+                        </Link>
+                      </CardTitle>
+                      <CardDescription className="line-clamp-3">
+                        {post.excerpt}
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center space-x-2 text-sm text-muted-foreground">
+                          <User className="w-4 h-4" />
+                          <span>{post.author}</span>
+                        </div>
+                        <div className="flex items-center space-x-2 text-sm text-muted-foreground">
+                          <Calendar className="w-4 h-4" />
+                          <span>{new Date(post.date).toLocaleDateString()}</span>
+                        </div>
+                      </div>
+                      <Link to={`/blog/${post.slug}`} className="mt-4 block">
+                        <Button variant="outline" className="w-full">
+                          Read More
+                        </Button>
+                      </Link>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
       </div>
-    </div>
+    </>
   );
 };
 

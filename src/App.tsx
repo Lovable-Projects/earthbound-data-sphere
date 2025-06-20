@@ -1,6 +1,7 @@
 
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
+import { useState, useEffect } from 'react';
 import Layout from '@/components/layout/Layout';
 import Index from '@/pages/Index';
 import About from '@/pages/About';
@@ -12,6 +13,7 @@ import NotFound from '@/pages/NotFound';
 import PrivacyPolicy from '@/pages/PrivacyPolicy';
 import TermsOfService from '@/pages/TermsOfService';
 import ScrollToTop from '@/components/ScrollToTop';
+import { Preloader } from '@/components/ui/preloader';
 
 // Growth Solutions Pages
 import DigitalMarketing from '@/pages/growth-solutions/DigitalMarketing';
@@ -28,6 +30,16 @@ import Analytics from '@/pages/strategic-solutions/Analytics';
 import ProcessOptimization from '@/pages/strategic-solutions/ProcessOptimization';
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  const handleLoadingComplete = () => {
+    setIsLoading(false);
+  };
+
+  if (isLoading) {
+    return <Preloader onLoadingComplete={handleLoadingComplete} />;
+  }
+
   return (
     <HelmetProvider>
       <BrowserRouter>
@@ -53,10 +65,10 @@ function App() {
             
             {/* Strategic Solutions Sub-pages */}
             <Route path="strategic-solutions/consulting" element={<BusinessConsulting />} />
-            <Route path="strategic-solutions/market-research" element={<MarketResearch />} />
-            <Route path="strategic-solutions/brand-strategy" element={<BrandStrategy />} />
+            <Route path="strategic-solutions/research" element={<MarketResearch />} />
+            <Route path="strategic-solutions/branding" element={<BrandStrategy />} />
             <Route path="strategic-solutions/analytics" element={<Analytics />} />
-            <Route path="strategic-solutions/process-optimization" element={<ProcessOptimization />} />
+            <Route path="strategic-solutions/optimization" element={<ProcessOptimization />} />
             
             <Route path="*" element={<NotFound />} />
           </Route>

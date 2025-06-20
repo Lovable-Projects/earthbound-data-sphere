@@ -4,12 +4,13 @@ import { Outlet, useLocation } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
 import Testimonials from '../sections/Testimonials';
+import GlobeSection from '../sections/GlobeSection';
 
 const Layout: React.FC = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const location = useLocation();
 
-  // Pages where we don't want to show testimonials
+  // Pages where we don't want to show testimonials and globe
   const excludeTestimonialsPages = ['/contact', '/blog', '/privacy-policy', '/terms-of-service'];
   const shouldShowTestimonials = !excludeTestimonialsPages.some(path => 
     location.pathname === path || location.pathname.startsWith('/blog/')
@@ -42,6 +43,7 @@ const Layout: React.FC = () => {
       <main className="page-content">
         <Outlet />
         {shouldShowTestimonials && <Testimonials />}
+        {shouldShowTestimonials && <GlobeSection />}
       </main>
       <Footer isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
     </div>
