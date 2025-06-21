@@ -5,57 +5,57 @@ import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
-  TrendingUp, 
-  Target, 
-  BarChart3, 
-  Zap, 
+  Search, 
   Globe, 
-  Eye,
+  BarChart3, 
+  Settings, 
+  FileText,
+  TrendingUp,
   ArrowLeft,
   ArrowRight 
 } from 'lucide-react';
 
-const PerformanceMarketing: React.FC = () => {
+const SEOWebsiteGrowth: React.FC = () => {
   const keyDeliverables = [
     {
-      icon: <Target className="w-6 h-6" />,
-      title: "Ad Strategy & Setup",
-      description: "Identifying high-intent audiences, keyword research, and targeting optimization."
+      icon: <Settings className="w-6 h-6" />,
+      title: "Comprehensive Website Audit",
+      description: "Fixing crawl errors, improving page speed, and resolving SEO issues"
+    },
+    {
+      icon: <Search className="w-6 h-6" />,
+      title: "Keyword Research & Mapping",
+      description: "Identifying high-opportunity keywords for maximum search visibility"
+    },
+    {
+      icon: <FileText className="w-6 h-6" />,
+      title: "On-Page Optimization",
+      description: "Content enhancements, meta descriptions, internal linking, and structured data implementation"
     },
     {
       icon: <Globe className="w-6 h-6" />,
-      title: "Cross-Platform Execution",
-      description: "Google Ads, Display Network, YouTube, Meta (Facebook/Instagram), LinkedIn, Content Recommendation Networks (Taboola, Outbrain, Revcontent), Alternative Platforms (Reddit Ads, Quora Ads, X Ads), Direct Media Buys on premium websites and industry-specific publications, and Performance Marketing Partnerships."
-    },
-    {
-      icon: <Eye className="w-6 h-6" />,
-      title: "Creative Development",
-      description: "High-converting ad creatives, including static, carousel, and video formats."
+      title: "Technical SEO Improvements",
+      description: "Site architecture, navigation, and schema markup for better indexing"
     },
     {
       icon: <TrendingUp className="w-6 h-6" />,
-      title: "Bid & Budget Optimization",
-      description: "Maximizing ROI through dynamic budget allocation and A/B testing."
-    },
-    {
-      icon: <Zap className="w-6 h-6" />,
-      title: "Landing Page Optimization",
-      description: "Custom landing pages built for high engagement and conversion rates."
+      title: "Programmatic SEO",
+      description: "Scalable content generation frameworks to target long-tail keywords and high-intent search queries at scale"
     },
     {
       icon: <BarChart3 className="w-6 h-6" />,
-      title: "Real-Time Analytics & Reporting",
-      description: "Continuous campaign monitoring and strategic adjustments."
+      title: "LLM Optimization & Performance Tracking",
+      description: "Structuring content for AI-powered search environments and monthly ranking reports with actionable insights"
     }
   ];
 
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
-        <title>Performance Marketing & Paid Media Management | Perssonify</title>
+        <title>Search Engine Optimization (SEO) & Website Growth | Perssonify</title>
         <meta 
           name="description" 
-          content="Drive customers, users & revenue with precision advertising and multi-platform reach. Expert performance marketing and paid media management." 
+          content="Turn search into a scalable growth channel. Expert SEO and website growth services for sustainable digital growth." 
         />
       </Helmet>
 
@@ -87,7 +87,7 @@ const PerformanceMarketing: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="text-4xl md:text-6xl font-bold mb-6 text-foreground"
           >
-            Performance Marketing & Paid Media Management
+            Search Engine Optimization (SEO) & Website Growth
           </motion.h1>
           
           <motion.h2 
@@ -96,7 +96,7 @@ const PerformanceMarketing: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-xl md:text-2xl text-muted-foreground mb-8 font-medium"
           >
-            Driving Customers, Users & Revenue with Precision Advertising and Multi-Platform Reach
+            Turning Search into a Scalable Growth Channel
           </motion.h2>
           
           <motion.p 
@@ -105,7 +105,7 @@ const PerformanceMarketing: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="text-lg text-muted-foreground leading-relaxed mb-8"
           >
-            Digital advertising should be an investment with a measurable return. Our performance-driven ad campaigns are structured to maximize conversions, optimize budgets, and generate high-value leads, customers, and users across multiple platforms.
+            SEO is the foundation of sustainable digital growth. We don't just optimize websites—we build search ecosystems that ensure long-term discoverability, credibility, and high-value organic traffic.
           </motion.p>
           
           <motion.div
@@ -115,7 +115,7 @@ const PerformanceMarketing: React.FC = () => {
           >
             <Button size="lg" className="text-lg px-8" asChild>
               <Link to="/contact">
-                Get Started Today
+                Start Growing
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Link>
             </Button>
@@ -182,7 +182,7 @@ const PerformanceMarketing: React.FC = () => {
             viewport={{ once: true }}
             className="text-3xl font-bold mb-8"
           >
-            Expected Outcome
+            Outcome
           </motion.h3>
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
@@ -192,7 +192,7 @@ const PerformanceMarketing: React.FC = () => {
             className="bg-primary/10 p-8 rounded-lg border border-primary/20"
           >
             <p className="text-lg text-foreground leading-relaxed">
-              <strong>Higher lead quality, increased customer acquisition, user growth, and a streamlined conversion journey.</strong>
+              <strong>Higher organic traffic, improved search rankings, and increased inbound lead generation.</strong>
             </p>
           </motion.div>
           
@@ -205,7 +205,7 @@ const PerformanceMarketing: React.FC = () => {
           >
             <Button size="lg" className="text-lg px-8" asChild>
               <Link to="/contact">
-                Ready to Drive Results?
+                Grow Your Search Presence
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Link>
             </Button>
@@ -216,4 +216,4 @@ const PerformanceMarketing: React.FC = () => {
   );
 };
 
-export default PerformanceMarketing;
+export default SEOWebsiteGrowth;

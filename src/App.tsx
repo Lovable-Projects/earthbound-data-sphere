@@ -1,4 +1,3 @@
-
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import Layout from '@/components/layout/Layout';
@@ -31,6 +30,15 @@ import ProcessOptimization from '@/pages/strategic-solutions/ProcessOptimization
 import PerformanceMarketing from '@/pages/growth-solutions/PerformanceMarketing';
 import SocialMediaMarketing from '@/pages/growth-solutions/SocialMediaMarketing';
 
+// New Growth Solutions Pages
+import CreativeSolutions from '@/pages/growth-solutions/CreativeSolutions';
+import ConversionOptimization from '@/pages/growth-solutions/ConversionOptimization';
+import SEOWebsiteGrowth from '@/pages/growth-solutions/SEOWebsiteGrowth';
+import WebsiteSolutions from '@/pages/growth-solutions/WebsiteSolutions';
+
+// New Strategic Solutions Pages  
+import ProcessAutomation from '@/pages/strategic-solutions/ProcessAutomation';
+
 function App() {
   return (
     <HelmetProvider>
@@ -56,6 +64,10 @@ function App() {
             <Route path="growth-solutions/email" element={<EmailMarketing />} />
             <Route path="growth-solutions/performance-marketing" element={<PerformanceMarketing />} />
             <Route path="growth-solutions/social-media-marketing" element={<SocialMediaMarketing />} />
+            <Route path="growth-solutions/creative-solutions" element={<CreativeSolutions />} />
+            <Route path="growth-solutions/conversion-optimization" element={<ConversionOptimization />} />
+            <Route path="growth-solutions/seo-website-growth" element={<SEOWebsiteGrowth />} />
+            <Route path="growth-solutions/website-solutions" element={<WebsiteSolutions />} />
             
             {/* Strategic Solutions Sub-pages */}
             <Route path="strategic-solutions/consulting" element={<BusinessConsulting />} />
@@ -63,6 +75,7 @@ function App() {
             <Route path="strategic-solutions/branding" element={<BrandStrategy />} />
             <Route path="strategic-solutions/analytics" element={<Analytics />} />
             <Route path="strategic-solutions/optimization" element={<ProcessOptimization />} />
+            <Route path="strategic-solutions/process-automation" element={<ProcessAutomization />} />
             
             <Route path="*" element={<NotFound />} />
           </Route>

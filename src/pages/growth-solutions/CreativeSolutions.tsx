@@ -5,57 +5,51 @@ import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
-  TrendingUp, 
-  Target, 
-  BarChart3, 
-  Zap, 
-  Globe, 
-  Eye,
+  Palette, 
+  Camera, 
+  Video, 
+  FileImage, 
+  Presentation,
   ArrowLeft,
   ArrowRight 
 } from 'lucide-react';
 
-const PerformanceMarketing: React.FC = () => {
+const CreativeSolutions: React.FC = () => {
   const keyDeliverables = [
     {
-      icon: <Target className="w-6 h-6" />,
-      title: "Ad Strategy & Setup",
-      description: "Identifying high-intent audiences, keyword research, and targeting optimization."
+      icon: <FileImage className="w-6 h-6" />,
+      title: "Social Media Graphics",
+      description: "Static images, GIFs, carousel ads, and post templates for brand consistency"
     },
     {
-      icon: <Globe className="w-6 h-6" />,
-      title: "Cross-Platform Execution",
-      description: "Google Ads, Display Network, YouTube, Meta (Facebook/Instagram), LinkedIn, Content Recommendation Networks (Taboola, Outbrain, Revcontent), Alternative Platforms (Reddit Ads, Quora Ads, X Ads), Direct Media Buys on premium websites and industry-specific publications, and Performance Marketing Partnerships."
+      icon: <Palette className="w-6 h-6" />,
+      title: "Ad Creatives",
+      description: "High-performance static and motion graphics for paid media campaigns"
     },
     {
-      icon: <Eye className="w-6 h-6" />,
-      title: "Creative Development",
-      description: "High-converting ad creatives, including static, carousel, and video formats."
+      icon: <Video className="w-6 h-6" />,
+      title: "Video Content",
+      description: "Short-form promotional videos, explainer videos, and branded reels"
     },
     {
-      icon: <TrendingUp className="w-6 h-6" />,
-      title: "Bid & Budget Optimization",
-      description: "Maximizing ROI through dynamic budget allocation and A/B testing."
+      icon: <Camera className="w-6 h-6" />,
+      title: "Landing Page & Email Designs",
+      description: "Visually optimized pages and email templates that drive action"
     },
     {
-      icon: <Zap className="w-6 h-6" />,
-      title: "Landing Page Optimization",
-      description: "Custom landing pages built for high engagement and conversion rates."
-    },
-    {
-      icon: <BarChart3 className="w-6 h-6" />,
-      title: "Real-Time Analytics & Reporting",
-      description: "Continuous campaign monitoring and strategic adjustments."
+      icon: <Presentation className="w-6 h-6" />,
+      title: "Custom Branding Assets",
+      description: "Business presentations, marketing brochures, and sales enablement materials"
     }
   ];
 
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
-        <title>Performance Marketing & Paid Media Management | Perssonify</title>
+        <title>Creative Solutions | Perssonify</title>
         <meta 
           name="description" 
-          content="Drive customers, users & revenue with precision advertising and multi-platform reach. Expert performance marketing and paid media management." 
+          content="Visual storytelling that captivates & converts. Creative solutions for social media, ads, videos, and branding assets." 
         />
       </Helmet>
 
@@ -87,7 +81,7 @@ const PerformanceMarketing: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="text-4xl md:text-6xl font-bold mb-6 text-foreground"
           >
-            Performance Marketing & Paid Media Management
+            Creative Solutions
           </motion.h1>
           
           <motion.h2 
@@ -96,7 +90,7 @@ const PerformanceMarketing: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-xl md:text-2xl text-muted-foreground mb-8 font-medium"
           >
-            Driving Customers, Users & Revenue with Precision Advertising and Multi-Platform Reach
+            Visual Storytelling that Captivates & Converts
           </motion.h2>
           
           <motion.p 
@@ -105,7 +99,7 @@ const PerformanceMarketing: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="text-lg text-muted-foreground leading-relaxed mb-8"
           >
-            Digital advertising should be an investment with a measurable return. Our performance-driven ad campaigns are structured to maximize conversions, optimize budgets, and generate high-value leads, customers, and users across multiple platforms.
+            Creativity is the cornerstone of effective communication. From engaging social media visuals to high-impact marketing collateral, Perssonify's creative solutions ensure your brand stands out in a crowded digital landscape. Our approach blends strategic messaging with compelling design to deliver assets that drive engagement, reinforce brand identity, and accelerate conversions.
           </motion.p>
           
           <motion.div
@@ -115,7 +109,7 @@ const PerformanceMarketing: React.FC = () => {
           >
             <Button size="lg" className="text-lg px-8" asChild>
               <Link to="/contact">
-                Get Started Today
+                Start Creating
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Link>
             </Button>
@@ -182,7 +176,7 @@ const PerformanceMarketing: React.FC = () => {
             viewport={{ once: true }}
             className="text-3xl font-bold mb-8"
           >
-            Expected Outcome
+            Outcome
           </motion.h3>
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
@@ -192,7 +186,7 @@ const PerformanceMarketing: React.FC = () => {
             className="bg-primary/10 p-8 rounded-lg border border-primary/20"
           >
             <p className="text-lg text-foreground leading-relaxed">
-              <strong>Higher lead quality, increased customer acquisition, user growth, and a streamlined conversion journey.</strong>
+              <strong>Stronger brand recall, higher engagement rates, and more effective digital storytelling.</strong>
             </p>
           </motion.div>
           
@@ -205,7 +199,7 @@ const PerformanceMarketing: React.FC = () => {
           >
             <Button size="lg" className="text-lg px-8" asChild>
               <Link to="/contact">
-                Ready to Drive Results?
+                Ready to Create Impact?
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Link>
             </Button>
@@ -216,4 +210,4 @@ const PerformanceMarketing: React.FC = () => {
   );
 };
 
-export default PerformanceMarketing;
+export default CreativeSolutions;

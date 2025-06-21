@@ -147,42 +147,75 @@ export default function TimelineSection() {
                   </Link>
                 </Button>
 
+                <Button 
+                  variant="outline" 
+                  className="flex items-start gap-3 p-6 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors"
+                  asChild
+                >
+                  <Link to="/growth-solutions/email">
+                    <Mail className="w-5 h-5 mt-1 flex-shrink-0" />
+                    <div>
+                      <h5 className="font-semibold">Email Marketing & Marketing Automation</h5>
+                      <p className="text-sm opacity-80">Automate nurture, drive loyalty.</p>
+                    </div>
+                  </Link>
+                </Button>
                 
-                <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
-                  <Mail className="w-5 h-5 mt-1 text-primary flex-shrink-0" />
-                  <div>
-                    <h5 className="font-semibold text-foreground">Email Marketing & Marketing Automation</h5>
-                    <p className="text-sm text-muted-foreground">Automate nurture, drive loyalty.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
-                  <Palette className="w-5 h-5 mt-1 text-primary flex-shrink-0" />
-                  <div>
-                    <h5 className="font-semibold text-foreground">Creative Solutions</h5>
-                    <p className="text-sm text-muted-foreground">Visuals that get results.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
-                  <TrendingUp className="w-5 h-5 mt-1 text-primary flex-shrink-0" />
-                  <div>
-                    <h5 className="font-semibold text-foreground">Conversion Rate Optimization (CRO)</h5>
-                    <p className="text-sm text-muted-foreground">Test. Refine. Convert more.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
-                  <Search className="w-5 h-5 mt-1 text-primary flex-shrink-0" />
-                  <div>
-                    <h5 className="font-semibold text-foreground">Search Engine Optimization (SEO) & Website Growth</h5>
-                    <p className="text-sm text-muted-foreground">Rank higher. Grow faster.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
-                  <Globe className="w-5 h-5 mt-1 text-primary flex-shrink-0" />
-                  <div>
-                    <h5 className="font-semibold text-foreground">Website Solutions</h5>
-                    <p className="text-sm text-muted-foreground">Seamless, scalable, conversion-ready.</p>
-                  </div>
-                </div>
+                <Button 
+                  variant="outline" 
+                  className="flex items-start gap-3 p-6 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors"
+                  asChild
+                >
+                  <Link to="/growth-solutions/creative-solutions">
+                    <Palette className="w-5 h-5 mt-1 flex-shrink-0" />
+                    <div>
+                      <h5 className="font-semibold">Creative Solutions</h5>
+                      <p className="text-sm opacity-80">Visuals that get results.</p>
+                    </div>
+                  </Link>
+                </Button>
+                
+                <Button 
+                  variant="outline" 
+                  className="flex items-start gap-3 p-6 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors"
+                  asChild
+                >
+                  <Link to="/growth-solutions/conversion-optimization">
+                    <TrendingUp className="w-5 h-5 mt-1 flex-shrink-0" />
+                    <div>
+                      <h5 className="font-semibold">Conversion Rate Optimization (CRO)</h5>
+                      <p className="text-sm opacity-80">Test. Refine. Convert more.</p>
+                    </div>
+                  </Link>
+                </Button>
+                
+                <Button 
+                  variant="outline" 
+                  className="flex items-start gap-3 p-6 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors"
+                  asChild
+                >
+                  <Link to="/growth-solutions/seo-website-growth">
+                    <Search className="w-5 h-5 mt-1 flex-shrink-0" />
+                    <div>
+                      <h5 className="font-semibold">Search Engine Optimization (SEO) & Website Growth</h5>
+                      <p className="text-sm opacity-80">Rank higher. Grow faster.</p>
+                    </div>
+                  </Link>
+                </Button>
+                
+                <Button 
+                  variant="outline" 
+                  className="flex items-start gap-3 p-6 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors"
+                  asChild
+                >
+                  <Link to="/growth-solutions/website-solutions">
+                    <Globe className="w-5 h-5 mt-1 flex-shrink-0" />
+                    <div>
+                      <h5 className="font-semibold">Website Solutions</h5>
+                      <p className="text-sm opacity-80">Seamless, scalable, conversion-ready.</p>
+                    </div>
+                  </Link>
+                </Button>
               </div>
 
               
@@ -260,34 +293,61 @@ export default function TimelineSection() {
 
               <h4 className="text-lg sm:text-xl font-semibold mb-4">Core Strategic Solutions</h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-6">
-                <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
-                  <Cog className="w-5 h-5 mt-1 text-primary flex-shrink-0" />
-                  <div>
-                    <h5 className="font-semibold text-foreground">Process & Workflow Automation</h5>
-                    <p className="text-sm text-muted-foreground">Automate execution. Eliminate friction.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
-                  <Database className="w-5 h-5 mt-1 text-primary flex-shrink-0" />
-                  <div>
-                    <h5 className="font-semibold text-foreground">Digital Systems Enablement</h5>
-                    <p className="text-sm text-muted-foreground">Optimize platforms. Empower teams.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
-                  <Wrench className="w-5 h-5 mt-1 text-primary flex-shrink-0" />
-                  <div>
-                    <h5 className="font-semibold text-foreground">Custom Solution Engineering</h5>
-                    <p className="text-sm text-muted-foreground">Solve complex. Deliver fast.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
-                  <Briefcase className="w-5 h-5 mt-1 text-primary flex-shrink-0" />
-                  <div>
-                    <h5 className="font-semibold text-foreground">Enterprise Evolution & Strategic Transformation</h5>
-                    <p className="text-sm text-muted-foreground">Reshape. Scale. Future-proof.</p>
-                  </div>
-                </div>
+                <Button 
+                  variant="outline" 
+                  className="flex items-start gap-3 p-6 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors"
+                  asChild
+                >
+                  <Link to="/strategic-solutions/process-automation">
+                    <Cog className="w-5 h-5 mt-1 flex-shrink-0" />
+                    <div>
+                      <h5 className="font-semibold">Process & Workflow Automation</h5>
+                      <p className="text-sm opacity-80">Automate execution. Eliminate friction.</p>
+                    </div>
+                  </Link>
+                </Button>
+                
+                <Button 
+                  variant="outline" 
+                  className="flex items-start gap-3 p-6 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors"
+                  asChild
+                >
+                  <Link to="/strategic-solutions/digital-systems-enablement">
+                    <Database className="w-5 h-5 mt-1 flex-shrink-0" />
+                    <div>
+                      <h5 className="font-semibold">Digital Systems Enablement</h5>
+                      <p className="text-sm opacity-80">Optimize platforms. Empower teams.</p>
+                    </div>
+                  </Link>
+                </Button>
+                
+                <Button 
+                  variant="outline" 
+                  className="flex items-start gap-3 p-6 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors"
+                  asChild
+                >
+                  <Link to="/strategic-solutions/custom-solution-engineering">
+                    <Wrench className="w-5 h-5 mt-1 flex-shrink-0" />
+                    <div>
+                      <h5 className="font-semibold">Custom Solution Engineering</h5>
+                      <p className="text-sm opacity-80">Solve complex. Deliver fast.</p>
+                    </div>
+                  </Link>
+                </Button>
+                
+                <Button 
+                  variant="outline" 
+                  className="flex items-start gap-3 p-6 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors"
+                  asChild
+                >
+                  <Link to="/strategic-solutions/enterprise-evolution-strategic-transformation">
+                    <Briefcase className="w-5 h-5 mt-1 flex-shrink-0" />
+                    <div>
+                      <h5 className="font-semibold">Enterprise Evolution & Strategic Transformation</h5>
+                      <p className="text-sm opacity-80">Reshape. Scale. Future-proof.</p>
+                    </div>
+                  </Link>
+                </Button>
               </div>
 
               <h4 className="text-lg sm:text-xl font-semibold mb-4">Solutions By Function</h4>
