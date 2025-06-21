@@ -47,6 +47,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
       ]
     },
     { name: 'About', href: '/about' },
+    { name: 'Insights', href: '/insights' },
     { name: 'Blog', href: '/blog' },
     { name: 'Contact', href: '/contact' },
   ];
@@ -164,14 +165,26 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
           {/* Right side buttons */}
           <div className="flex items-center space-x-2 sm:space-x-3">
             <div className="flex items-center space-x-2">
-              <Sun className="w-4 h-4 text-muted-foreground" />
+              <button 
+                onClick={toggleDarkMode}
+                className="p-1 hover:bg-muted rounded transition-colors"
+                aria-label="Switch to light mode"
+              >
+                <Sun className="w-4 h-4 text-muted-foreground hover:text-foreground transition-colors" />
+              </button>
               <Switch
                 id="desktop-dark-mode"
                 checked={isDarkMode}
                 onCheckedChange={toggleDarkMode}
                 aria-label="Toggle dark mode"
               />
-              <Moon className="w-4 h-4 text-muted-foreground" />
+              <button 
+                onClick={toggleDarkMode}
+                className="p-1 hover:bg-muted rounded transition-colors"
+                aria-label="Switch to dark mode"
+              >
+                <Moon className="w-4 h-4 text-muted-foreground hover:text-foreground transition-colors" />
+              </button>
             </div>
             <Button asChild size="sm" className="h-8 hidden sm:inline-flex">
               <Link to="/contact">Get Started</Link>

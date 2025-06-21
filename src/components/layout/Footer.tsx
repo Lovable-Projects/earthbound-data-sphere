@@ -1,3 +1,4 @@
+
 import * as React from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { Button } from "@/components/ui/button"
@@ -48,6 +49,7 @@ const Footer: React.FC<FooterProps> = ({ isDarkMode, toggleDarkMode }) => {
   const navigation = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
+    { name: 'Insights', href: '/insights' },
     { name: 'Blog', href: '/blog' },
     { name: 'Contact', href: '/contact' },
   ];
@@ -209,14 +211,26 @@ const Footer: React.FC<FooterProps> = ({ isDarkMode, toggleDarkMode }) => {
               ))}
             </div>
             <div className="flex items-center space-x-2">
-              <Sun className="h-4 w-4 text-muted-foreground" />
+              <button 
+                onClick={toggleDarkMode}
+                className="p-1 hover:bg-muted rounded transition-colors"
+                aria-label="Switch to light mode"
+              >
+                <Sun className="h-4 w-4 text-muted-foreground hover:text-foreground transition-colors" />
+              </button>
               <Switch
                 id="footer-dark-mode"
                 checked={isDarkMode}
                 onCheckedChange={toggleDarkMode}
                 aria-label="Toggle dark mode"
               />
-              <Moon className="h-4 w-4 text-muted-foreground" />
+              <button 
+                onClick={toggleDarkMode}
+                className="p-1 hover:bg-muted rounded transition-colors"
+                aria-label="Switch to dark mode"
+              >
+                <Moon className="h-4 w-4 text-muted-foreground hover:text-foreground transition-colors" />
+              </button>
               <Label htmlFor="footer-dark-mode" className="sr-only">
                 Toggle dark mode
               </Label>

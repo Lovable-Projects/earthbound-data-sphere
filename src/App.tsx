@@ -6,6 +6,7 @@ import Index from '@/pages/Index';
 import About from '@/pages/About';
 import Blog from '@/pages/Blog';
 import Contact from '@/pages/Contact';
+import Insights from '@/pages/Insights';
 import GrowthSolutions from '@/pages/GrowthSolutions';
 import StrategicSolutions from '@/pages/StrategicSolutions';
 import NotFound from '@/pages/NotFound';
@@ -52,6 +53,7 @@ function App() {
             <Route path="blog" element={<Blog />} />
             <Route path="blog/:slug" element={<Blog />} />
             <Route path="contact" element={<Contact />} />
+            <Route path="insights" element={<Insights />} />
             <Route path="growth-solutions" element={<GrowthSolutions />} />
             <Route path="strategic-solutions" element={<StrategicSolutions />} />
             <Route path="privacy-policy" element={<PrivacyPolicy />} />
