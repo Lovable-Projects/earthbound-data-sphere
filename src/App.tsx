@@ -1,3 +1,4 @@
+
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import Layout from '@/components/layout/Layout';
@@ -75,7 +76,7 @@ function App() {
             <Route path="strategic-solutions/branding" element={<BrandStrategy />} />
             <Route path="strategic-solutions/analytics" element={<Analytics />} />
             <Route path="strategic-solutions/optimization" element={<ProcessOptimization />} />
-            <Route path="strategic-solutions/process-automation" element={<ProcessAutomization />} />
+            <Route path="strategic-solutions/process-automation" element={<ProcessAutomation />} />
             
             <Route path="*" element={<NotFound />} />
           </Route>
