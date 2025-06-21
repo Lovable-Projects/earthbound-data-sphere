@@ -1,7 +1,6 @@
 
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
-import { useState, useEffect } from 'react';
 import Layout from '@/components/layout/Layout';
 import Index from '@/pages/Index';
 import About from '@/pages/About';
@@ -13,7 +12,6 @@ import NotFound from '@/pages/NotFound';
 import PrivacyPolicy from '@/pages/PrivacyPolicy';
 import TermsOfService from '@/pages/TermsOfService';
 import ScrollToTop from '@/components/ScrollToTop';
-import { Preloader } from '@/components/ui/preloader';
 
 // Growth Solutions Pages
 import DigitalMarketing from '@/pages/growth-solutions/DigitalMarketing';
@@ -29,17 +27,11 @@ import BrandStrategy from '@/pages/strategic-solutions/BrandStrategy';
 import Analytics from '@/pages/strategic-solutions/Analytics';
 import ProcessOptimization from '@/pages/strategic-solutions/ProcessOptimization';
 
+// New Performance Marketing and Social Media pages
+import PerformanceMarketing from '@/pages/growth-solutions/PerformanceMarketing';
+import SocialMediaMarketing from '@/pages/growth-solutions/SocialMediaMarketing';
+
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
-
-  const handleLoadingComplete = () => {
-    setIsLoading(false);
-  };
-
-  if (isLoading) {
-    return <Preloader onLoadingComplete={handleLoadingComplete} />;
-  }
-
   return (
     <HelmetProvider>
       <BrowserRouter>
@@ -62,6 +54,8 @@ function App() {
             <Route path="growth-solutions/social-media" element={<SocialMedia />} />
             <Route path="growth-solutions/content" element={<ContentMarketing />} />
             <Route path="growth-solutions/email" element={<EmailMarketing />} />
+            <Route path="growth-solutions/performance-marketing" element={<PerformanceMarketing />} />
+            <Route path="growth-solutions/social-media-marketing" element={<SocialMediaMarketing />} />
             
             {/* Strategic Solutions Sub-pages */}
             <Route path="strategic-solutions/consulting" element={<BusinessConsulting />} />
