@@ -3,7 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { twMerge } from "tailwind-merge";
-import { HiDocumentText } from "lucide-react";
+import { FileText } from "lucide-react";
 import { Radar } from "./radar";
 
 export const IconContainer = ({ icon, text, delay }: any) => {
@@ -26,7 +26,7 @@ export const IconContainer = ({ icon, text, delay }: any) => {
       )}
     >
       <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-slate-700 bg-slate-800 shadow-inner">
-        {icon || <HiDocumentText className="h-8 w-8 text-slate-600" />}
+        {icon || <FileText className="h-8 w-8 text-slate-600" />}
       </div>
       <div className="hidden rounded-md px-2 py-1 md:block">
         <div className="text-center text-xs font-bold text-slate-400">
@@ -46,12 +46,12 @@ export const RadarPreview = () => {
           <IconContainer
             delay={0.4}
             text="Strategic Solutions"
-            icon={<HiDocumentText className="h-8 w-8 text-slate-600" />}
+            icon={<FileText className="h-8 w-8 text-slate-600" />}
           />
           <IconContainer
             text="Execution Model"
             delay={0.3}
-            icon={<HiDocumentText className="h-8 w-8 text-slate-600" />}
+            icon={<FileText className="h-8 w-8 text-slate-600" />}
           />
         </div>
       </div>
@@ -60,11 +60,11 @@ export const RadarPreview = () => {
           <IconContainer
             text="SolvePath Framework"
             delay={0.5}
-            icon={<HiDocumentText className="h-8 w-8 text-slate-600" />}
+            icon={<FileText className="h-8 w-8 text-slate-600" />}
           />
           <IconContainer
             text="Strategic Transformation"
-            icon={<HiDocumentText className="h-8 w-8 text-slate-600" />}
+            icon={<FileText className="h-8 w-8 text-slate-600" />}
             delay={0.8}
           />
         </div>
@@ -74,12 +74,12 @@ export const RadarPreview = () => {
           <IconContainer
             delay={0.6}
             text="Performance Marketing"
-            icon={<HiDocumentText className="h-8 w-8 text-slate-600" />}
+            icon={<FileText className="h-8 w-8 text-slate-600" />}
           />
           <IconContainer
             delay={0.7}
             text="Process Automation"
-            icon={<HiDocumentText className="h-8 w-8 text-slate-600" />}
+            icon={<FileText className="h-8 w-8 text-slate-600" />}
           />
         </div>
       </div>
