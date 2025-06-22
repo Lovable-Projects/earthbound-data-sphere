@@ -5,7 +5,7 @@ import { TrendingUp, Users, Mail, Palette, Target, Search, Globe, ArrowRight, Za
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { WavyBackground } from '@/components/ui/wavy-background';
-import ContactForm from '@/components/forms/ContactForm';
+import StartGrowingForm from '@/components/forms/StartGrowingForm';
 import { motion } from 'framer-motion';
 
 const GrowthSolutions: React.FC = () => {
@@ -82,7 +82,7 @@ const GrowthSolutions: React.FC = () => {
               amplifies brand value, and accelerates customer acquisition.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <ContactForm 
+              <StartGrowingForm 
                 title="Ready to Accelerate Growth?"
                 description="Tell us about your growth goals and we'll create a custom strategy for your business."
                 buttonText="Start Growing Today"
@@ -191,7 +191,7 @@ const GrowthSolutions: React.FC = () => {
                     Schedule a consultation to discuss your specific growth goals and challenges. 
                     We'll create a custom strategy that fits your business perfectly.
                   </p>
-                  <ContactForm 
+                  <StartGrowingForm 
                     title="Let's Discuss Your Growth Goals"
                     description="Tell us about your business and growth objectives. We'll create a custom strategy designed specifically for your needs."
                     buttonText="Schedule Consultation"
@@ -224,7 +224,7 @@ const GrowthSolutions: React.FC = () => {
               Let's build a growth strategy that delivers measurable results and scales with your ambitions.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <ContactForm 
+              <StartGrowingForm 
                 title="Let's Build Your Growth Strategy"
                 description="Share your growth goals with us and we'll create a comprehensive strategy tailored to your business needs."
                 buttonText="Start Growing Today"

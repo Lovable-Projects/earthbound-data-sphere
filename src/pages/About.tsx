@@ -1,11 +1,10 @@
-
 import React from 'react';
 import { TrendingUp, Target, Users, Zap, ArrowRight, CheckCircle, Lightbulb, Search, Layers, Flag, Wrench, Cog, BarChart3, Eye, Repeat, Sparkles, Dribbble, Github, Linkedin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { WavyBackground } from '@/components/ui/wavy-background';
-import { Radar } from '@/components/ui/radar';
+import { RadarPreview } from '@/components/ui/radar-preview';
 
 const About: React.FC = () => {
   const values = [
@@ -223,7 +222,7 @@ const About: React.FC = () => {
           <div className="max-w-4xl mx-auto mb-12">
             <Card className="p-8 bg-gradient-to-br from-primary/10 to-primary/5 border-0 custom-shadow">
               <div className="flex items-center justify-center mb-8">
-                <Radar className="h-80 w-80" />
+                <RadarPreview />
               </div>
               <div className="flex flex-wrap justify-center items-center gap-4">
                 {executionSteps.map((step, index) => (

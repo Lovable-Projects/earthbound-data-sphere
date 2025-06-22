@@ -5,7 +5,7 @@ import { Target, Cog, Settings, Database, Shield, ArrowRight, Zap, CheckCircle }
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { WavyBackground } from '@/components/ui/wavy-background';
-import ContactForm from '@/components/forms/ContactForm';
+import StartGrowingForm from '@/components/forms/StartGrowingForm';
 import { motion } from 'framer-motion';
 
 const StrategicSolutions: React.FC = () => {
@@ -76,7 +76,7 @@ const StrategicSolutions: React.FC = () => {
               and ensures your operations scale without chaos.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <ContactForm 
+              <StartGrowingForm 
                 title="Ready to Scale Operations?"
                 description="Tell us about your operational challenges and we'll design solutions that drive efficiency and growth."
                 buttonText="Start Growing Today"
@@ -185,7 +185,7 @@ const StrategicSolutions: React.FC = () => {
                     Schedule a consultation to discuss your operational challenges and opportunities. 
                     We'll design solutions that fit your business perfectly.
                   </p>
-                  <ContactForm 
+                  <StartGrowingForm 
                     title="Let's Optimize Your Operations"
                     description="Tell us about your operational challenges and goals. We'll design strategic solutions tailored to your business needs."
                     buttonText="Schedule Consultation"
@@ -218,7 +218,7 @@ const StrategicSolutions: React.FC = () => {
               Let's build operational systems that scale with your ambitions and adapt to changing market conditions.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <ContactForm 
+              <StartGrowingForm 
                 title="Let's Build Your Strategic Solutions"
                 description="Share your operational challenges with us and we'll create comprehensive solutions designed for your business."
                 buttonText="Start Growing Today"

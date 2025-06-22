@@ -20,7 +20,7 @@ export const Radar = ({ className }: any) => {
         className="absolute right-1/2 top-1/2 z-40 flex h-[5px] overflow-hidden animate-radar-spin w-[400px] items-end justify-center bg-transparent"
       >
         {/* Radar line that rotates */}
-        <div className="relative z-40 h-[1px] w-full bg-gradient-to-r from-transparent via-primary to-transparent" />
+        <div className="relative z-40 h-[1px] w-full bg-gradient-to-r from-transparent via-sky-600 to-transparent" />
       </div>
       {/* concentric circles */}
       {circles.map((circle, idx) => (
@@ -54,7 +54,7 @@ export const Circle = ({ className, children, idx, ...rest }: any) => {
         duration: 0.2,
       }}
       className={twMerge(
-        "absolute inset-0 left-1/2 top-1/2 h-10 w-10 -translate-x-1/2 -translate-y-1/2 transform rounded-full border border-neutral-200 dark:border-neutral-700",
+        "absolute inset-0 left-1/2 top-1/2 h-10 w-10 -translate-x-1/2 -translate-y-1/2 transform rounded-full border border-neutral-200",
         className
       )}
     ></motion.div>
