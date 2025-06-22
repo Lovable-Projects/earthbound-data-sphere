@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { WavyBackground } from '@/components/ui/wavy-background';
+import { Radar } from '@/components/ui/radar';
 
 const About: React.FC = () => {
   const values = [
@@ -69,12 +70,12 @@ const About: React.FC = () => {
 
   const deliverables = [
     {
-      icon: Eye, // TODO: Change to a better icon
+      icon: Eye,
       title: 'Clarity Where Others Get Stuck',
       description: 'We surface the root causes, not just the symptoms. We don\'t stop until we\'ve built the plan.'
     },
     {
-      icon: Cog, // TODO: Change to a better icon
+      icon: Cog,
       title: 'Execution That Fits',
       description: 'Strategy is only as good as what gets implemented. We build and deliver solutions that work in real life, not just on slides.'
     },
@@ -183,17 +184,19 @@ const About: React.FC = () => {
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mb-12">
             {solvepathSteps.map((step, index) => (
-              <div key={step.title} className="text-center">
-                <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                  <step.icon className="w-8 h-8 text-primary" />
-                </div>
-                <h3 className="text-lg font-bold text-foreground mb-2">
-                  {step.title}
-                </h3>
-                <p className="text-sm text-muted-foreground">
-                  {step.description}
-                </p>
-              </div>
+              <Card key={step.title} className="text-center bg-gradient-to-br from-primary/10 to-primary/5 border-0 custom-shadow">
+                <CardHeader className="pb-4">
+                  <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                    <step.icon className="w-8 h-8 text-primary" />
+                  </div>
+                  <CardTitle className="text-lg font-bold text-foreground mb-2">
+                    {step.title}
+                  </CardTitle>
+                  <p className="text-sm text-muted-foreground">
+                    {step.description}
+                  </p>
+                </CardHeader>
+              </Card>
             ))}
           </div>
 
@@ -217,8 +220,11 @@ const About: React.FC = () => {
             </p>
           </div>
 
-          <div className="max-w-4xl mx-auto">
-            <Card className="p-8 bg-background">
+          <div className="max-w-4xl mx-auto mb-12">
+            <Card className="p-8 bg-gradient-to-br from-primary/10 to-primary/5 border-0 custom-shadow">
+              <div className="flex items-center justify-center mb-8">
+                <Radar className="h-80 w-80" />
+              </div>
               <div className="flex flex-wrap justify-center items-center gap-4">
                 {executionSteps.map((step, index) => (
                   <React.Fragment key={step}>
@@ -248,18 +254,22 @@ const About: React.FC = () => {
               Together, the SolvePath Framework and our Execution Model are two sides of the same system:
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
-              <div className="text-center">
-                <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                  <Layers className="w-8 h-8 text-primary" />
-                </div>
-                <h3 className="text-xl font-bold text-foreground mb-2">One Creates Structure</h3>
-              </div>
-              <div className="text-center">
-                <div className="w-16 h-16 rounded-xl bg-accent/10 flex items-center justify-center mx-auto mb-4">
-                  <Zap className="w-8 h-8 text-accent" />
-                </div>
-                <h3 className="text-xl font-bold text-foreground mb-2">One Drives Momentum</h3>
-              </div>
+              <Card className="text-center bg-gradient-to-br from-primary/10 to-primary/5 border-0 custom-shadow">
+                <CardHeader>
+                  <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                    <Layers className="w-8 h-8 text-primary" />
+                  </div>
+                  <CardTitle className="text-xl font-bold text-foreground">One Creates Structure</CardTitle>
+                </CardHeader>
+              </Card>
+              <Card className="text-center bg-gradient-to-br from-accent/10 to-accent/5 border-0 custom-shadow">
+                <CardHeader>
+                  <div className="w-16 h-16 rounded-xl bg-accent/10 flex items-center justify-center mx-auto mb-4">
+                    <Zap className="w-8 h-8 text-accent" />
+                  </div>
+                  <CardTitle className="text-xl font-bold text-foreground">One Drives Momentum</CardTitle>
+                </CardHeader>
+              </Card>
             </div>
             <p className="text-lg font-semibold text-foreground mt-6">
               Both are built to generate measurable results—fast.
@@ -276,12 +286,12 @@ const About: React.FC = () => {
               Two Solution Families Under One Roof
             </h2>
             <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
-              Our two solution families are part of the same system, two complementary engines that help businesses scale what works and fix what doesn't. That integrated approach lets us expand and evolve our offerings across both tracks without losing speed, clarity, or control.
+              Our two solution families are part of the same system, two complement...
             </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <Card className="h-full bg-background">
+            <Card className="h-full bg-gradient-to-br from-primary/10 to-primary/5 border-0 custom-shadow">
               <CardHeader>
                 <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
                   <TrendingUp className="w-8 h-8 text-primary" />
@@ -303,7 +313,7 @@ const About: React.FC = () => {
               </CardContent>
             </Card>
 
-            <Card className="h-full bg-background">
+            <Card className="h-full bg-gradient-to-br from-accent/10 to-accent/5 border-0 custom-shadow">
               <CardHeader>
                 <div className="w-16 h-16 rounded-xl bg-accent/10 flex items-center justify-center mb-4">
                   <Target className="w-8 h-8 text-accent" />
@@ -341,7 +351,7 @@ const About: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {deliverables.map((item, index) => (
-              <Card key={item.title} className="text-center h-full bg-background">
+              <Card key={item.title} className="text-center h-full bg-gradient-to-br from-primary/10 to-primary/5 border-0 custom-shadow">
                 <CardHeader>
                   <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
                     <item.icon className="w-8 h-8 text-primary" />
@@ -371,7 +381,7 @@ const About: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {values.map((value, index) => (
-              <Card key={value.title} className="text-center h-full bg-background">
+              <Card key={value.title} className="text-center h-full bg-gradient-to-br from-primary/10 to-primary/5 border-0 custom-shadow">
                 <CardHeader>
                   <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
                     <value.icon className="w-8 h-8 text-primary" />
@@ -388,7 +398,7 @@ const About: React.FC = () => {
       </section>
 
       {/* Meet the Team Section */}
-      <section className="py-24 bg-background">
+      <section className="py-24 bg-muted/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
@@ -400,11 +410,11 @@ const About: React.FC = () => {
           </div>
           <div className="grid gap-y-12 gap-x-8 sm:grid-cols-2 lg:grid-cols-4">
             {people.map((person) => (
-              <div
+              <Card
                 key={person.id}
-                className="flex flex-col items-center bg-card border border-border rounded-2xl shadow-sm p-6 h-full transition-colors"
+                className="text-center bg-gradient-to-br from-primary/10 to-primary/5 border-0 custom-shadow p-6 h-full"
               >
-                <Avatar className="mb-4 w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 shadow-md border-2 border-primary/30">
+                <Avatar className="mb-4 w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 shadow-md border-2 border-primary/30 mx-auto">
                   <AvatarImage src={person.avatar} />
                   <AvatarFallback>{person.name[0]}</AvatarFallback>
                 </Avatar>
@@ -417,12 +427,12 @@ const About: React.FC = () => {
                 <p className="text-sm text-muted-foreground text-center mb-3">
                   {person.description}
                 </p>
-                <div className="mt-auto flex gap-4">
+                <div className="mt-auto flex gap-4 justify-center">
                   <a href={person.github} aria-label="Github" target="_blank" rel="noopener noreferrer"><Github className="size-5 text-muted-foreground hover:text-primary transition-colors" /></a>
                   <a href={person.linkedin} aria-label="Linkedin" target="_blank" rel="noopener noreferrer"><Linkedin className="size-5 text-muted-foreground hover:text-primary transition-colors" /></a>
                   <a href={person.dribbble} aria-label="Dribbble" target="_blank" rel="noopener noreferrer"><Dribbble className="size-5 text-muted-foreground hover:text-primary transition-colors" /></a>
                 </div>
-              </div>
+              </Card>
             ))}
           </div>
         </div>

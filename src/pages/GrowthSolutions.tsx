@@ -1,298 +1,236 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { TrendingUp, Users, Mail, Palette, Target, Search, Globe, ArrowRight, Zap, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { TrendingUp, Target, Zap, ArrowRight, BarChart, Users, Mail, Search, Globe, Palette, Eye, BarChart3 } from 'lucide-react';
+import { WavyBackground } from '@/components/ui/wavy-background';
+import ContactForm from '@/components/forms/ContactForm';
 import { motion } from 'framer-motion';
 
 const GrowthSolutions: React.FC = () => {
-  const coreGrowthSolutions = [
+  const coreServices = [
     {
-      icon: BarChart,
+      icon: TrendingUp,
       title: 'Performance Marketing & Paid Media',
-      description: 'High-impact, ROI-driven advertising campaigns across multiple platforms to maximize reach and conversions.'
+      description: 'High-ROI ads that convert. Strategic campaign management across platforms to maximize your advertising spend and drive measurable results.',
+      link: '/growth-solutions/performance-marketing'
     },
     {
       icon: Users,
       title: 'Social Media Marketing & Brand Engagement',
-      description: 'Building and activating audiences through strategic content, engagement strategies, and social media growth.'
+      description: 'Build audience, spark action. Comprehensive social media strategies that create meaningful connections and drive engagement across all platforms.',
+      link: '/growth-solutions/social-media-marketing'
     },
     {
       icon: Mail,
       title: 'Email Marketing & Marketing Automation',
-      description: 'Lead nurturing, CRM-integrated campaigns, and automated sequences designed to transform prospects into loyal customers.'
+      description: 'Automate nurture, drive loyalty. Sophisticated email campaigns and automation workflows that convert prospects into loyal customers.',
+      link: '/growth-solutions/email-marketing'
     },
     {
       icon: Palette,
       title: 'Creative Solutions',
-      description: 'Visual branding, marketing collateral, and creative content that aligns with business goals and strengthens brand identity.'
+      description: 'Visuals that get results. Eye-catching designs and compelling creative assets that capture attention and drive conversions.',
+      link: '/growth-solutions/creative-solutions'
     },
     {
-      icon: Eye,
+      icon: Target,
       title: 'Conversion Rate Optimization (CRO)',
-      description: 'Testing and refining key elements of the user journey to increase conversions across landing pages, websites, and campaigns.'
+      description: 'Test. Refine. Convert more. Data-driven optimization strategies that turn more visitors into customers through systematic testing and improvement.',
+      link: '/growth-solutions/conversion-optimization'
     },
     {
       icon: Search,
-      title: 'Search Engine Optimization (SEO) & Website Growth',
-      description: 'Long-term strategies to increase organic visibility, search rankings, and website performance.'
+      title: 'SEO & Website Growth',
+      description: 'Rank higher. Grow faster. Comprehensive SEO strategies that improve your search visibility and drive organic traffic growth.',
+      link: '/growth-solutions/seo-website-growth'
     },
     {
       icon: Globe,
       title: 'Website Solutions',
-      description: 'Development, optimization, and maintenance of websites to ensure seamless user experience and conversion readiness.'
+      description: 'Seamless, scalable, conversion-ready. Professional websites built for performance, user experience, and business growth.',
+      link: '/growth-solutions/website-solutions'
     }
   ];
 
-  const specializedSolutions = [
-    {
-      icon: BarChart3,
-      title: 'Deep Dive Audit & Strategic Insights',
-      description: 'Comprehensive performance analysis, competitor benchmarking, and identification of growth opportunities.'
-    },
-    {
-      icon: Target,
-      title: 'Analytics and Event Tracking Setup',
-      description: 'Implementing tracking systems to provide actionable insights on customer behavior and marketing performance.'
-    },
-    {
-      icon: TrendingUp,
-      title: 'Lead Generation & Funnel Strategy',
-      description: 'Structuring full-funnel strategies that attract qualified leads, nurture them effectively, and convert with consistency.'
-    },
-    {
-      icon: Zap,
-      title: 'Brand Architecture & Strategy',
-      description: 'Crafting a cohesive and scalable brand strategy that differentiates businesses in competitive markets.'
-    },
-    {
-      icon: Palette,
-      title: 'Content Strategy & Planning',
-      description: 'Developing editorial calendars, messaging frameworks, and cross-channel content strategies to support sustained growth.'
-    },
-    {
-      icon: BarChart3,
-      title: 'AI-Accelerated Content Production Pipelines',
-      description: 'AI-enhanced workflows that increase content production efficiency while maintaining quality and brand consistency.'
-    },
-    {
-      icon: Users,
-      title: 'Executive Personal Branding & LinkedIn Marketing',
-      description: 'Executive thought leadership and audience-building strategies to expand professional influence and drive business opportunities.'
-    }
+  const benefits = [
+    'Measurable ROI on every campaign',
+    'Data-driven decision making',
+    'Scalable growth strategies',
+    'Multi-channel integration',
+    'Continuous optimization',
+    'Transparent reporting'
   ];
 
   return (
-    <div className="bg-background">
+    <div className="bg-background text-foreground">
       {/* Hero Section */}
-      <section className="py-24 bg-gradient-to-br from-primary/10 via-background to-background">
-        <div className="container mx-auto px-4">
+      <WavyBackground className="py-16 md:py-24 mt-8 md:mt-16">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center max-w-4xl mx-auto"
+            className="text-center"
           >
-            <div className="inline-flex items-center px-6 py-3 rounded-full bg-primary/10 text-primary text-sm font-medium mb-8">
-              <TrendingUp className="w-4 h-4 mr-2" />
-              High-Performance Marketing
-            </div>
-            <h1 className="text-5xl md:text-6xl font-bold font-playfair text-foreground mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black dark:text-white mb-6">
               Growth Solutions
             </h1>
-            <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-              Grow by Acquiring More Customers, Improving Engagement and Increasing Conversion Rates
+            <p className="text-xl md:text-2xl text-black/80 dark:text-white/80 mb-8 leading-relaxed max-w-4xl mx-auto">
+              High-performance marketing strategy and execution that engineers demand, 
+              amplifies brand value, and accelerates customer acquisition.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg">
-                <Link to="/contact">
-                  Start Growing Today
-                  <ArrowRight className="ml-2 w-4 h-4" />
-                </Link>
-              </Button>
-              <Button variant="outline" size="lg">
-                <Link to="/strategic-solutions">
-                  Strategic Solutions
-                </Link>
+              <ContactForm 
+                title="Ready to Accelerate Growth?"
+                description="Tell us about your growth goals and we'll create a custom strategy for your business."
+                buttonText="Start Growing Today"
+              />
+              <Button variant="outline" size="lg" asChild>
+                <Link to="/core-growth-solutions">View Core Services</Link>
               </Button>
             </div>
           </motion.div>
         </div>
-      </section>
+      </WavyBackground>
 
-      {/* Overview Section */}
-      <section className="py-24">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="max-w-4xl mx-auto text-center"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold font-playfair text-foreground mb-6">
-              Built for Momentum
-            </h2>
-            <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              Perssonify's Growth Solutions are designed to build momentum—fast. We turn strategy into execution 
-              by owning the entire process end-to-end: planning, production, optimization, and performance. 
-              Our team brings deep expertise across the growth solution spectrum, so we have tight control, 
-              fast turnaround, and the ability to deliver high-quality outcomes without excess overhead.
-            </p>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Whether you're building brand authority, driving demand, or scaling acquisition, we match smart 
-              strategy with operational firepower—so growth isn't just a goal, it's a measurable outcome.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Core Growth Solutions */}
-      <section className="pt-24 pb-4 bg-muted/30">
-        <div className="container mx-auto px-4">
+      {/* Core Services */}
+      <section className="py-24 bg-background">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold font-playfair text-foreground mb-6">
-              Core Growth Solutions
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+              Our Core Growth Services
             </h2>
-            <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
-              For businesses looking to grow their top line and expand their customer base, engagement and reach, 
-              these solutions focus on direct customer acquisition, brand visibility, and engagement-driven marketing 
-              to increase conversions and long-term retention.
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Comprehensive marketing solutions designed to drive measurable growth
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {coreGrowthSolutions.map((solution, index) => (
+            {coreServices.map((service, index) => (
               <motion.div
-                key={solution.title}
+                key={service.title}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
               >
-                <Card className="h-full border-0 bg-background custom-shadow hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                  <CardHeader>
-                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                      <solution.icon className="w-6 h-6 text-primary" />
-                    </div>
-                    <CardTitle className="text-lg font-playfair">{solution.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground text-sm">{solution.description}</p>
-                  </CardContent>
-                </Card>
+                <Link to={service.link}>
+                  <Card className="h-full hover:shadow-xl transition-all duration-300 hover:-translate-y-2 bg-gradient-to-br from-primary/10 to-primary/5 border-0 custom-shadow group cursor-pointer">
+                    <CardHeader>
+                      <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <service.icon className="w-8 h-8 text-primary" />
+                      </div>
+                      <CardTitle className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
+                        {service.title}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-muted-foreground leading-relaxed">
+                        {service.description}
+                      </p>
+                    </CardContent>
+                  </Card>
+                </Link>
               </motion.div>
             ))}
           </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-center mt-12"
-          >
-            <p className="text-lg font-semibold text-foreground mb-4">
-              Ready to attract, engage, and convert more customers?
-            </p>
-            <Button asChild size="lg">
-              <Link to="/contact">
-                Let's Build Your Growth Engine
-                <ArrowRight className="ml-2 w-4 h-4" />
-              </Link>
-            </Button>
-          </motion.div>
         </div>
       </section>
 
-      {/* Specialized Growth Solutions */}
-      <section className="pt-24 pb-4">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold font-playfair text-foreground mb-6">
-              Specialized Growth Solutions
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
-              For businesses looking to refine and optimize their growth strategies, these specialized solutions 
-              offer deeper insights, strategy optimization, brand enhancement and AI-enabled acceleration.
-            </p>
-          </motion.div>
+      {/* Benefits Section */}
+      <section className="py-24 bg-muted/30">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+                Why Choose Our Growth Solutions?
+              </h2>
+              <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+                We don't just create campaigns—we engineer growth systems that scale with your business. 
+                Every strategy is built on data, optimized for results, and designed to deliver sustainable growth.
+              </p>
+              <div className="space-y-4">
+                {benefits.map((benefit, index) => (
+                  <div key={index} className="flex items-center">
+                    <CheckCircle className="w-5 h-5 text-primary mr-3 flex-shrink-0" />
+                    <span className="text-foreground">{benefit}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {specializedSolutions.map((solution, index) => (
-              <motion.div
-                key={solution.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
-              >
-                <Card className="h-full border-0 bg-gradient-to-br from-accent/10 to-accent/5 custom-shadow hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                  <CardHeader>
-                    <div className="w-12 h-12 rounded-lg bg-accent/20 flex items-center justify-center mb-4">
-                      <solution.icon className="w-6 h-6 text-accent" />
-                    </div>
-                    <CardTitle className="text-lg font-playfair">{solution.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground text-sm">{solution.description}</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <Card className="bg-gradient-to-br from-primary/10 to-primary/5 border-0 custom-shadow">
+                <CardHeader>
+                  <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Zap className="w-8 h-8 text-primary" />
+                  </div>
+                  <CardTitle className="text-center text-2xl font-bold text-foreground">
+                    Ready to Scale?
+                  </CardTitle>
+                  <CardDescription className="text-center text-lg">
+                    Let's build your growth engine together
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="text-center">
+                  <p className="text-muted-foreground mb-6">
+                    Schedule a consultation to discuss your specific growth goals and challenges. 
+                    We'll create a custom strategy that fits your business perfectly.
+                  </p>
+                  <ContactForm 
+                    title="Let's Discuss Your Growth Goals"
+                    description="Tell us about your business and growth objectives. We'll create a custom strategy designed specifically for your needs."
+                    buttonText="Schedule Consultation"
+                    trigger={
+                      <Button size="lg" className="w-full">
+                        Get Started Today
+                        <ArrowRight className="w-4 h-4 ml-2" />
+                      </Button>
+                    }
+                  />
+                </CardContent>
+              </Card>
+            </motion.div>
           </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-center mt-12"
-          >
-            <p className="text-lg font-semibold text-foreground mb-4">
-              Looking for sharper insights, stronger positioning, and smarter ways to scale?
-            </p>
-            <Button asChild size="lg">
-              <Link to="/contact">
-                Let's Optimize Your Growth Strategy
-                <ArrowRight className="ml-2 w-4 h-4" />
-              </Link>
-            </Button>
-          </motion.div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-gradient-to-br from-primary/10 to-accent/10">
-        <div className="container mx-auto px-4 text-center">
+      <section className="py-24 bg-background">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold font-playfair text-foreground mb-6">
-              Ready to Accelerate Your Growth?
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+              Ready to Transform Your Growth?
             </h2>
             <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-              Let's discuss how our Growth Solutions can help you attract more customers, 
-              improve engagement, and increase conversion rates.
+              Let's build a growth strategy that delivers measurable results and scales with your ambitions.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg">
-                <Link to="/contact">
-                  Start Your Growth Journey
-                  <ArrowRight className="ml-2 w-4 h-4" />
-                </Link>
-              </Button>
-              <Button variant="outline" size="lg">
-                <Link to="/strategic-solutions">
-                  View Strategic Solutions
-                </Link>
+              <ContactForm 
+                title="Let's Build Your Growth Strategy"
+                description="Share your growth goals with us and we'll create a comprehensive strategy tailored to your business needs."
+                buttonText="Start Growing Today"
+              />
+              <Button variant="outline" size="lg" asChild>
+                <Link to="/strategic-solutions">Explore Strategic Solutions</Link>
               </Button>
             </div>
           </motion.div>

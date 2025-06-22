@@ -149,8 +149,8 @@ const Solutions: React.FC = () => {
               </Link>
             </Button>
           </div>
-        </motion.div>
-      </div>
+        </div>
+      </section>
     </section>
   );
 };
