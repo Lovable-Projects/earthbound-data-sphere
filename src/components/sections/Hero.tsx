@@ -9,7 +9,7 @@ const Hero: React.FC = () => {
   return (
     <section className="relative h-screen overflow-hidden bg-gradient-to-br from-background via-muted/30 to-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-50 h-full">
-        <div className="max-w-6xl mx-auto flex flex-col items-center justify-center text-center h-full> 
+        <div className="max-w-6xl mx-auto flex flex-col items-center justify-center text-center h-full">
 
           {/* Main Headline */}
           <motion.h1
