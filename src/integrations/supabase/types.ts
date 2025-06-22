@@ -9,42 +9,6 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      about_content: {
-        Row: {
-          created_at: string
-          description: string
-          id: string
-          journey_description: string
-          journey_subtitle: string
-          journey_title: string
-          subtitle: string
-          title: string
-          updated_at: string
-        }
-        Insert: {
-          created_at?: string
-          description?: string
-          id?: string
-          journey_description?: string
-          journey_subtitle?: string
-          journey_title?: string
-          subtitle?: string
-          title?: string
-          updated_at?: string
-        }
-        Update: {
-          created_at?: string
-          description?: string
-          id?: string
-          journey_description?: string
-          journey_subtitle?: string
-          journey_title?: string
-          subtitle?: string
-          title?: string
-          updated_at?: string
-        }
-        Relationships: []
-      }
       Blog: {
         Row: {
           created_at: string

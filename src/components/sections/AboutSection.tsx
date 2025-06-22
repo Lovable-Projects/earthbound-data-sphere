@@ -38,14 +38,7 @@ const AboutSection: React.FC = () => {
         .single();
 
       if (data && !error) {
-        setAboutContent({
-          title: data.title,
-          subtitle: data.subtitle,
-          description: data.description,
-          journey_title: data.journey_title,
-          journey_subtitle: data.journey_subtitle,
-          journey_description: data.journey_description
-        });
+        setAboutContent(data);
       }
     } catch (error) {
       console.log('Using default content');
