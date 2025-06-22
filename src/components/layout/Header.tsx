@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, Sun, Moon, ChevronDown } from 'lucide-react';
@@ -54,12 +53,13 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
 
   const isActive = (path: string) => location.pathname === path || location.pathname.startsWith(path + '/');
 
-  const handleLogoClick = () => {
-    if (location.pathname === '/') {
+  const handleLogoClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    navigate('/');
+    // Scroll to top with smooth behavior
+    setTimeout(() => {
       window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-    } else {
-      navigate('/');
-    }
+    }, 100);
   };
 
   useEffect(() => {
@@ -82,17 +82,16 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo - centered on mobile, left on desktop */}
-          <Link 
-            to="/" 
-            className="flex items-center space-x-2 md:ml-0"
-            onClick={() => setIsMobileMenuOpen(false)}
+          <button 
+            onClick={handleLogoClick}
+            className="flex items-center space-x-2 md:ml-0 cursor-pointer hover:opacity-80 transition-opacity"
           >
             <img
               src={LogoTeal}
               alt="Perssonify Logo"
               className="h-8 w-auto object-contain"
             />
-          </Link>
+          </button>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8" ref={dropdownRef}>

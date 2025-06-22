@@ -1,4 +1,3 @@
-
 import * as React from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { Button } from "@/components/ui/button"
@@ -27,7 +26,10 @@ const Footer: React.FC<FooterProps> = ({ isDarkMode, toggleDarkMode }) => {
 
   const handleLogoClick = () => {
     navigate('/');
-    window.scrollTo(0, 0);
+    // Scroll to top with smooth behavior
+    setTimeout(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    }, 100);
   };
 
   const handleSubscribe = async (e: React.FormEvent) => {
