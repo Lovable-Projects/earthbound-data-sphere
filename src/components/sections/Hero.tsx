@@ -4,33 +4,12 @@ import { Link } from 'react-router-dom';
 import { Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { IconHover3D } from '../ui/icon-3d-hover';
-import { SparklesLogo } from '../ui/sparkles-logo';
 
 const Hero: React.FC = () => {
   return (
     <section className="relative h-screen overflow-hidden bg-gradient-to-br from-background via-muted/30 to-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-50 h-full">
-        <div className="max-w-6xl mx-auto flex flex-col items-center justify-center text-center h-full">
-          {/* Sparkles Logo */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="mb-8"
-          >
-            <SparklesLogo />
-          </motion.div>
-
-          {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 dark:bg-primary/20 border border-primary/20 dark:border-primary/30 text-primary dark:text-primary text-sm font-medium mb-8 backdrop-blur-sm"
-          >
-            <Zap className="w-4 h-4 mr-2 animate-pulse" />
-            Growth & Strategic Solutions
-          </motion.div>
+        <div className="max-w-6xl mx-auto flex flex-col items-center justify-center text-center h-full> 
 
           {/* Main Headline */}
           <motion.h1
