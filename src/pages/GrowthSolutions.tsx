@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { TrendingUp, Users, Mail, Palette, Target, Search, Globe, ArrowRight, Zap, CheckCircle } from 'lucide-react';
@@ -88,7 +87,7 @@ const GrowthSolutions: React.FC = () => {
                 buttonText="Start Growing Today"
               />
               <Button variant="outline" size="lg" asChild>
-                <Link to="/core-growth-solutions">View Core Services</Link>
+                <Link to="/strategic-solutions">View Strategic Solutions</Link>
               </Button>
             </div>
           </motion.div>

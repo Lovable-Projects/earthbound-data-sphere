@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Target, Cog, Settings, Database, Shield, ArrowRight, Zap, CheckCircle } from 'lucide-react';
@@ -82,7 +81,7 @@ const StrategicSolutions: React.FC = () => {
                 buttonText="Start Growing Today"
               />
               <Button variant="outline" size="lg" asChild>
-                <Link to="/specialized-strategic-solutions">View Specialized Services</Link>
+                <Link to="/growth-solutions">View Growth Solutions</Link>
               </Button>
             </div>
           </motion.div>

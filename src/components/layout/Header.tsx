@@ -21,6 +21,8 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
 
   const navigation = [
     { name: 'Home', href: '/' },
+    { name: 'About', href: '/about' },
+    { name: 'Insights', href: '/insights' },
     { 
       name: 'Growth Solutions', 
       href: '/growth-solutions',
@@ -45,8 +47,6 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
         { name: 'Process Optimization', href: '/strategic-solutions/optimization' },
       ]
     },
-    { name: 'About', href: '/about' },
-    { name: 'Insights', href: '/insights' },
     { name: 'Blog', href: '/blog' },
     { name: 'Contact', href: '/contact' },
   ];

@@ -19,8 +19,8 @@ export const Radar = ({ className }: any) => {
         }}
         className="absolute right-1/2 top-1/2 z-40 flex h-[5px] overflow-hidden animate-radar-spin w-[400px] items-end justify-center bg-transparent"
       >
-        {/* Radar line that rotates */}
-        <div className="relative z-40 h-[1px] w-full bg-gradient-to-r from-transparent via-sky-600 to-transparent" />
+        {/* Radar line that rotates - adapts to theme */}
+        <div className="relative z-40 h-[1px] w-full bg-gradient-to-r from-transparent via-primary to-transparent" />
       </div>
       {/* concentric circles */}
       {circles.map((circle, idx) => (
@@ -28,7 +28,7 @@ export const Radar = ({ className }: any) => {
           style={{
             height: `${(idx + 1) * 5}rem`,
             width: `${(idx + 1) * 5}rem`,
-            border: `1px solid rgba(71, 85, 105, ${1 - (idx + 1) * 0.1})`,
+            border: `1px solid hsl(var(--border) / ${1 - (idx + 1) * 0.1})`,
           }}
           key={`motion-${idx}`}
           idx={idx}
@@ -38,7 +38,6 @@ export const Radar = ({ className }: any) => {
   );
 };
 
-{/* Creating circles */}
 export const Circle = ({ className, children, idx, ...rest }: any) => {
   return (
     <motion.div
@@ -54,7 +53,7 @@ export const Circle = ({ className, children, idx, ...rest }: any) => {
         duration: 0.2,
       }}
       className={twMerge(
-        "absolute inset-0 left-1/2 top-1/2 h-10 w-10 -translate-x-1/2 -translate-y-1/2 transform rounded-full border border-neutral-200",
+        "absolute inset-0 left-1/2 top-1/2 h-10 w-10 -translate-x-1/2 -translate-y-1/2 transform rounded-full border border-border",
         className
       )}
     ></motion.div>
