@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle } from 'lucide-react';
@@ -13,8 +12,8 @@ const OurPromiseSection: React.FC = () => {
   ];
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#F8F8F8]">
-      <div className="container mx-auto max-w-4xl text-center">
+    <section className="py-16 bg-background">
+      <div className="max-w-6xl mx-auto px-2 sm:px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -22,9 +21,9 @@ const OurPromiseSection: React.FC = () => {
           viewport={{ once: true }}
           className="mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[#30C9CB]">Our Promise</h2>
-          <h3 className="text-xl md:text-2xl font-semibold mb-8 text-black">90 Days to Growth or We Walk</h3>
-          <p className="text-lg mb-8 text-black">Simple deal:</p>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-[#30C9CB]">Our Promise</h2>
+          <h3 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-8 text-black">90 Days to Growth or We Walk</h3>
+          <p className="text-base sm:text-lg mb-8 text-black">Simple deal:</p>
         </motion.div>
 
         <div className="grid grid-cols-1 gap-6 mb-12">
@@ -52,8 +51,8 @@ const OurPromiseSection: React.FC = () => {
           viewport={{ once: true }}
           className="mb-8"
         >
-          <p className="text-lg font-semibold mb-2 text-black">Why we can promise this: We've never failed to deliver.</p>
-          <p className="text-base text-black">Awards bore us. Your growth excites us.</p>
+          <p className="text-base sm:text-lg font-semibold mb-2 text-black">Why we can promise this: We've never failed to deliver.</p>
+          <p className="text-base sm:text-lg text-black">Awards bore us. Your growth excites us.</p>
         </motion.div>
 
         <motion.div

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Clock, Zap, Users, Target, TrendingUp, Shield, ArrowRight, CheckCircle } from 'lucide-react';
@@ -122,7 +121,7 @@ const ExecutionModel: React.FC = () => {
                 transition={{ duration: 0.8, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <Card className="h-full hover:shadow-xl transition-all duration-300 custom-shadow">
+                <Card>
                   <CardHeader>
                     <div className="flex items-center gap-4 mb-4">
                       <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
@@ -177,7 +176,7 @@ const ExecutionModel: React.FC = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <Card className="h-full text-center hover:shadow-lg transition-all duration-300 custom-shadow">
+                <Card>
                   <CardContent className="p-6">
                     <div className="w-16 h-16 mx-auto rounded-full bg-primary/10 flex items-center justify-center mb-4">
                       <phase.icon className="w-8 h-8 text-primary" />
@@ -236,7 +235,7 @@ const ExecutionModel: React.FC = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              <Card className="custom-shadow">
+              <Card>
                 <CardContent className="p-8">
                   <div className="text-center">
                     <Shield className="w-16 h-16 text-primary mx-auto mb-6" />
@@ -277,7 +276,7 @@ const ExecutionModel: React.FC = () => {
             viewport={{ once: true }}
             className="text-center"
           >
-            <Card className="max-w-4xl mx-auto custom-shadow">
+            <Card>
               <CardContent className="p-12">
                 <Zap className="w-16 h-16 text-primary mx-auto mb-6" />
                 <h2 className="text-3xl font-bold text-foreground mb-6">

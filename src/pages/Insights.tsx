@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
@@ -87,7 +86,7 @@ const Insights: React.FC = () => {
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true }}
                 >
-                  <Card className="h-full hover:shadow-xl transition-all duration-300 bg-card border-border">
+                  <Card className="h-full">
                     <CardHeader>
                       <div className={`w-16 h-16 rounded-2xl ${insight.bgColor} flex items-center justify-center mb-4`}>
                         <insight.icon className={`w-8 h-8 ${insight.color}`} />

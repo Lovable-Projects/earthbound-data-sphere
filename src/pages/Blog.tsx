@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
@@ -220,7 +219,9 @@ const Blog: React.FC = () => {
             </Link>
             
             <div className="mb-8">
-              <Badge className="mb-4">{post.category}</Badge>
+              <Badge className="mb-4 bg-muted text-black dark:text-white border-border">
+                {post.category}
+              </Badge>
               <h1 className="text-4xl md:text-5xl font-bold mb-4">{post.title}</h1>
               
               <div className="flex items-center space-x-6 text-muted-foreground mb-8">
@@ -306,7 +307,7 @@ const Blog: React.FC = () => {
                 <div className="w-20 h-1 bg-primary rounded-full" />
               </div>
               
-              <Card className="overflow-hidden border-0 bg-gradient-to-br from-card via-card to-muted/20 shadow-2xl hover:shadow-3xl transition-all duration-500">
+              <Card className="overflow-hidden">
                 <div className="grid grid-cols-1 lg:grid-cols-2">
                   <div className="relative overflow-hidden">
                     <img 
@@ -317,7 +318,7 @@ const Blog: React.FC = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
                   </div>
                   <div className="p-8 lg:p-12 flex flex-col justify-center">
-                    <Badge className="w-fit mb-4 bg-primary/10 text-primary border-primary/20">
+                    <Badge className="w-fit mb-4 bg-muted text-black dark:text-white border-border">
                       {blogPosts[0].category}
                     </Badge>
                     <h3 className="text-2xl lg:text-3xl font-bold text-foreground mb-4 leading-tight">
@@ -378,7 +379,7 @@ const Blog: React.FC = () => {
                     transition={{ duration: 0.6, delay: index * 0.1 }}
                     viewport={{ once: true }}
                   >
-                    <Card className="h-full group hover:shadow-2xl transition-all duration-500 border-0 bg-gradient-to-br from-card to-muted/10 overflow-hidden">
+                    <Card className="h-full group overflow-hidden">
                       <div className="relative overflow-hidden">
                         <img 
                           src={post.image} 
@@ -386,7 +387,7 @@ const Blog: React.FC = () => {
                           className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                        <Badge className="absolute top-4 left-4 bg-background/90 backdrop-blur-sm">
+                        <Badge className="absolute top-4 left-4 bg-muted text-black dark:text-white border-border">
                           {post.category}
                         </Badge>
                       </div>

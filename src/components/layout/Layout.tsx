@@ -1,49 +1,42 @@
-
-import React, { useState, useEffect } from 'react';
-import { Outlet, useLocation } from 'react-router-dom';
+import React, { ReactNode, useState, useEffect } from 'react';
 import Header from './Header';
 import Footer from './Footer';
-import Testimonials from '../sections/Testimonials';
+import ScrollProgress from '@/components/ui/scroll-progress';
 
-const Layout: React.FC = () => {
+interface LayoutProps {
+  children: ReactNode;
+}
+
+const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const location = useLocation();
 
-  // Pages where we don't want to show testimonials
-  const excludeTestimonialsPages = ['/contact', '/blog', '/privacy-policy', '/terms-of-service'];
-  const shouldShowTestimonials = !excludeTestimonialsPages.some(path => 
-    location.pathname === path || location.pathname.startsWith('/blog/')
-  );
-
+  // On mount, read from localStorage
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
-    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-      setIsDarkMode(true);
-      document.documentElement.classList.add('dark');
-    }
+    const stored = localStorage.getItem('theme');
+    if (stored === 'dark') setIsDarkMode(true);
+    else if (stored === 'light') setIsDarkMode(false);
+    else if (window.matchMedia('(prefers-color-scheme: dark)').matches) setIsDarkMode(true);
   }, []);
 
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
-    if (!isDarkMode) {
+  // On change, update html class and localStorage
+  useEffect(() => {
+    if (isDarkMode) {
       document.documentElement.classList.add('dark');
       localStorage.setItem('theme', 'dark');
     } else {
       document.documentElement.classList.remove('dark');
       localStorage.setItem('theme', 'light');
     }
-  };
+  }, [isDarkMode]);
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <Header isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
-      <main className="page-content">
-        <Outlet />
-        {shouldShowTestimonials && <Testimonials />}
+    <div className="min-h-screen flex flex-col">
+      <ScrollProgress />
+      <Header isDarkMode={isDarkMode} toggleDarkMode={setIsDarkMode} />
+      <main className="flex-1">
+        {children}
       </main>
-      <Footer isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
+      <Footer />
     </div>
   );
 };

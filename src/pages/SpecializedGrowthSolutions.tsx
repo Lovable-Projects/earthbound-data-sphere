@@ -63,28 +63,13 @@ const SpecializedGrowthSolutions: React.FC = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 text-primary">
               Specialized Growth Solutions
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
               Advanced strategic solutions for complex growth challenges. 
               Precision-engineered implementations for scalable business transformation.
             </p>
-          </motion.div>
-
-          {/* Featured Component */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="flex justify-center mb-20"
-          >
-            <IconHover3D 
-              heading="Strategic Solutions"
-              text="Advanced strategic implementations that solve complex business challenges with precision and scale."
-              width={800}
-              height={180}
-            />
           </motion.div>
         </div>
       </section>

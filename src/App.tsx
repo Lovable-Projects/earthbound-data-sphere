@@ -1,91 +1,119 @@
-
-import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Layout from '@/components/layout/Layout';
+import ScrollToTop from '@/components/ScrollToTop';
 import Index from '@/pages/Index';
 import About from '@/pages/About';
-import Blog from '@/pages/Blog';
 import Contact from '@/pages/Contact';
+import Blog from '@/pages/Blog';
 import Insights from '@/pages/Insights';
 import GrowthSolutions from '@/pages/GrowthSolutions';
 import StrategicSolutions from '@/pages/StrategicSolutions';
-import NotFound from '@/pages/NotFound';
-import PrivacyPolicy from '@/pages/PrivacyPolicy';
-import TermsOfService from '@/pages/TermsOfService';
-import ScrollToTop from '@/components/ScrollToTop';
+import CoreGrowthSolutions from '@/pages/CoreGrowthSolutions';
+import SpecializedGrowthSolutions from '@/pages/SpecializedGrowthSolutions';
+import SolvePathFramework from '@/pages/about/SolvePathFramework';
+import Preloader from '@/components/layout/Preload Screen';
 
-// Growth Solutions Pages
-import DigitalMarketing from '@/pages/growth-solutions/DigitalMarketing';
-import SEO from '@/pages/growth-solutions/SEO';
-import SocialMedia from '@/pages/growth-solutions/SocialMedia';
-import ContentMarketing from '@/pages/growth-solutions/ContentMarketing';
-import EmailMarketing from '@/pages/growth-solutions/EmailMarketing';
-
-// Strategic Solutions Pages
-import BusinessConsulting from '@/pages/strategic-solutions/BusinessConsulting';
-import MarketResearch from '@/pages/strategic-solutions/MarketResearch';
-import BrandStrategy from '@/pages/strategic-solutions/BrandStrategy';
-import Analytics from '@/pages/strategic-solutions/Analytics';
-import ProcessOptimization from '@/pages/strategic-solutions/ProcessOptimization';
-
-// New Performance Marketing and Social Media pages
+// Core Growth Solutions
 import PerformanceMarketing from '@/pages/growth-solutions/PerformanceMarketing';
-import SocialMediaMarketing from '@/pages/growth-solutions/SocialMediaMarketing';
-
-// New Growth Solutions Pages
+import SocialMedia from '@/pages/growth-solutions/SocialMedia';
+import EmailMarketing from '@/pages/growth-solutions/EmailMarketing';
 import CreativeSolutions from '@/pages/growth-solutions/CreativeSolutions';
 import ConversionOptimization from '@/pages/growth-solutions/ConversionOptimization';
-import SEOWebsiteGrowth from '@/pages/growth-solutions/SEOWebsiteGrowth';
+import SEO from '@/pages/growth-solutions/SEO';
 import WebsiteSolutions from '@/pages/growth-solutions/WebsiteSolutions';
 
-// New Strategic Solutions Pages  
-import ProcessAutomation from '@/pages/strategic-solutions/ProcessAutomation';
+// Specialized Growth Solutions
+import AuditInsights from '@/pages/growth-solutions/specialized-growth-solutions/AuditInsights';
+import AnalyticsTracking from '@/pages/growth-solutions/specialized-growth-solutions/AnalyticsTracking';
+import LeadGeneration from '@/pages/growth-solutions/specialized-growth-solutions/LeadGeneration';
+import BrandStrategy from '@/pages/growth-solutions/specialized-growth-solutions/BrandStrategy';
+import ContentStrategy from '@/pages/growth-solutions/specialized-growth-solutions/ContentStrategy';
+import AIContent from '@/pages/growth-solutions/specialized-growth-solutions/AIContent';
+import ExecutiveBranding from '@/pages/growth-solutions/specialized-growth-solutions/ExecutiveBranding';
 
-function App() {
+// Strategic Solutions
+import ProcessAutomation from '@/pages/strategic-solutions/ProcessAutomation';
+import DigitalSystemsEnablement from '@/pages/strategic-solutions/DigitalSystemsEnablement';
+import CustomSolutionEngineering from '@/pages/strategic-solutions/CustomSolutionEngineering';
+import EnterpriseEvolution from '@/pages/strategic-solutions/EnterpriseEvolution';
+import FinanceOperations from '@/pages/strategic-solutions/FinanceOperations';
+import Operations from '@/pages/strategic-solutions/Operations';
+import HumanResources from '@/pages/strategic-solutions/HumanResources';
+import ComplianceGovernance from '@/pages/strategic-solutions/ComplianceGovernance';
+import CrossFunctionalLeadership from '@/pages/strategic-solutions/CrossFunctionalLeadership';
+import MarketResearch from '@/pages/strategic-solutions/MarketResearch';
+import ProcessOptimization from '@/pages/strategic-solutions/ProcessOptimization';
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: 1,
+      refetchOnWindowFocus: false,
+    },
+  },
+});
+
+const App: React.FC = () => {
+  const [loading, setLoading] = useState(true);
+
+
   return (
     <HelmetProvider>
-      <BrowserRouter>
-        <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Index />} />
-            <Route path="about" element={<About />} />
-            <Route path="blog" element={<Blog />} />
-            <Route path="blog/:slug" element={<Blog />} />
-            <Route path="contact" element={<Contact />} />
-            <Route path="insights" element={<Insights />} />
-            <Route path="growth-solutions" element={<GrowthSolutions />} />
-            <Route path="strategic-solutions" element={<StrategicSolutions />} />
-            <Route path="privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="terms-of-service" element={<TermsOfService />} />
-            
-            {/* Growth Solutions Sub-pages */}
-            <Route path="growth-solutions/digital-marketing" element={<DigitalMarketing />} />
-            <Route path="growth-solutions/seo" element={<SEO />} />
-            <Route path="growth-solutions/social-media" element={<SocialMedia />} />
-            <Route path="growth-solutions/content" element={<ContentMarketing />} />
-            <Route path="growth-solutions/email" element={<EmailMarketing />} />
-            <Route path="growth-solutions/performance-marketing" element={<PerformanceMarketing />} />
-            <Route path="growth-solutions/social-media-marketing" element={<SocialMediaMarketing />} />
-            <Route path="growth-solutions/creative-solutions" element={<CreativeSolutions />} />
-            <Route path="growth-solutions/conversion-optimization" element={<ConversionOptimization />} />
-            <Route path="growth-solutions/seo-website-growth" element={<SEOWebsiteGrowth />} />
-            <Route path="growth-solutions/website-solutions" element={<WebsiteSolutions />} />
-            
-            {/* Strategic Solutions Sub-pages */}
-            <Route path="strategic-solutions/consulting" element={<BusinessConsulting />} />
-            <Route path="strategic-solutions/research" element={<MarketResearch />} />
-            <Route path="strategic-solutions/branding" element={<BrandStrategy />} />
-            <Route path="strategic-solutions/analytics" element={<Analytics />} />
-            <Route path="strategic-solutions/optimization" element={<ProcessOptimization />} />
-            <Route path="strategic-solutions/process-automation" element={<ProcessAutomation />} />
-            
-            <Route path="*" element={<NotFound />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+      <QueryClientProvider client={queryClient}>
+        <Router>
+          <ScrollToTop />
+          <Layout>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/about/solvepath-framework" element={<SolvePathFramework />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/insights" element={<Insights />} />
+              <Route path="/growth-solutions" element={<GrowthSolutions />} />
+              <Route path="/strategic-solutions" element={<StrategicSolutions />} />
+              <Route path="/core-growth-solutions" element={<CoreGrowthSolutions />} />
+              <Route path="/specialized-growth-solutions" element={<SpecializedGrowthSolutions />} />
+              
+              {/* Core Growth Solutions Routes */}
+              <Route path="/growth-solutions/performance-marketing" element={<PerformanceMarketing />} />
+              <Route path="/growth-solutions/social-media-marketing" element={<SocialMedia />} />
+              <Route path="/growth-solutions/email-marketing" element={<EmailMarketing />} />
+              <Route path="/growth-solutions/creative-solutions" element={<CreativeSolutions />} />
+              <Route path="/growth-solutions/conversion-optimization" element={<ConversionOptimization />} />
+              <Route path="/growth-solutions/seo-website-growth" element={<SEO />} />
+              <Route path="/growth-solutions/website-solutions" element={<WebsiteSolutions />} />
+              
+              {/* Specialized Growth Solutions Routes */}
+              <Route path="/specialized-growth-solutions/audit-insights" element={<AuditInsights />} />
+              <Route path="/specialized-growth-solutions/analytics-tracking" element={<AnalyticsTracking />} />
+              <Route path="/specialized-growth-solutions/lead-generation" element={<LeadGeneration />} />
+              <Route path="/specialized-growth-solutions/brand-strategy" element={<BrandStrategy />} />
+              <Route path="/specialized-growth-solutions/content-strategy" element={<ContentStrategy />} />
+              <Route path="/specialized-growth-solutions/ai-content" element={<AIContent />} />
+              <Route path="/specialized-growth-solutions/executive-branding" element={<ExecutiveBranding />} />
+              
+              {/* Strategic Solutions Routes */}
+              <Route path="/strategic-solutions/process-automation" element={<ProcessAutomation />} />
+              <Route path="/strategic-solutions/digital-systems-enablement" element={<DigitalSystemsEnablement />} />
+              <Route path="/strategic-solutions/custom-solution-engineering" element={<CustomSolutionEngineering />} />
+              <Route path="/strategic-solutions/enterprise-evolution" element={<EnterpriseEvolution />} />
+              <Route path="/strategic-solutions/finance-operations" element={<FinanceOperations />} />
+              <Route path="/strategic-solutions/operations" element={<Operations />} />
+              <Route path="/strategic-solutions/human-resources" element={<HumanResources />} />
+              <Route path="/strategic-solutions/compliance-governance" element={<ComplianceGovernance />} />
+              <Route path="/strategic-solutions/cross-functional-leadership" element={<CrossFunctionalLeadership />} />
+              <Route path="/strategic-solutions/market-research" element={<MarketResearch />} />
+              <Route path="/strategic-solutions/process-optimization" element={<ProcessOptimization />} />
+            </Routes>
+          </Layout>
+        </Router>
+      </QueryClientProvider>
     </HelmetProvider>
   );
-}
+};
 
 export default App;

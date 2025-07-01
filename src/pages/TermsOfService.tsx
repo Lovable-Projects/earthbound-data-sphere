@@ -1,100 +1,168 @@
-import React, { useEffect } from 'react';
+
+import React from 'react';
+import { motion } from 'framer-motion';
 
 const TermsOfService: React.FC = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   return (
-    <div className="container mx-auto px-4 py-16 max-w-3xl">
-      <h1 className="text-4xl font-bold mb-6">Terms of Service</h1>
-      <p className="mb-6 text-muted-foreground">Last updated: July 2024</p>
+    <div className="min-h-screen bg-background">
+      <div className="container mx-auto px-4 pt-24 pb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="max-w-4xl mx-auto"
+        >
+          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-8">
+            Terms of Service
+          </h1>
+          <p className="text-muted-foreground mb-8">
+            Last updated: {new Date().toLocaleDateString()}
+          </p>
 
-      <section className="mb-8">
-        <h2 className="text-2xl font-semibold mb-2">1. Acceptance of Terms</h2>
-        <p>
-          By accessing or using the Perssonify website and services, you agree to be bound by these Terms of Service and all applicable laws and regulations. If you do not agree, please do not use our services.
-        </p>
-      </section>
+          <div className="prose prose-gray max-w-none dark:prose-invert">
+            <section className="mb-8">
+              <h2 className="text-2xl font-semibold text-foreground mb-4">1. Agreement to Terms</h2>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                By accessing and using Perssonify's services, you accept and agree to be bound by the terms and provision of this agreement. These Terms of Service ("Terms") govern your use of our website, services, and any related content or materials provided by Perssonify.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                If you do not agree to abide by the above, please do not use this service. We reserve the right to modify these terms at any time, and such modifications will be effective immediately upon posting.
+              </p>
+            </section>
 
-      <section className="mb-8">
-        <h2 className="text-2xl font-semibold mb-2">2. Use of Services</h2>
-        <ul className="list-disc pl-6">
-          <li>You must be at least 18 years old to use our services.</li>
-          <li>You agree to use our services only for lawful purposes and in accordance with these Terms.</li>
-          <li>You are responsible for maintaining the confidentiality of your account information.</li>
-        </ul>
-      </section>
+            <section className="mb-8">
+              <h2 className="text-2xl font-semibold text-foreground mb-4">2. Description of Services</h2>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                Perssonify provides digital marketing, strategic consulting, and business optimization services including but not limited to:
+              </p>
+              <ul className="list-disc pl-6 text-muted-foreground mb-4">
+                <li>Performance marketing and paid media management</li>
+                <li>Social media marketing and brand engagement</li>
+                <li>Email marketing and marketing automation</li>
+                <li>Creative solutions and content development</li>
+                <li>Conversion rate optimization</li>
+                <li>Search engine optimization and website growth</li>
+                <li>Strategic consulting and business process automation</li>
+                <li>Analytics and tracking implementation</li>
+              </ul>
+              <p className="text-muted-foreground leading-relaxed">
+                Services are provided on a project basis, retainer basis, or through specific engagement agreements as outlined in individual service contracts.
+              </p>
+            </section>
 
-      <section className="mb-8">
-        <h2 className="text-2xl font-semibold mb-2">3. Intellectual Property</h2>
-        <p>
-          All content, trademarks, and data on this website, including but not limited to software, databases, text, graphics, icons, and hyperlinks are the property of Perssonify or its licensors and are protected by intellectual property laws.
-        </p>
-      </section>
+            <section className="mb-8">
+              <h2 className="text-2xl font-semibold text-foreground mb-4">3. Service Agreements and Payments</h2>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                Specific terms for each engagement will be outlined in individual service agreements or statements of work. Payment terms, deliverables, timelines, and scope will be clearly defined for each project.
+              </p>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                Unless otherwise specified:
+              </p>
+              <ul className="list-disc pl-6 text-muted-foreground mb-4">
+                <li>Payment is due within 30 days of invoice date</li>
+                <li>Late payments may incur additional fees</li>
+                <li>Services may be suspended for non-payment</li>
+                <li>Refunds are handled on a case-by-case basis as outlined in individual agreements</li>
+              </ul>
+            </section>
 
-      <section className="mb-8">
-        <h2 className="text-2xl font-semibold mb-2">4. User Content</h2>
-        <ul className="list-disc pl-6">
-          <li>You retain ownership of any content you submit, post, or display on or through our services.</li>
-          <li>By submitting content, you grant us a worldwide, non-exclusive, royalty-free license to use, reproduce, and display such content.</li>
-          <li>You are solely responsible for your content and the consequences of posting or publishing it.</li>
-        </ul>
-      </section>
+            <section className="mb-8">
+              <h2 className="text-2xl font-semibold text-foreground mb-4">4. Client Responsibilities</h2>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                Clients are responsible for:
+              </p>
+              <ul className="list-disc pl-6 text-muted-foreground mb-4">
+                <li>Providing accurate and complete information necessary for service delivery</li>
+                <li>Timely response to requests for feedback, approvals, and materials</li>
+                <li>Ensuring they have appropriate rights and permissions for all materials provided</li>
+                <li>Compliance with applicable laws and regulations in their industry</li>
+                <li>Maintaining confidentiality of sensitive business information shared during engagements</li>
+              </ul>
+            </section>
 
-      <section className="mb-8">
-        <h2 className="text-2xl font-semibold mb-2">5. Prohibited Activities</h2>
-        <ul className="list-disc pl-6">
-          <li>Violating any applicable laws or regulations.</li>
-          <li>Infringing upon or violating our intellectual property rights or the intellectual property rights of others.</li>
-          <li>Uploading or transmitting viruses or any other type of malicious code.</li>
-          <li>Harassing, abusing, or harming another person or group.</li>
-        </ul>
-      </section>
+            <section className="mb-8">
+              <h2 className="text-2xl font-semibold text-foreground mb-4">5. Intellectual Property</h2>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                Unless otherwise specified in individual agreements:
+              </p>
+              <ul className="list-disc pl-6 text-muted-foreground mb-4">
+                <li>Clients retain ownership of their pre-existing intellectual property</li>
+                <li>Work products created specifically for clients become client property upon full payment</li>
+                <li>Perssonify retains rights to general methodologies, processes, and know-how</li>
+                <li>Third-party tools and platforms remain property of their respective owners</li>
+              </ul>
+            </section>
 
-      <section className="mb-8">
-        <h2 className="text-2xl font-semibold mb-2">6. Disclaimers</h2>
-        <p>
-          Our services are provided on an "as is" and "as available" basis. We do not warrant that the services will be uninterrupted, error-free, or secure.
-        </p>
-      </section>
+            <section className="mb-8">
+              <h2 className="text-2xl font-semibold text-foreground mb-4">6. Confidentiality</h2>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                Perssonify maintains strict confidentiality regarding client information and business operations. We will not disclose confidential information to third parties without explicit written consent, except as required by law.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                Clients similarly agree to maintain confidentiality regarding Perssonify's proprietary methods, processes, and business information shared during engagements.
+              </p>
+            </section>
 
-      <section className="mb-8">
-        <h2 className="text-2xl font-semibold mb-2">7. Limitation of Liability</h2>
-        <p>
-          To the fullest extent permitted by law, Perssonify and its affiliates shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues.
-        </p>
-      </section>
+            <section className="mb-8">
+              <h2 className="text-2xl font-semibold text-foreground mb-4">7. Limitation of Liability</h2>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                Perssonify's liability for any claims arising from our services is limited to the total amount paid by the client for the specific services giving rise to the claim. We are not liable for indirect, incidental, special, or consequential damages.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                While we strive for excellence in all deliverables, marketing and business results cannot be guaranteed due to factors beyond our control including market conditions, competition, and client implementation of recommendations.
+              </p>
+            </section>
 
-      <section className="mb-8">
-        <h2 className="text-2xl font-semibold mb-2">8. Indemnification</h2>
-        <p>
-          You agree to indemnify and hold harmless Perssonify, its affiliates, and their respective officers, directors, employees, and agents from any claims, damages, obligations, losses, liabilities, costs, or debt.
-        </p>
-      </section>
+            <section className="mb-8">
+              <h2 className="text-2xl font-semibold text-foreground mb-4">8. Termination</h2>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                Either party may terminate services with appropriate notice as specified in individual service agreements. Upon termination:
+              </p>
+              <ul className="list-disc pl-6 text-muted-foreground mb-4">
+                <li>All outstanding payments become immediately due</li>
+                <li>Each party will return or destroy confidential information</li>
+                <li>Completed work products will be delivered to the client</li>
+                <li>Access to tools and platforms will be transferred or terminated as appropriate</li>
+              </ul>
+            </section>
 
-      <section className="mb-8">
-        <h2 className="text-2xl font-semibold mb-2">9. Changes to Terms</h2>
-        <p>
-          We reserve the right to modify these Terms at any time. Changes will be effective immediately upon posting on this page. Your continued use of the services constitutes acceptance of those changes.
-        </p>
-      </section>
+            <section className="mb-8">
+              <h2 className="text-2xl font-semibold text-foreground mb-4">9. Dispute Resolution</h2>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                Any disputes arising from these terms or our services will first be addressed through good faith negotiation. If resolution cannot be achieved, disputes will be resolved through binding arbitration in accordance with the rules of the American Arbitration Association.
+              </p>
+            </section>
 
-      <section className="mb-8">
-        <h2 className="text-2xl font-semibold mb-2">10. Governing Law</h2>
-        <p>
-          These Terms are governed by and construed in accordance with the laws of your jurisdiction, without regard to its conflict of law principles.
-        </p>
-      </section>
+            <section className="mb-8">
+              <h2 className="text-2xl font-semibold text-foreground mb-4">10. Governing Law</h2>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                These Terms are governed by and construed in accordance with the laws of the United States and the state in which Perssonify is incorporated, without regard to conflict of law principles.
+              </p>
+            </section>
 
-      <section className="mb-8">
-        <h2 className="text-2xl font-semibold mb-2">11. Contact Us</h2>
-        <p>
-          If you have any questions about these Terms, please contact us at <a href="mailto:hello@perssonify.com" className="underline text-primary">hello@perssonify.com</a>.
-        </p>
-      </section>
+            <section className="mb-8">
+              <h2 className="text-2xl font-semibold text-foreground mb-4">11. Changes to Terms</h2>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                We reserve the right to modify these Terms of Service at any time. Changes will be effective immediately upon posting to our website. Continued use of our services after changes constitutes acceptance of the new terms.
+              </p>
+            </section>
+
+            <section className="mb-8">
+              <h2 className="text-2xl font-semibold text-foreground mb-4">12. Contact Information</h2>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                If you have questions about these Terms of Service, please contact us at:
+              </p>
+              <div className="bg-muted/50 p-4 rounded-lg">
+                <p className="text-foreground font-medium">Perssonify</p>
+                <p className="text-muted-foreground">Email: stefan@perssonify.com</p>
+                <p className="text-muted-foreground">Phone: +1 (609) 510-2061</p>
+              </div>
+            </section>
+          </div>
+        </motion.div>
+      </div>
     </div>
   );
 };
 
-export default TermsOfService; 
+export default TermsOfService;

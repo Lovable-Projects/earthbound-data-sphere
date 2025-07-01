@@ -1,32 +1,18 @@
 import * as React from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { Button } from "@/components/ui/button"
-import { Label } from "@/components/ui/label"
-import { Switch } from "@/components/ui/switch"
 import { Input } from "@/components/ui/input"
 import { Send } from "lucide-react"
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip"
-import { Facebook, Instagram, Linkedin, Moon, Sun, Twitter } from "lucide-react"
 import LogoTeal from '/Logo-Teal.png';
 
-interface FooterProps {
-  isDarkMode: boolean;
-  toggleDarkMode: () => void;
-}
-
-const Footer: React.FC<FooterProps> = ({ isDarkMode, toggleDarkMode }) => {
+const Footer: React.FC = () => {
   const [email, setEmail] = React.useState("");
   const [isSubscribing, setIsSubscribing] = React.useState(false);
   const navigate = useNavigate();
+  const currentYear = new Date().getFullYear();
 
   const handleLogoClick = () => {
     navigate('/');
-    // Scroll to top with smooth behavior
     setTimeout(() => {
       window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     }, 100);
@@ -57,205 +43,186 @@ const Footer: React.FC<FooterProps> = ({ isDarkMode, toggleDarkMode }) => {
   ];
 
   const solutions = {
-    growth: [
-      { name: 'Digital Marketing', href: '/growth-solutions/digital-marketing' },
-      { name: 'SEO Services', href: '/growth-solutions/seo' },
-      { name: 'Social Media Management', href: '/growth-solutions/social-media' },
-      { name: 'Content Marketing', href: '/growth-solutions/content' },
-      { name: 'Email Marketing', href: '/growth-solutions/email' },
+    coreGrowth: [
+      { name: 'Performance Marketing & Paid Media', href: '/growth-solutions/performance-marketing' },
+      { name: 'Social Media Marketing & Brand Engagement', href: '/growth-solutions/social-media-marketing' },
+      { name: 'Email Marketing & Marketing Automation', href: '/growth-solutions/email-marketing' },
+      { name: 'Creative Solutions', href: '/growth-solutions/creative-solutions' },
+      { name: 'Conversion Rate Optimization (CRO)', href: '/growth-solutions/conversion-optimization' },
+      { name: 'SEO & Website Growth', href: '/growth-solutions/seo-website-growth' },
+      { name: 'Website Solutions', href: '/growth-solutions/website-solutions' },
     ],
-    strategic: [
-      { name: 'Business Consulting', href: '/strategic-solutions/consulting' },
-      { name: 'Market Research', href: '/strategic-solutions/research' },
-      { name: 'Brand Strategy', href: '/strategic-solutions/branding' },
-      { name: 'Analytics & Insights', href: '/strategic-solutions/analytics' },
-      { name: 'Process Optimization', href: '/strategic-solutions/optimization' },
+    specializedGrowth: [
+      { name: 'Deep Dive Audit & Strategic Insights', href: '/specialized-growth-solutions/audit-insights' },
+      { name: 'Analytics and Event Tracking Setup', href: '/specialized-growth-solutions/analytics-tracking' },
+      { name: 'Lead Generation & Funnel Strategy', href: '/specialized-growth-solutions/lead-generation' },
+      { name: 'Brand Architecture & Strategy', href: '/specialized-growth-solutions/brand-strategy' },
+      { name: 'Content Strategy & Planning', href: '/specialized-growth-solutions/content-strategy' },
+      { name: 'AI-Accelerated Content Production', href: '/specialized-growth-solutions/ai-content' },
+      { name: 'Executive Personal Branding', href: '/specialized-growth-solutions/executive-branding' },
+    ],
+    coreStrategic: [
+      { name: 'Process & Workflow Automation', href: '/strategic-solutions/process-automation' },
+      { name: 'Digital Systems Enablement', href: '/strategic-solutions/digital-systems-enablement' },
+      { name: 'Custom Solution Engineering', href: '/strategic-solutions/custom-solution-engineering' },
+      { name: 'Enterprise Evolution & Strategic Transformation', href: '/strategic-solutions/enterprise-evolution' },
+    ],
+    strategicByFunction: [
+      { name: 'Finance Operations', href: '/strategic-solutions/finance-operations' },
+      { name: 'Operations', href: '/strategic-solutions/operations' },
+      { name: 'Human Resources', href: '/strategic-solutions/human-resources' },
+      { name: 'Compliance & Governance', href: '/strategic-solutions/compliance-governance' },
+      { name: 'Cross-Functional Leadership', href: '/strategic-solutions/cross-functional-leadership' },
+      { name: 'Market Research', href: '/strategic-solutions/market-research' },
+      { name: 'Process Optimization', href: '/strategic-solutions/process-optimization' },
     ],
   };
 
-  const socialLinks = [
-    { name: 'Facebook', icon: Facebook, href: 'https://facebook.com/perssonify', tooltip: 'Follow us on Facebook' },
-    { name: 'Twitter', icon: Twitter, href: 'https://twitter.com/perssonify', tooltip: 'Follow us on Twitter' },
-    { name: 'Instagram', icon: Instagram, href: 'https://instagram.com/perssonify', tooltip: 'Follow us on Instagram' },
-    { name: 'LinkedIn', icon: Linkedin, href: 'https://linkedin.com/company/perssonify', tooltip: 'Connect with us on LinkedIn' },
-  ];
-
   return (
-    <footer className="relative border-t bg-background text-foreground transition-colors duration-300">
-      <div className="container mx-auto px-4 py-12 md:px-6 lg:px-8">
-        <div className="grid gap-12 md:grid-cols-12">
-          {/* Newsletter Section with Clickable Logo */}
-          <div className="relative md:col-span-3">
+    <footer className="border-t bg-background text-foreground">
+      <div className="container mx-auto px-4 py-6">
+        {/* Main Footer Content */}
+        <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-5 max-w-6xl mx-auto pl-2 sm:pl-4">
+          {/* Brand & Newsletter - Single column on large screens */}
+          <div className="space-y-3">
             <button 
               onClick={handleLogoClick}
-              className="mb-4 cursor-pointer hover:opacity-80 transition-opacity"
+              className="cursor-pointer hover:opacity-80 transition-opacity"
               aria-label="Go to homepage"
             >
               <img
                 src={LogoTeal}
                 alt="Perssonify Logo"
-                className="h-8 w-auto object-contain"
+                className="h-8 w-auto"
               />
             </button>
-            <p className="mb-3 text-xs text-muted-foreground">Empowering businesses with growth and strategic solutions worldwide.</p>
-            <p className="mb-6 text-sm text-muted-foreground">
-              Join our newsletter for the latest updates and exclusive offers.
+            <p className="text-xs text-muted-foreground leading-relaxed">
+              Empowering businesses with growth and strategic solutions worldwide.
             </p>
-            <form onSubmit={handleSubscribe} className="relative space-y-4">
-              <div className="relative">
+            <div className="space-y-2">
+              <p className="text-xs font-medium">Join our newsletter</p>
+              <form onSubmit={handleSubscribe} className="flex">
                 <Input
                   type="email"
-                  placeholder="Enter your email"
+                  placeholder="Enter email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full bg-background pr-12 placeholder:text-muted-foreground/50"
+                  className="h-8 text-xs rounded-r-none"
                   required
                 />
                 <Button
                   type="submit"
                   size="sm"
-                  className="absolute right-1 top-1 h-7 w-7 rounded-full bg-primary p-0 hover:bg-primary/90"
+                  className="h-8 px-3 rounded-l-none"
                   disabled={isSubscribing}
                 >
-                  <Send className="h-4 w-4" />
-                  <span className="sr-only">Subscribe to newsletter</span>
+                  <Send className="h-3 w-3" />
                 </Button>
-              </div>
-              <p className="text-xs text-muted-foreground">
-                By subscribing, you agree to our{" "}
-                <Link to="/privacy" className="underline hover:text-primary">
-                  Privacy Policy
-                </Link>
-              </p>
-            </form>
-            <div className="absolute -right-4 top-0 h-24 w-24 rounded-full bg-primary/10 blur-2xl" />
+              </form>
+            </div>
           </div>
 
-          {/* Quick Links */}
-          <div className="md:col-span-2">
-            <h3 className="mb-4 text-lg font-semibold">Quick Links</h3>
-            <nav className="space-y-2 text-sm">
+          {/* Navigation */}
+          <div className="space-y-3">
+            <h3 className="text-xs font-semibold uppercase tracking-wider">Company</h3>
+            <ul className="space-y-1">
               {navigation.map((item) => (
-                <Link 
-                  key={item.name}
-                  to={item.href} 
-                  className="block transition-colors hover:text-primary"
-                >
-                  {item.name}
-                </Link>
+                <li key={item.name}>
+                  <Link
+                    to={item.href}
+                    className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    {item.name}
+                  </Link>
+                </li>
               ))}
-            </nav>
+            </ul>
           </div>
 
-          {/* Solutions - Side by Side */}
-          <div className="md:col-span-5">
-            <h3 className="mb-4 text-lg font-semibold">Our Solutions</h3>
-            <div className="grid grid-cols-2 gap-8">
-              <div>
-                <h4 className="mb-2 text-sm font-medium text-muted-foreground">Growth Solutions</h4>
-                <nav className="space-y-2 text-sm">
-                  {solutions.growth.map((item) => (
-                    <Link 
-                      key={item.name}
-                      to={item.href} 
-                      className="block transition-colors hover:text-primary"
-                    >
-                      {item.name}
-                    </Link>
-                  ))}
-                </nav>
-              </div>
-              <div>
-                <h4 className="mb-2 text-sm font-medium text-muted-foreground">Strategic Solutions</h4>
-                <nav className="space-y-2 text-sm">
-                  {solutions.strategic.map((item) => (
-                    <Link 
-                      key={item.name}
-                      to={item.href} 
-                      className="block transition-colors hover:text-primary"
-                    >
-                      {item.name}
-                    </Link>
-                  ))}
-                </nav>
-              </div>
-            </div>
+          {/* Core Growth Solutions */}
+          <div className="space-y-3">
+            <h3 className="text-xs font-semibold uppercase tracking-wider">Growth</h3>
+            <ul className="space-y-1">
+              {solutions.coreGrowth.map((item) => (
+                <li key={item.name}>
+                  <Link
+                    to={item.href}
+                    className="text-xs text-muted-foreground hover:text-foreground transition-colors leading-tight"
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
-          {/* Social Links and Theme Toggle */}
-          <div className="relative md:col-span-2">
-            <h3 className="mb-4 text-lg font-semibold">Follow Us</h3>
-            <div className="mb-6 flex flex-wrap gap-4">
-              {socialLinks.map((social) => (
-                <TooltipProvider key={social.name}>
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <a 
-                        href={social.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
+          {/* Specialized Growth Solutions */}
+          <div className="space-y-3">
+            <h3 className="text-xs font-semibold uppercase tracking-wider">Specialized</h3>
+            <ul className="space-y-1">
+              {solutions.specializedGrowth.map((item) => (
+                <li key={item.name}>
+                  <Link
+                    to={item.href}
+                    className="text-xs text-muted-foreground hover:text-foreground transition-colors leading-tight"
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Strategic Solutions Combined */}
+          <div className="space-y-3">
+            <h3 className="text-xs font-semibold uppercase tracking-wider">Strategic</h3>
+            <div className="space-y-2">
+              <div>
+                <p className="text-xs font-medium text-foreground/80 mb-1">Core</p>
+                <ul className="space-y-1">
+                  {solutions.coreStrategic.map((item) => (
+                    <li key={item.name}>
+                      <Link
+                        to={item.href}
+                        className="text-xs text-muted-foreground hover:text-foreground transition-colors leading-tight"
                       >
-                        <Button 
-                          variant="outline" 
-                          size="icon" 
-                          className="rounded-full transition-colors hover:bg-primary hover:text-primary-foreground"
-                        >
-                          <social.icon className="h-4 w-4" />
-                          <span className="sr-only">{social.name}</span>
-                        </Button>
-                      </a>
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      <p>{social.tooltip}</p>
-                    </TooltipContent>
-                  </Tooltip>
-                </TooltipProvider>
-              ))}
-            </div>
-            <div className="flex items-center space-x-2">
-              <button 
-                onClick={toggleDarkMode}
-                className="p-1 hover:bg-muted rounded transition-colors"
-                aria-label="Switch to light mode"
-              >
-                <Sun className="h-4 w-4 text-muted-foreground hover:text-foreground transition-colors" />
-              </button>
-              <Switch
-                id="footer-dark-mode"
-                checked={isDarkMode}
-                onCheckedChange={toggleDarkMode}
-                aria-label="Toggle dark mode"
-              />
-              <button 
-                onClick={toggleDarkMode}
-                className="p-1 hover:bg-muted rounded transition-colors"
-                aria-label="Switch to dark mode"
-              >
-                <Moon className="h-4 w-4 text-muted-foreground hover:text-foreground transition-colors" />
-              </button>
-              <Label htmlFor="footer-dark-mode" className="sr-only">
-                Toggle dark mode
-              </Label>
+                        {item.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <p className="text-xs font-medium text-foreground/80 mb-1">By Function</p>
+                <ul className="space-y-1">
+                  {solutions.strategicByFunction.map((item) => (
+                    <li key={item.name}>
+                      <Link
+                        to={item.href}
+                        className="text-xs text-muted-foreground hover:text-foreground transition-colors leading-tight"
+                      >
+                        {item.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Copyright Section */}
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t pt-8 text-center md:flex-row">
-          <p className="text-sm text-muted-foreground">
-            © 2024 Perssonify. All rights reserved.
+        {/* Bottom Bar */}
+        <div className="mt-6 pt-4 border-t flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-3 text-xs text-muted-foreground">
+            <span>contact@perssonify.com</span>
+            <span className="hidden sm:inline">•</span>
+            <span>+1 (555) 123-4567</span>
+            <span className="hidden sm:inline">•</span>
+            <span>123 Business Ave, Suite 100, City, State 12345</span>
+          </div>
+          <p className="text-xs text-muted-foreground">
+            &copy; {currentYear} Perssonify. All rights reserved.
           </p>
-          <nav className="flex gap-4 text-sm">
-            <Link to="/privacy" className="transition-colors hover:text-primary">
-              Privacy Policy
-            </Link>
-            <Link to="/terms" className="transition-colors hover:text-primary">
-              Terms of Service
-            </Link>
-            <Link to="/cookies" className="transition-colors hover:text-primary">
-              Cookie Settings
-            </Link>
-          </nav>
         </div>
       </div>
     </footer>

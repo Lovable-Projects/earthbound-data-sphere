@@ -139,8 +139,8 @@ const ResultsSection: React.FC<ExecutionModelProps> = ({ autoPlay = true, animat
   }, [])
 
   return (
-    <section className="py-16 md:py-24 bg-home-gradient min-h-screen transition-colors">
-      <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
+    <section className="py-24 bg-background">
+      <div className="max-w-6xl mx-auto px-2 sm:px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -150,7 +150,7 @@ const ResultsSection: React.FC<ExecutionModelProps> = ({ autoPlay = true, animat
           <div className="mb-4 px-4 py-2 text-sm font-medium border border-border rounded-full inline-block bg-card">
             Perssonify Execution Model
           </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-6">
             Our Proven Process
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">

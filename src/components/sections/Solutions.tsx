@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { TrendingUp, Settings, ArrowRight, Zap, Target, Cog } from 'lucide-react';
@@ -46,7 +45,7 @@ const Solutions: React.FC = () => {
 
   return (
     <section className="py-24 bg-background">
-      <div className="container mx-auto px-4">
+      <div className="max-w-6xl mx-auto px-2 sm:px-4">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -54,17 +53,17 @@ const Solutions: React.FC = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6 text-primary text-2xl sm:text-3xl md:text-4xl px-2">
             Two Solution Families
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed text-base sm:text-lg px-2">
             Whether you're launching something new or optimizing what's already working, 
             we deliver what your business needs to grow, adapt, and move faster.
           </p>
         </motion.div>
 
         {/* Solutions Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16 gap-y-8">
           {solutions.map((solution, index) => (
             <motion.div
               key={solution.title}
@@ -73,9 +72,9 @@ const Solutions: React.FC = () => {
               transition={{ duration: 0.8, delay: index * 0.2 }}
             >
               <Link to={solution.href} className="block group">
-                <Card className={`h-full hover:shadow-xl transition-all duration-300 hover:-translate-y-1 custom-shadow ${solution.color} border-0 cursor-pointer`}>
+                <Card>
                   <CardHeader className="pb-4">
-                    <div className={`w-16 h-16 rounded-xl ${solution.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                    <div className={`w-16 h-16 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
                       <solution.icon className={`w-8 h-8 ${solution.iconColor}`} />
                     </div>
                     <CardTitle className="text-2xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
@@ -85,11 +84,10 @@ const Solutions: React.FC = () => {
                       {solution.subtitle}
                     </CardDescription>
                   </CardHeader>
-                  <CardContent className="space-y-6">
+                  <CardContent>
                     <p className="text-muted-foreground leading-relaxed">
                       {solution.description}
                     </p>
-                    
                     <div className="space-y-3">
                       <h4 className="font-semibold text-foreground">Key Services:</h4>
                       <ul className="space-y-2">
@@ -106,7 +104,6 @@ const Solutions: React.FC = () => {
                         )}
                       </ul>
                     </div>
-
                     <div className="flex items-center text-primary font-medium group-hover:translate-x-2 transition-transform duration-300">
                       Explore {solution.title}
                       <ArrowRight className="ml-2 w-4 h-4" />

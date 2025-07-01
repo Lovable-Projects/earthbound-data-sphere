@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Search, Target, Rocket, BarChart3, Users, Lightbulb, ArrowRight, CheckCircle } from 'lucide-react';
@@ -119,7 +118,7 @@ const SolvePathFramework: React.FC = () => {
 
                 {/* Visual */}
                 <div className="flex-1">
-                  <Card className="custom-shadow hover:shadow-xl transition-all duration-300">
+                  <Card>
                     <CardContent className="p-8">
                       <div className="text-center">
                         <div className="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center mb-6">
@@ -166,7 +165,7 @@ const SolvePathFramework: React.FC = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <Card className="h-full hover:shadow-lg transition-all duration-300 custom-shadow">
+                <Card>
                   <CardContent className="p-6">
                     <div className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
@@ -190,7 +189,7 @@ const SolvePathFramework: React.FC = () => {
             viewport={{ once: true }}
             className="text-center"
           >
-            <Card className="max-w-4xl mx-auto custom-shadow">
+            <Card>
               <CardContent className="p-12">
                 <Users className="w-16 h-16 text-primary mx-auto mb-6" />
                 <h2 className="text-3xl font-bold text-foreground mb-6">

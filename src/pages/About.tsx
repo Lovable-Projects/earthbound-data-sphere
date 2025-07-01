@@ -4,7 +4,6 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { WavyBackground } from '@/components/ui/wavy-background';
-import { RadarPreview } from '@/components/ui/radar-preview';
 
 const About: React.FC = () => {
   const values = [
@@ -113,17 +112,17 @@ const About: React.FC = () => {
   return (
     <div className="bg-background text-foreground">
       {/* Hero Section with Wavy Background */}
-      <WavyBackground className="py-16 md:py-16 mt-8 md:mt-16">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+      <WavyBackground className="py-20 sm:py-28 md:py-36 mt-16 md:mt-20">
+        <div className="container max-w-6xl">
           <div className="text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-playfair text-black dark:text-white mb-4 lg:mb-6">
+            <h1 className="text-5xl md:text-6xl lg:text-6xl font-bold font-playfair text-black dark:text-white mb-6 lg:mb-8">
               We bring{' '}
               <span className="bg-gradient-to-br from-primary to-accent bg-clip-text text-transparent drop-shadow-md text-stroke-themed">Growth</span>{' '}
               and{' '}
               <span className="bg-gradient-to-br from-primary to-accent bg-clip-text text-transparent drop-shadow-md text-stroke-themed">Scale</span>{' '}
               to life
             </h1>
-            <p className="text-lg md:text-xl text-black/80 dark:text-white/80 mb-6 lg:mb-8 leading-relaxed max-w-3xl mx-auto">
+            <p className="text-xl md:text-2xl text-black/80 dark:text-white/80 mb-8 lg:mb-10 leading-relaxed max-w-3xl mx-auto">
               Perssonify was built around one simple idea: The right solution at the right time can change everything. We make the right solutions happen right now.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -143,9 +142,9 @@ const About: React.FC = () => {
 
       {/* Our Story */}
       <section className="py-52 bg-muted/30">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+        <div className="container max-w-6xl">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-8 text-center">
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-8 text-center text-primary">
               Our Story
             </h2>
             <div className="prose prose-lg max-w-none text-muted-foreground space-y-6 dark:prose-invert">
@@ -171,9 +170,9 @@ const About: React.FC = () => {
 
       {/* SolvePath Framework */}
       <section className="py-24 bg-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+        <div className="container max-w-6xl">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6  text-primary">
               How We Solve
             </h2>
             <p className="text-xl text-muted-foreground max-w-4xl mx-auto mb-8">
@@ -201,7 +200,7 @@ const About: React.FC = () => {
 
           <div className="text-center">
             <Button variant="outline" size="lg" asChild>
-              <a href="/about#solvepath">Learn More About SolvePath Framework<ArrowRight className="ml-2 w-4 h-4" /></a>
+              <a href="/about/solvepath-framework">Learn More About SolvePath Framework<ArrowRight className="ml-2 w-4 h-4" /></a>
             </Button>
           </div>
         </div>
@@ -209,9 +208,9 @@ const About: React.FC = () => {
 
       {/* Execution Model */}
       <section className="py-24 bg-muted/30">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+        <div className="container max-w-6xl">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6  text-primary">
               Perssonify Execution Model
             </h2>
             <p className="text-xl text-muted-foreground max-w-4xl mx-auto mb-8">
@@ -222,7 +221,6 @@ const About: React.FC = () => {
           <div className="max-w-4xl mx-auto mb-12">
             <Card className="p-8 bg-gradient-to-br from-primary/10 to-primary/5 border-0 custom-shadow">
               <div className="flex items-center justify-center mb-8">
-                <RadarPreview />
               </div>
               <div className="flex flex-wrap justify-center items-center gap-4">
                 {executionSteps.map((step, index) => (
@@ -261,17 +259,17 @@ const About: React.FC = () => {
                   <CardTitle className="text-xl font-bold text-foreground">One Creates Structure</CardTitle>
                 </CardHeader>
               </Card>
-              <Card className="text-center bg-gradient-to-br from-accent/10 to-accent/5 border-0 custom-shadow">
+              <Card className="text-center bg-gradient-to-br from-primary/10 to-primary/5 border-0 custom-shadow">
                 <CardHeader>
-                  <div className="w-16 h-16 rounded-xl bg-accent/10 flex items-center justify-center mx-auto mb-4">
-                    <Zap className="w-8 h-8 text-accent" />
+                  <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                    <Zap className="w-8 h-8 text-primary" />
                   </div>
                   <CardTitle className="text-xl font-bold text-foreground">One Drives Momentum</CardTitle>
                 </CardHeader>
               </Card>
             </div>
             <p className="text-lg font-semibold text-foreground mt-6">
-              Both are built to generate measurable results—fast.
+              Both are built to generate measurable results — <span className="text-primary">Fast.</span>
             </p>
           </div>
         </div>
@@ -279,18 +277,19 @@ const About: React.FC = () => {
 
       {/* Two Solution Families */}
       <section className="py-24 bg-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+        <div className="container max-w-6xl">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6  text-primary">
               Two Solution Families Under One Roof
             </h2>
             <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
-              Our two solution families are part of the same system, two complement...
+            Our <span className="text-primary">two solution</span> families are part of the same system, <span className="text-primary">two complementary engines</span> that help businesses scale what works and fix what doesn't. That integrated approach lets us expand and evolve our offerings across both tracks without losing speed, clarity, or control.
+            As the needs of our clients have evolved, so have we. Our ability to <span className="text-primary">think strategically, execute efficiently,</span> and <span className="text-primary">adapt intelligently</span> is what keeps us relevant and makes us invaluable.
             </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <Card className="h-full bg-gradient-to-br from-primary/10 to-primary/5 border-0 custom-shadow">
+            <Card>
               <CardHeader>
                 <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
                   <TrendingUp className="w-8 h-8 text-primary" />
@@ -312,7 +311,7 @@ const About: React.FC = () => {
               </CardContent>
             </Card>
 
-            <Card className="h-full bg-gradient-to-br from-accent/10 to-accent/5 border-0 custom-shadow">
+            <Card>
               <CardHeader>
                 <div className="w-16 h-16 rounded-xl bg-accent/10 flex items-center justify-center mb-4">
                   <Target className="w-8 h-8 text-accent" />
@@ -338,9 +337,9 @@ const About: React.FC = () => {
 
       {/* What We Deliver */}
       <section className="py-24 bg-muted/30">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+        <div className="container max-w-6xl">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6  text-primary">
               What We Deliver
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -350,7 +349,7 @@ const About: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {deliverables.map((item, index) => (
-              <Card key={item.title} className="text-center h-full bg-gradient-to-br from-primary/10 to-primary/5 border-0 custom-shadow">
+              <Card key={item.title} className="text-center h-full">
                 <CardHeader>
                   <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
                     <item.icon className="w-8 h-8 text-primary" />
@@ -368,9 +367,9 @@ const About: React.FC = () => {
 
       {/* Our Values */}
       <section className="py-24 bg-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+        <div className="container max-w-6xl">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6  text-primary">
               How We Work
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -380,7 +379,7 @@ const About: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {values.map((value, index) => (
-              <Card key={value.title} className="text-center h-full bg-gradient-to-br from-primary/10 to-primary/5 border-0 custom-shadow">
+              <Card key={value.title} className="text-center h-full">
                 <CardHeader>
                   <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
                     <value.icon className="w-8 h-8 text-primary" />
@@ -398,9 +397,9 @@ const About: React.FC = () => {
 
       {/* Meet the Team Section */}
       <section className="py-24 bg-muted/30">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+        <div className="container max-w-6xl">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6  text-primary">
               Meet the Team
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -411,7 +410,7 @@ const About: React.FC = () => {
             {people.map((person) => (
               <Card
                 key={person.id}
-                className="text-center bg-gradient-to-br from-primary/10 to-primary/5 border-0 custom-shadow p-6 h-full"
+                className="text-center p-6 h-full"
               >
                 <Avatar className="mb-4 w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 shadow-md border-2 border-primary/30 mx-auto">
                   <AvatarImage src={person.avatar} />
@@ -439,9 +438,9 @@ const About: React.FC = () => {
 
       {/* CTA Section - clean, centered, no colored box */}
       <section className="pt-24 pb-8 bg-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+        <div className="container max-w-6xl">
           <div className="text-center">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6  text-primary">
               Ready to Transform Your Business?
             </h2>
             <p className="text-xl text-muted-foreground mb-8 max-w-4xl mx-auto">

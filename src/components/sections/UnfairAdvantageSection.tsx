@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Brain, Rocket, Trophy } from 'lucide-react';
@@ -25,8 +24,8 @@ const UnfairAdvantageSection: React.FC = () => {
   ];
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-background">
-      <div className="container mx-auto max-w-6xl">
+    <section className="py-16 bg-background">
+      <div className="max-w-6xl mx-auto px-2 sm:px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -34,7 +33,7 @@ const UnfairAdvantageSection: React.FC = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[#30C9CB]">The Unfair Advantage</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-[#30C9CB]">The Unfair Advantage</h2>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
@@ -57,7 +56,7 @@ const UnfairAdvantageSection: React.FC = () => {
                 </motion.div>
               </div>
               <h4 className="text-xl font-bold mb-3 text-black text-center">{item.title}</h4>
-              <p className="text-black text-center">{item.description}</p>
+              <p className="text-base sm:text-lg text-black text-center">{item.description}</p>
             </motion.div>
           ))}
         </div>
@@ -69,7 +68,7 @@ const UnfairAdvantageSection: React.FC = () => {
           viewport={{ once: true }}
           className="text-center"
         >
-          <p className="text-lg font-semibold text-black mb-8">
+          <p className="text-base sm:text-lg font-semibold text-black mb-8">
             Fair warning: Your competition won't see this coming
           </p>
           <Button size="lg" className="text-lg px-8 bg-[#30C9CB] hover:bg-[#30C9CB]/90" asChild>

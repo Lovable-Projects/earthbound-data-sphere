@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle } from 'lucide-react';
@@ -11,8 +10,8 @@ const WhyAheadSection: React.FC = () => {
   ];
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#F8F8F8]">
-      <div className="container mx-auto max-w-4xl text-center">
+    <section className="py-16 bg-background">
+      <div className="max-w-6xl mx-auto px-2 sm:px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -20,7 +19,7 @@ const WhyAheadSection: React.FC = () => {
           viewport={{ once: true }}
           className="mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[#30C9CB]">Why We're Ahead?</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-[#30C9CB]">Why We're Ahead?</h2>
           <h3 className="text-xl md:text-2xl font-semibold mb-8 text-black">Everyone Else is Playing Catch-Up</h3>
         </motion.div>
 
@@ -36,7 +35,7 @@ const WhyAheadSection: React.FC = () => {
             >
               <div className="flex items-start space-x-3">
                 <CheckCircle className="w-5 h-5 text-[#30C9CB] mt-1 flex-shrink-0" />
-                <p className="text-lg text-black">{item}</p>
+                <p className="text-base sm:text-lg text-black">{item}</p>
               </div>
             </motion.div>
           ))}
@@ -48,7 +47,7 @@ const WhyAheadSection: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           viewport={{ once: true }}
         >
-          <p className="text-lg font-semibold text-black">
+          <p className="text-base sm:text-lg font-semibold text-black">
             First-mover advantage isn't luck. It's planning.
           </p>
         </motion.div>

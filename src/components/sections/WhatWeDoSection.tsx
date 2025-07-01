@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 
@@ -19,8 +18,8 @@ const WhatWeDoSection: React.FC = () => {
   ];
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-background">
-      <div className="container mx-auto max-w-4xl text-center">
+    <section className="py-16 bg-background">
+      <div className="max-w-6xl mx-auto px-2 sm:px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -28,7 +27,7 @@ const WhatWeDoSection: React.FC = () => {
           viewport={{ once: true }}
           className="mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[#30C9CB]">What We Do?</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-[#30C9CB]">What We Do?</h2>
           <h3 className="text-xl md:text-2xl font-semibold mb-8 text-black">We Make You Money. Fast.</h3>
         </motion.div>
 
@@ -44,7 +43,7 @@ const WhatWeDoSection: React.FC = () => {
               className="bg-[#F8F8F8] p-6 rounded-lg border hover:shadow-[7px_7px_0px_0px_#F2F2F2] transition-all duration-300"
             >
               <h4 className="text-lg font-bold mb-3 text-black text-center">{item.title}:</h4>
-              <p className="text-black text-center">{item.description}</p>
+              <p className="text-base sm:text-lg text-black text-center">{item.description}</p>
             </motion.div>
           ))}
         </div>
@@ -55,7 +54,7 @@ const WhatWeDoSection: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           viewport={{ once: true }}
         >
-          <p className="text-lg font-semibold text-black">
+          <p className="text-base sm:text-lg font-semibold text-black">
             Simple math: Better systems + Smart growth = More money in your pocket
           </p>
         </motion.div>

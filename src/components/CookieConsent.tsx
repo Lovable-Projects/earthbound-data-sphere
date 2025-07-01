@@ -163,7 +163,9 @@ const CookieConsent: React.FC = () => {
                           Required for the website to function properly.
                         </p>
                       </div>
-                      <Switch checked disabled />
+                      <div className="opacity-50 pointer-events-none">
+                        <Switch checked={true} setChecked={() => {}} />
+                      </div>
                     </div>
 
                     {/* Analytics Cookies */}
@@ -176,7 +178,7 @@ const CookieConsent: React.FC = () => {
                       </div>
                       <Switch 
                         checked={preferences.analytics}
-                        onCheckedChange={() => togglePreference('analytics')}
+                        setChecked={() => togglePreference('analytics')}
                       />
                     </div>
 
@@ -190,7 +192,7 @@ const CookieConsent: React.FC = () => {
                       </div>
                       <Switch 
                         checked={preferences.marketing}
-                        onCheckedChange={() => togglePreference('marketing')}
+                        setChecked={() => togglePreference('marketing')}
                       />
                     </div>
 
@@ -204,7 +206,7 @@ const CookieConsent: React.FC = () => {
                       </div>
                       <Switch 
                         checked={preferences.functional}
-                        onCheckedChange={() => togglePreference('functional')}
+                        setChecked={() => togglePreference('functional')}
                       />
                     </div>
                   </div>

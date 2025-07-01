@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Zap, TrendingUp, Target } from 'lucide-react';
@@ -23,8 +22,8 @@ const WhyChooseUsSection: React.FC = () => {
   ];
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-background">
-      <div className="container mx-auto max-w-6xl">
+    <section className="py-16 bg-background">
+      <div className="max-w-6xl mx-auto px-2 sm:px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -32,7 +31,7 @@ const WhyChooseUsSection: React.FC = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[#30C9CB]">Why Choose Us?</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-[#30C9CB]">Why Choose Us?</h2>
           <h3 className="text-xl md:text-2xl font-semibold mb-4 text-black">We Move While Others Meet</h3>
         </motion.div>
 
@@ -56,7 +55,7 @@ const WhyChooseUsSection: React.FC = () => {
                 </motion.div>
               </div>
               <h4 className="text-xl font-bold mb-3 text-black text-center">{item.title}</h4>
-              <p className="text-black text-center">{item.description}</p>
+              <p className="text-base sm:text-lg text-black text-center">{item.description}</p>
             </motion.div>
           ))}
         </div>
@@ -68,7 +67,7 @@ const WhyChooseUsSection: React.FC = () => {
           viewport={{ once: true }}
           className="text-center"
         >
-          <p className="text-lg font-semibold text-black">
+          <p className="text-base sm:text-lg font-semibold text-black">
             Bottom line: We deliver growth while competitors are still planning.
           </p>
         </motion.div>

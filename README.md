@@ -178,4 +178,4 @@ You can easily enable or disable a full-site Maintenance Mode for your website. 
 
 ---
 
-*© 2024 Perssonify. All rights reserved.*
+*© 2025 Perssonify. All rights reserved.*

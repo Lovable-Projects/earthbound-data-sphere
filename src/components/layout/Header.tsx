@@ -1,23 +1,24 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Menu, X, Sun, Moon, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
 import { motion, AnimatePresence } from 'framer-motion';
 import LogoTeal from '/Logo-Teal.png';
+import { AnimatedUnderline } from "@/components/ui/animated-underline";
 
 interface HeaderProps {
   isDarkMode: boolean;
-  toggleDarkMode: () => void;
+  toggleDarkMode: (checked: boolean) => void;
 }
 
 const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const location = useLocation();
   const navigate = useNavigate();
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const navigation = [
     { name: 'Home', href: '/' },
@@ -27,24 +28,61 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
       name: 'Growth Solutions', 
       href: '/growth-solutions',
       hasDropdown: true,
-      dropdownItems: [
-        { name: 'Digital Marketing', href: '/growth-solutions/digital-marketing' },
-        { name: 'SEO Services', href: '/growth-solutions/seo' },
-        { name: 'Social Media Management', href: '/growth-solutions/social-media' },
-        { name: 'Content Marketing', href: '/growth-solutions/content' },
-        { name: 'Email Marketing', href: '/growth-solutions/email' },
+      sections: [
+        {
+          title: 'Core Growth Solutions',
+          href: '/core-growth-solutions',
+          items: [
+            { name: 'Performance Marketing & Paid Media', href: '/growth-solutions/performance-marketing' },
+            { name: 'Social Media Marketing & Brand Engagement', href: '/growth-solutions/social-media-marketing' },
+            { name: 'Email Marketing & Marketing Automation', href: '/growth-solutions/email-marketing' },
+            { name: 'Creative Solutions', href: '/growth-solutions/creative-solutions' },
+            { name: 'Conversion Rate Optimization (CRO)', href: '/growth-solutions/conversion-optimization' },
+            { name: 'Search Engine Optimization (SEO) & Website Growth', href: '/growth-solutions/seo-website-growth' },
+            { name: 'Website Solutions', href: '/growth-solutions/website-solutions' },
+          ]
+        },
+        {
+          title: 'Specialized Growth Solutions',
+          href: '/specialized-growth-solutions',
+          items: [
+            { name: 'Deep Dive Audit & Strategic Insights', href: '/specialized-growth-solutions/audit-insights' },
+            { name: 'Analytics and Event Tracking Setup', href: '/specialized-growth-solutions/analytics-tracking' },
+            { name: 'Lead Generation & Funnel Strategy', href: '/specialized-growth-solutions/lead-generation' },
+            { name: 'Brand Architecture & Strategy', href: '/specialized-growth-solutions/brand-strategy' },
+            { name: 'Content Strategy & Planning', href: '/specialized-growth-solutions/content-strategy' },
+            { name: 'AI-Accelerated Content Production Pipelines', href: '/specialized-growth-solutions/ai-content' },
+            { name: 'Executive Personal Branding & LinkedIn Marketing', href: '/specialized-growth-solutions/executive-branding' },
+          ]
+        }
       ]
     },
     { 
       name: 'Strategic Solutions', 
       href: '/strategic-solutions',
       hasDropdown: true,
-      dropdownItems: [
-        { name: 'Business Consulting', href: '/strategic-solutions/consulting' },
-        { name: 'Market Research', href: '/strategic-solutions/research' },
-        { name: 'Brand Strategy', href: '/strategic-solutions/branding' },
-        { name: 'Analytics & Insights', href: '/strategic-solutions/analytics' },
-        { name: 'Process Optimization', href: '/strategic-solutions/optimization' },
+      sections: [
+        {
+          title: 'Core Strategic Solutions',
+          href: '/strategic-solutions',
+          items: [
+            { name: 'Process & Workflow Automation', href: '/strategic-solutions/process-automation' },
+            { name: 'Digital Systems Enablement', href: '/strategic-solutions/digital-systems-enablement' },
+            { name: 'Custom Solution Engineering', href: '/strategic-solutions/custom-solution-engineering' },
+            { name: 'Enterprise Evolution & Strategic Transformation', href: '/strategic-solutions/enterprise-evolution-strategic-transformation' },
+          ]
+        },
+        {
+          title: 'Solutions By Function',
+          href: '/strategic-solutions/solutions-by-function',
+          items: [
+            { name: 'Finance', href: '/strategic-solutions/finance-operations' },
+            { name: 'Human Resources', href: '/strategic-solutions/human-resources' },
+            { name: 'Operations', href: '/strategic-solutions/operations' },
+            { name: 'Compliance & Governance', href: '/strategic-solutions/compliance-governance' },
+            { name: 'Cross-Functional Leadership', href: '/strategic-solutions/cross-functional-leadership' },
+          ]
+        }
       ]
     },
     { name: 'Blog', href: '/blog' },
@@ -56,12 +94,40 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
   const handleLogoClick = (e: React.MouseEvent) => {
     e.preventDefault();
     navigate('/');
-    // Scroll to top with smooth behavior
     setTimeout(() => {
       window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     }, 100);
   };
 
+  // Clear timeout helper
+  const clearDropdownTimeout = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
+    }
+  };
+
+  // Handle click to toggle dropdown
+  const handleDropdownClick = (itemName: string) => {
+    clearDropdownTimeout();
+    setActiveDropdown(activeDropdown === itemName ? null : itemName);
+  };
+
+  // Handle mouse enter with delay
+  const handleMouseEnter = (itemName: string) => {
+    clearDropdownTimeout();
+    setActiveDropdown(itemName);
+  };
+
+  // Handle mouse leave with delay
+  const handleMouseLeave = () => {
+    clearDropdownTimeout();
+    timeoutRef.current = setTimeout(() => {
+      setActiveDropdown(null);
+    }, 150);
+  };
+
+  // Handle click outside and escape key
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -69,40 +135,52 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
       }
     };
 
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setActiveDropdown(null);
+        setIsMenuOpen(false);
+      }
+    };
+
     document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    document.addEventListener('keydown', handleEscape);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleEscape);
+      clearDropdownTimeout();
+    };
   }, []);
 
-  const handleDropdownToggle = (itemName: string) => {
-    setActiveDropdown(activeDropdown === itemName ? null : itemName);
-  };
-
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border transition-all duration-300">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo - centered on mobile, left on desktop */}
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border transition-all duration-300">
+      <div className="container mx-auto px-2 sm:px-4">
+        <div className="flex items-center justify-between h-14 sm:h-16 relative px-2 w-full max-w-6xl mx-auto">
+          {/* Left: Logo */}
           <button 
             onClick={handleLogoClick}
-            className="flex items-center space-x-2 md:ml-0 cursor-pointer hover:opacity-80 transition-opacity"
+            className="flex items-center cursor-pointer hover:opacity-80 transition-opacity flex-shrink-0"
           >
             <img
               src={LogoTeal}
               alt="Perssonify Logo"
-              className="h-8 w-auto object-contain"
+              className="object-contain h-8 w-24 sm:h-10 sm:w-32"
             />
           </button>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8" ref={dropdownRef}>
+          {/* Center: Navigation (desktop only) */}
+          <nav className="hidden lg:flex flex-1 items-center justify-center space-x-6" ref={dropdownRef}>
             {navigation.map((item) => (
               <div key={item.name} className="relative">
                 {item.hasDropdown ? (
-                  <div className="relative">
+                  <div 
+                    className="relative"
+                    onMouseEnter={() => handleMouseEnter(item.name)}
+                    onMouseLeave={handleMouseLeave}
+                  >
                     <button
-                      onClick={() => handleDropdownToggle(item.name)}
-                      onMouseEnter={() => setActiveDropdown(item.name)}
-                      className={`flex items-center space-x-1 text-sm font-medium transition-colors hover:text-primary whitespace-nowrap ${
+                      onClick={() => handleDropdownClick(item.name)}
+                      onMouseEnter={() => handleMouseEnter(item.name)}
+                      className={`flex items-center space-x-1 text-sm font-medium transition-colors hover:text-primary whitespace-nowrap py-2 ${
                         isActive(item.href) ? 'text-primary' : 'text-foreground/80'
                       }`}
                     >
@@ -114,33 +192,68 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
                       />
                     </button>
                     
-                    {/* Dropdown Menu */}
                     <AnimatePresence>
                       {activeDropdown === item.name && (
                         <motion.div
-                          initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                          initial={{ opacity: 0, y: 10, scale: 0.95 }}
                           animate={{ opacity: 1, y: 0, scale: 1 }}
-                          exit={{ opacity: 0, y: -10, scale: 0.95 }}
-                          transition={{ duration: 0.15, ease: 'easeOut' }}
-                          className="absolute top-full left-0 mt-2 w-56 bg-background/95 backdrop-blur-sm border border-border rounded-lg shadow-lg overflow-hidden z-50"
-                          onMouseLeave={() => setActiveDropdown(null)}
+                          exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                          transition={{ duration: 0.2, ease: 'easeOut' }}
+                          className={`absolute mt-2 bg-background border border-border rounded-xl shadow-2xl z-[100] overflow-hidden ${
+                            item.name === 'Strategic Solutions' 
+                              ? 'right-(-100px) transform translate-x-80' 
+                              : 'left-1/2 transform -translate-x-1/2'
+                          }`}
+                          style={{ width: '640px' }}
+                          onMouseEnter={clearDropdownTimeout}
+                          onMouseLeave={handleMouseLeave}
                         >
-                          <div className="py-2">
-                            {item.dropdownItems?.map((dropdownItem, index) => (
-                              <motion.div
-                                key={dropdownItem.name}
-                                initial={{ opacity: 0, x: -10 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: index * 0.05 }}
+                          {/* Header Section */}
+                          <div className="bg-muted/30 px-6 py-4 border-b border-border">
+                            <Link
+                              to={item.href}
+                              className="block hover:text-primary transition-colors"
+                              onClick={() => setActiveDropdown(null)}
+                            >
+                              <h3 className="font-bold text-lg text-foreground">
+                                {item.name}
+                              </h3>
+                              <p className="text-muted-foreground text-sm mt-1">
+                                {item.name === 'Growth Solutions' 
+                                  ? 'High-performance marketing strategy and execution'
+                                  : 'Technology-enhanced operational scaling solutions'
+                                }
+                              </p>
+                            </Link>
+                          </div>
+                          
+                          {/* Content Grid */}
+                          <div className="grid grid-cols-2 gap-0">
+                            {item.sections?.map((section, index) => (
+                              <div 
+                                key={section.title} 
+                                className={`p-6 ${index === 0 ? 'border-r border-border' : ''}`}
                               >
                                 <Link
-                                  to={dropdownItem.href}
-                                  className="block px-4 py-2 text-sm text-foreground/80 hover:text-primary hover:bg-muted/50 transition-colors"
+                                  to={section.href}
+                                  className="block font-semibold text-sm text-foreground hover:text-primary transition-colors mb-4 pb-2 border-b border-border/30"
                                   onClick={() => setActiveDropdown(null)}
                                 >
-                                  {dropdownItem.name}
+                                  {section.title}
                                 </Link>
-                              </motion.div>
+                                <div className="space-y-2">
+                                  {section.items?.map((subItem) => (
+                                    <Link
+                                      key={subItem.name}
+                                      to={subItem.href}
+                                      className="block text-sm text-muted-foreground hover:text-primary transition-colors py-2 px-3 rounded-lg hover:bg-muted/50"
+                                      onClick={() => setActiveDropdown(null)}
+                                    >
+                                      {subItem.name}
+                                    </Link>
+                                  ))}
+                                </div>
+                              </div>
                             ))}
                           </div>
                         </motion.div>
@@ -150,130 +263,97 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
                 ) : (
                   <Link
                     to={item.href}
-                    className={`text-sm font-medium transition-colors hover:text-primary whitespace-nowrap ${
-                      isActive(item.href) ? 'text-primary' : 'text-foreground/80'
-                    }`}
+                    className={"py-2"}
                   >
-                    {item.name}
+                    <AnimatedUnderline active={isActive(item.href)}>{item.name}</AnimatedUnderline>
                   </Link>
                 )}
               </div>
             ))}
           </nav>
 
-          {/* Right side buttons */}
-          <div className="flex items-center space-x-2 sm:space-x-3">
-            <div className="flex items-center space-x-2">
-              <button 
-                onClick={toggleDarkMode}
-                className="p-1 hover:bg-muted rounded transition-colors"
-                aria-label="Switch to light mode"
-              >
-                <Sun className="w-4 h-4 text-muted-foreground hover:text-foreground transition-colors" />
-              </button>
-              <Switch
-                id="desktop-dark-mode"
-                checked={isDarkMode}
-                onCheckedChange={toggleDarkMode}
-                aria-label="Toggle dark mode"
-              />
-              <button 
-                onClick={toggleDarkMode}
-                className="p-1 hover:bg-muted rounded transition-colors"
-                aria-label="Switch to dark mode"
-              >
-                <Moon className="w-4 h-4 text-muted-foreground hover:text-foreground transition-colors" />
-              </button>
-            </div>
-            <Button asChild size="sm" className="h-8 hidden sm:inline-flex">
+          {/* Right: Dark mode toggle and Get Started button (desktop only) */}
+          <div className="hidden lg:flex items-center space-x-2">
+            <Switch checked={isDarkMode} setChecked={toggleDarkMode} />
+            <Button asChild size="sm" className="h-8 text-xs px-3">
               <Link to="/contact">Get Started</Link>
             </Button>
-            
-            {/* Mobile menu button */}
+          </div>
+
+          {/* Hamburger menu button on mobile */}
+          <div className="flex items-center lg:hidden ml-auto">
+            <Switch checked={isDarkMode} setChecked={toggleDarkMode} />
             <Button
               variant="ghost"
               size="sm"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="w-8 h-8 p-0 lg:hidden"
+              className="w-8 h-8 p-0 ml-1"
             >
               {isMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
             </Button>
           </div>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile menu */}
         <AnimatePresence>
           {isMenuOpen && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.2 }}
-              className="lg:hidden border-t border-border bg-background"
+              transition={{ duration: 0.3 }}
+              className="lg:hidden fixed top-[56px] left-1/2 -translate-x-1/2 w-full max-w-sm border border-border bg-background max-h-[70vh] overflow-y-auto rounded-b-xl shadow-2xl z-[100] flex flex-col px-2"
             >
-              <div className="py-2 space-y-1">
+              <div className="py-4 space-y-3 flex flex-col">
                 {navigation.map((item) => (
-                  <div key={item.name}>
+                  <div key={item.name} className="flex flex-col">
                     {item.hasDropdown ? (
-                      <div>
-                        <button
-                          onClick={() =>
-                            setActiveDropdown(
-                              activeDropdown === `mobile-${item.name}` ? null : `mobile-${item.name}`
-                            )
-                          }
-                          className={`flex items-center justify-between w-full px-4 py-2 text-sm font-medium transition-colors hover:text-primary ${
-                            isActive(item.href) ? 'text-primary' : 'text-foreground/80'
-                          }`}
+                      <div className="space-y-2">
+                        <Link
+                          to={item.href}
+                          onClick={() => setIsMenuOpen(false)}
+                          className="block px-4 py-3 text-sm font-semibold transition-colors hover:text-primary text-foreground bg-muted/30 rounded-lg mx-2"
                         >
-                          <span>{item.name}</span>
-                          <ChevronDown 
-                            className={`w-3 h-3 transition-transform duration-200 ${
-                              activeDropdown === `mobile-${item.name}` ? 'rotate-180' : ''
-                            }`} 
-                          />
-                        </button>
-                        
-                        <AnimatePresence>
-                          {activeDropdown === `mobile-${item.name}` && (
-                            <motion.div
-                              initial={{ opacity: 0, height: 0 }}
-                              animate={{ opacity: 1, height: 'auto' }}
-                              exit={{ opacity: 0, height: 0 }}
-                              transition={{ duration: 0.2 }}
-                              className="bg-muted/30"
+                          {item.name}
+                        </Link>
+                        <div className="border-l-2 border-primary/10 ml-2 pl-2">
+                        {item.sections?.map((section) => (
+                          <div key={section.title} className="space-y-1 mt-1">
+                            <Link
+                              to={section.href}
+                              onClick={() => setIsMenuOpen(false)}
+                              className="block px-3 py-2 text-xs font-medium text-foreground/80 hover:text-primary transition-colors border-l-2 border-primary/20"
                             >
-                              {item.dropdownItems?.map((dropdownItem) => (
-                                <Link
-                                  key={dropdownItem.name}
-                                  to={dropdownItem.href}
-                                  onClick={() => {
-                                    setIsMenuOpen(false);
-                                    setActiveDropdown(null);
-                                  }}
-                                  className="block px-8 py-2 text-sm text-foreground/70 hover:text-primary transition-colors"
-                                >
-                                  {dropdownItem.name}
-                                </Link>
-                              ))}
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
+                              {section.title}
+                            </Link>
+                            <div className="flex flex-col ml-2">
+                            {section.items?.map((subItem) => (
+                              <Link
+                                key={subItem.name}
+                                to={subItem.href}
+                                onClick={() => setIsMenuOpen(false)}
+                                className="block px-5 py-1.5 text-xs text-muted-foreground hover:text-primary transition-colors hover:bg-muted/30 rounded"
+                              >
+                                {subItem.name}
+                              </Link>
+                            ))}
+                            </div>
+                          </div>
+                        ))}
+                        </div>
                       </div>
                     ) : (
                       <Link
                         to={item.href}
                         onClick={() => setIsMenuOpen(false)}
-                        className={`block px-4 py-2 text-sm font-medium transition-colors hover:text-primary ${
-                          isActive(item.href) ? 'text-primary' : 'text-foreground/80'
-                        }`}
+                        className="block px-4 py-3 text-sm font-medium transition-colors hover:text-primary text-foreground/80 hover:bg-muted/30 rounded-lg mx-2"
                       >
                         {item.name}
                       </Link>
                     )}
                   </div>
                 ))}
-                <div className="px-4 py-2">
+                <div className="px-4 py-3 border-t border-border/30 mt-4">
                   <Button asChild className="w-full">
                     <Link to="/contact" onClick={() => setIsMenuOpen(false)}>
                       Get Started
